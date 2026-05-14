@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \"const data = require\\('/Users/arfafa/projects/personal/web-invitation-bunvik/node_modules/next/dist/compiled/@next/font/dist/google/font-data.json'\\); console.log\\(JSON.stringify\\(data['Cormorant Garamond'], null, 2\\)\\); console.log\\(JSON.stringify\\(data['Pinyon Script'], null, 2\\)\\);\")"
+    ]
+  }
+}
