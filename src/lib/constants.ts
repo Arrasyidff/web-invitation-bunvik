@@ -1,11 +1,12 @@
-export const GROOM_NAME = "Ahmad Fauzi";
-export const BRIDE_NAME = "Siti Rahayu";
-export const GROOM_NAME_SHORT = "Ahmad";
-export const BRIDE_NAME_SHORT = "Siti";
-export const WEDDING_DATE_DISPLAY = "Sabtu, 20 September 2025";
-export const WEDDING_DATE = "2025-09-20";
+export const GROOM_NAME = "Hendra";
+export const BRIDE_NAME = "VIKA";
+export const GROOM_NAME_SHORT = "Sadiyono";
+export const BRIDE_NAME_SHORT = "Reyvika";
+export const WEDDING_DATE_DISPLAY = "24 . 05 . 2026";
+export const WEDDING_DATE = "2026-05-24";
 export const AKAD_TIME = "08.00 WIB";
 export const RECEPTION_TIME = "11.00 WIB";
 export const VENUE_NAME = "Gedung Serbaguna Al-Ikhlas";
 export const VENUE_ADDRESS = "Jl. Raya Malang No. 10, Malang";
 export const MAPS_URL = "https://maps.google.com/?q=Gedung+Serbaguna+Al-Ikhlas+Malang";
+export const GUEST_NAME_DEFAULT = "Dwi Herlambang & Istri";

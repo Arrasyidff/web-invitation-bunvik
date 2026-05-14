@@ -1,21 +1,45 @@
-import Image from "next/image";
-import coverFlowerLeft from "@/app/assets/cover-flower-left.png";
-import coverFlowerRight from "@/app/assets/cover-flower-right.png";
+"use client";
+
+import { GUEST_NAME_DEFAULT } from "@/lib/constants";
+import { CoverFlower } from "./CoverFlower";
+import { CoverWeddingTitle } from "./CoverWeddingTitle";
+import { CoverEnvelopeButton } from "./CoverEnvelopeButton";
 
 interface CoverSectionProps {
   onOpen: () => void;
+  guestName?: string;
 }
 
-export function CoverSection({ onOpen }: CoverSectionProps) {
+export function CoverSection({
+  onOpen,
+  guestName = GUEST_NAME_DEFAULT,
+}: CoverSectionProps) {
   return (
     <section
       id="cover"
-      className="min-h-screen flex flex-col items-center justify-space-between overflow-hidden bg-red-500"
+      className="relative min-h-screen flex flex-col overflow-hidden"
     >
-      <div className="bg-blue-500 w-full">
-        <Image src={coverFlowerLeft} alt="Cover" width={280} />
+      <CoverFlower />
+
+      <div className="flex-1 flex flex-col items-center justify-center text-center w-full">
+        <CoverWeddingTitle />
+
+        <div className="mt-6 mb-6 flex flex-col items-center">
+          <p className="font-sans font-light text-[1.375rem] tracking-wide text-foreground">
+            Kepada Yth.
+          </p>
+          <p className="font-sans font-light text-[1.375rem] tracking-wide text-foreground">
+            Bapak/ Ibu/ Saudara/ i
+          </p>
+          <p className="font-sans font-medium text-[2rem] text-foreground">
+            {guestName}
+          </p>
+        </div>
+
+        <CoverEnvelopeButton onOpen={onOpen} />
       </div>
-      {/* <Image src={coverFlowerRight} alt="Cover" width={1000} height={1000} /> */}
+
+      <CoverFlower isFlipped />
     </section>
   );
 }
