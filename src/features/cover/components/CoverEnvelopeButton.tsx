@@ -23,11 +23,11 @@ export function CoverEnvelopeButton({ onOpen }: CoverEnvelopeButtonProps) {
           <Image
             src={candleEnvelope}
             alt="Lilin"
-            className="h-[8vh] w-auto"
+            className="h-[8vh] w-auto animate-spin [animation-duration:6s]"
           />
           <span
             className="absolute top-[50%] left-[45%] -translate-x-1/2 -translate-y-1/2 text-foreground font-bold"
-            style={{ letterSpacing: "-8px", fontSize: "40px" }}
+            style={{ letterSpacing: "-8px", fontSize: "35px" }}
           >
             HV
           </span>
