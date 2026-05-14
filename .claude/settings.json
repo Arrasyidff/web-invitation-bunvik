@@ -6,7 +6,11 @@
       "Read(//tmp/**)",
       "Bash(npx tsc *)",
       "Bash(npx next *)",
-      "Bash(curl -s http://localhost:3001)"
+      "Bash(curl -s http://localhost:3001)",
+      "Bash(mkdir -p /Users/arfafa/projects/personal/web-invitation-bunvik/src/components/ui)"
+    ],
+    "additionalDirectories": [
+      "/Users/arfafa/projects/personal/web-invitation-bunvik/src/components"
     ]
   }
 }
