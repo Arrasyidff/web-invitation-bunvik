@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Pinyon_Script } from "next/font/google";
 import "./globals.css";
+import backgroundImage from "@/app/assets/background.png";
 
 const cormorantGaramond = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -28,7 +29,12 @@ export default function RootLayout({
       lang="en"
       className={`${cormorantGaramond.variable} ${pinyonScript.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body
+        className="min-h-full flex flex-col bg-cover bg-center bg-no-repeat bg-fixed"
+        style={{ backgroundImage: `url(${backgroundImage.src})` }}
+      >
+        {children}
+      </body>
     </html>
   );
 }

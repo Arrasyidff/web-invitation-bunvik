@@ -1,0 +1,11 @@
+export const GROOM_NAME = "Ahmad Fauzi";
+export const BRIDE_NAME = "Siti Rahayu";
+export const GROOM_NAME_SHORT = "Ahmad";
+export const BRIDE_NAME_SHORT = "Siti";
+export const WEDDING_DATE_DISPLAY = "Sabtu, 20 September 2025";
+export const WEDDING_DATE = "2025-09-20";
+export const AKAD_TIME = "08.00 WIB";
+export const RECEPTION_TIME = "11.00 WIB";
+export const VENUE_NAME = "Gedung Serbaguna Al-Ikhlas";
+export const VENUE_ADDRESS = "Jl. Raya Malang No. 10, Malang";
+export const MAPS_URL = "https://maps.google.com/?q=Gedung+Serbaguna+Al-Ikhlas+Malang";
