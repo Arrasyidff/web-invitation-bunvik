@@ -5,6 +5,7 @@ import { CoverSection } from "@/features/cover/components/CoverSection";
 import { OpeningSection } from "@/features/opening/components/OpeningSection";
 import { CoupleSection } from "@/features/couple/components/CoupleSection";
 import { EventSection } from "@/features/event/components/EventSection";
+import { RsvpSection } from "@/features/rsvp/components/RsvpSection";
 import { LoadingOverlay } from "@/components/ui/LoadingOverlay";
 
 import backgroundSrc from "@/app/assets/background.png";
@@ -67,6 +68,7 @@ export default function HomePage() {
             <OpeningSection />
           <CoupleSection />
           <EventSection />
+          <RsvpSection />
           {/* sections lainnya akan ditambahkan di sini */}
         </div>
       )}
