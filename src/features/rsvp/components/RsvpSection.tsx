@@ -7,20 +7,20 @@ export function RsvpSection() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   return (
-    <section id="rsvp" className="w-full px-6 py-14">
-      <h2 className="text-center text-[3rem] font-bold tracking-wider text-foreground">
+    <section id="rsvp" className="w-full px-6.5 mt-7.5">
+      <h2 className="text-center text-[5rem] font-bold text-foreground" style={{ lineHeight: '0.8' }}>
         RSVP
       </h2>
 
-      <p className="mt-5 text-center text-[0.9375rem] text-foreground leading-relaxed">
+      <p className="mt-7.5 text-center text-[1.125rem] text-foreground leading-relaxed">
         Merupakan suatu kehormatan dan kebahagiaan bagi kami sekeluarga apabila
         Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kami.
         Atas kehadiran serta doa restu, kami ucapkan terima kasih.
       </p>
 
       {isSubmitted ? (
-        <div className="mt-10 text-center">
-          <p className="text-[1.0625rem] text-foreground">
+        <div className="mt-7.5 text-center">
+          <p className="text-[1.125rem] text-foreground">
             Terima kasih! Konfirmasi kehadiran Anda telah kami terima.
           </p>
         </div>

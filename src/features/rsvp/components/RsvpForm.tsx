@@ -33,32 +33,32 @@ export function RsvpForm({ onSubmitSuccess }: RsvpFormProps) {
   }
 
   return (
-    <form onSubmit={handleFormSubmit} className="mt-8 flex flex-col gap-5">
+    <form onSubmit={handleFormSubmit} className="mt-8 flex flex-col gap-1.5">
       <div className="flex flex-col gap-1.5">
-        <label className="text-[0.9375rem] text-foreground">Nama:</label>
+        <label className="text-[1.125rem] text-foreground">Nama:</label>
         <input
           type="text"
           required
           value={formData.guestName}
           onChange={(e) => setFormData({ ...formData, guestName: e.target.value })}
-          className="w-full rounded-full border border-foreground/25 bg-transparent px-5 py-2.5 text-[0.9375rem] text-foreground outline-none focus:border-foreground/50"
+          className="w-full rounded-full border border-foreground/25 bg-transparent px-5 py-2.5 text-[1.125rem] text-foreground outline-none focus:border-foreground/50"
         />
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label className="text-[0.9375rem] text-foreground">Jumlah tamu (orang):</label>
+        <label className="text-[1.125rem] text-foreground">Jumlah tamu (orang):</label>
         <input
           type="number"
           min={1}
           required
           value={formData.guestCount}
           onChange={(e) => setFormData({ ...formData, guestCount: Number(e.target.value) })}
-          className="w-full rounded-full border border-foreground/25 bg-transparent px-5 py-2.5 text-[0.9375rem] text-foreground outline-none focus:border-foreground/50"
+          className="w-full rounded-full border border-foreground/25 bg-transparent px-5 py-2.5 text-[1.125rem] text-foreground outline-none focus:border-foreground/50"
         />
       </div>
 
-      <div className="flex flex-col gap-3">
-        <span className="text-[0.9375rem] text-foreground">Konfirmasi Kehadiran</span>
+      <div className="flex flex-col gap-1.5">
+        <span className="text-[1.125rem] text-foreground">Konfirmasi Kehadiran</span>
         <label className="flex cursor-pointer items-center gap-3">
           <input
             type="radio"
@@ -68,7 +68,7 @@ export function RsvpForm({ onSubmitSuccess }: RsvpFormProps) {
             onChange={() => setFormData({ ...formData, attendanceStatus: "hadir" })}
             className="h-4 w-4 accent-foreground"
           />
-          <span className="text-[0.9375rem] text-foreground">Hadir</span>
+          <span className="text-[1.125rem] text-foreground">Hadir</span>
         </label>
         <label className="flex cursor-pointer items-center gap-3">
           <input
@@ -79,7 +79,7 @@ export function RsvpForm({ onSubmitSuccess }: RsvpFormProps) {
             onChange={() => setFormData({ ...formData, attendanceStatus: "tidak_hadir" })}
             className="h-4 w-4 accent-foreground"
           />
-          <span className="text-[0.9375rem] text-foreground">Maaf, Saya tidak bisa hadir</span>
+          <span className="text-[1.125rem] text-foreground">Maaf, Saya tidak bisa hadir</span>
         </label>
       </div>
 

@@ -13,7 +13,7 @@ import { CoupleMonogram } from "./CoupleMonogram";
 
 export function CoupleSection() {
   return (
-    <section id="couple" className="relative w-full px-6.5 my-22.75">
+    <section id="couple" className="relative w-full px-6.5 mt-7.5">
       <CoupleCard
         fullName={GROOM_FULL_NAME}
         childOrder={GROOM_CHILD_ORDER}
