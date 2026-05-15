@@ -25,13 +25,13 @@ export function WishesSection({}: WishesSectionProps) {
   }, []);
 
   return (
-    <section id="wishes" className="w-full px-6 py-14">
-      <h2 className="text-center text-[3.5rem] font-bold tracking-wider text-[#343434] leading-none">
+    <section id="wishes" className="w-full px-6.5 mt-7.5">
+      <h2 className="text-center text-[5rem] font-bold text-foreground" style={{ lineHeight: '0.8' }}>
         UCAPAN
         <br />& DOA
       </h2>
 
-      <div className="mt-8">
+      <div className="mt-7.5">
         <WishesForm onWishSubmitted={fetchWishes} />
       </div>
 

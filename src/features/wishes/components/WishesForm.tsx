@@ -33,9 +33,9 @@ export function WishesForm({ onWishSubmitted }: WishesFormProps) {
   }
 
   return (
-    <form onSubmit={handleFormSubmit} className="flex flex-col gap-4">
+    <form onSubmit={handleFormSubmit} className="flex flex-col gap-1.5">
       <div className="flex flex-col gap-1.5">
-        <label className="text-[0.9375rem] text-[#343434]">
+        <label className="text-[1.125rem] text-foreground">
           Tuliskan nama anda:
         </label>
         <input
@@ -43,12 +43,12 @@ export function WishesForm({ onWishSubmitted }: WishesFormProps) {
           required
           value={formData.guestName}
           onChange={(e) => setFormData({ ...formData, guestName: e.target.value })}
-          className="w-full rounded-full border border-[#343434]/25 bg-transparent px-5 py-2.5 text-[0.9375rem] text-[#343434] outline-none focus:border-[#343434]/50"
+          className="w-full rounded-full border border-foreground/25 bg-transparent px-5 py-2.5 text-[1.125rem] text-foreground outline-none focus:border-foreground/50"
         />
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label className="text-[0.9375rem] text-[#343434]">
+        <label className="text-[1.125rem] text-foreground">
           Berikan ucapan dan doa:
         </label>
         <input
@@ -56,12 +56,12 @@ export function WishesForm({ onWishSubmitted }: WishesFormProps) {
           required
           value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-          className="w-full rounded-full border border-[#343434]/25 bg-transparent px-5 py-2.5 text-[0.9375rem] text-[#343434] outline-none focus:border-[#343434]/50"
+          className="w-full rounded-full border border-foreground/25 bg-transparent px-5 py-2.5 text-[1.125rem] text-foreground outline-none focus:border-foreground/50"
         />
       </div>
 
       {hasError && (
-        <p className="text-center text-[0.875rem] text-red-500">
+        <p className="text-center text-[1.125rem] text-red-500">
           Gagal mengirim. Silakan coba lagi.
         </p>
       )}
