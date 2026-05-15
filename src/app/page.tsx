@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { CoverSection } from "@/features/cover/components/CoverSection";
 import { OpeningSection } from "@/features/opening/components/OpeningSection";
+import { CoupleSection } from "@/features/couple/components/CoupleSection";
 import { LoadingOverlay } from "@/components/ui/LoadingOverlay";
 
 import backgroundSrc from "@/app/assets/background.png";
@@ -63,6 +64,7 @@ export default function HomePage() {
       ) : (
         <div>
             <OpeningSection />
+          <CoupleSection />
           {/* sections lainnya akan ditambahkan di sini */}
         </div>
       )}
