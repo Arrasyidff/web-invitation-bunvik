@@ -6,9 +6,9 @@ export function OpeningSection() {
   return (
     <section
       id="opening"
-      className="relative flex flex-col items-center overflow-hidden"
+      className="relative flex flex-col items-center justify-start overflow-hidden"
     >
-      <SectionFloralFrame isImagePriority width="50%" />
+      <SectionFloralFrame isImagePriority />
       <OpeningVerseArch />
       <OpeningGreeting />
     </section>
