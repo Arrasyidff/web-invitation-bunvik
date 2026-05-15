@@ -5,14 +5,29 @@ interface SectionFloralFrameProps {
   className?: string;
   /** Set true for above-the-fold sections (e.g. opening) so images load with priority. */
   isImagePriority?: boolean;
+  /** Anchor floral frame to the top or bottom of the positioned parent. */
+  placement?: "top" | "bottom";
+  /** Mirror both images vertically (e.g. bottom divider). */
+  isFlippedVertically?: boolean;
+  /**  */
+  width?: string
 }
 
 export function SectionFloralFrame({
   className,
   isImagePriority = false,
+  placement = "top",
+  isFlippedVertically = false,
+  width = '52%'
 }: SectionFloralFrameProps) {
+  const placementClassName =
+    placement === "top" ? "top-0" : "bottom-0";
+
+  const verticalFlipClassName = isFlippedVertically ? "scale-y-[-1]" : "";
+
   const rootClassName = [
-    "absolute top-0 left-0 w-full flex justify-between z-10",
+    "absolute left-0 w-full flex justify-between z-10",
+    placementClassName,
     className,
   ]
     .filter(Boolean)
@@ -23,13 +38,16 @@ export function SectionFloralFrame({
       <Image
         src={flowerFrameSrc}
         alt="Dekorasi bunga"
-        className="w-[60%]"
+        // className={[`w-[${width}]`, verticalFlipClassName].filter(Boolean).join(" ")}
+        className={[`w-[${width}]`, verticalFlipClassName].filter(Boolean).join(" ")}
         priority={isImagePriority}
       />
       <Image
         src={flowerFrameSrc}
         alt="Dekorasi bunga"
-        className="w-[60%] scale-x-[-1]"
+        className={[`w-[${width}] scale-x-[-1]`, verticalFlipClassName]
+          .filter(Boolean)
+          .join(" ")}
         priority={isImagePriority}
       />
     </div>
