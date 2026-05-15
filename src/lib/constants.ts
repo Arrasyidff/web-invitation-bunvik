@@ -18,3 +18,10 @@ export const MAPS_URL = "https://maps.google.com/?q=Aula+Taklim+At+Tadzkir";
 export const MAPS_EMBED_URL = "https://maps.google.com/maps?q=Aula+Taklim+At+Tadzkir&output=embed&hl=id";
 export const WEDDING_DATE_SHORT = "24 . 05 . 26";
 export const GUEST_NAME_DEFAULT = "Dwi Herlambang & Istri";
+
+export const LOVE_STORY_ENTRIES = [
+  "Pertemuan pertama kami terjadi di sebuah momen yang tak terduga, namun terasa begitu tepat. Sebuah senyum yang sederhana mengawali perjalanan panjang yang penuh makna.",
+  "Hari-hari berlalu dengan penuh cerita dan tawa. Kami belajar mengenal satu sama lain lebih dalam, menemukan kesamaan dan perbedaan yang justru saling melengkapi.",
+  "Dalam suka dan duka, kami saling menguatkan. Setiap langkah yang kami tempuh bersama semakin mempererat ikatan yang telah Allah SWT takdirkan untuk kami.",
+  "Kini, dengan penuh rasa syukur dan kebahagiaan, kami siap melangkah menuju babak baru kehidupan sebagai sepasang suami istri, membangun keluarga yang sakinah, mawaddah, warahmah.",
+];
