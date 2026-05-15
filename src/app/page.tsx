@@ -7,6 +7,7 @@ import { CoupleSection } from "@/features/couple/components/CoupleSection";
 import { EventSection } from "@/features/event/components/EventSection";
 import { RsvpSection } from "@/features/rsvp/components/RsvpSection";
 import { StorySection } from "@/features/story/components/StorySection";
+import { WishesSection } from "@/features/wishes/components/WishesSection";
 import { LoadingOverlay } from "@/components/ui/LoadingOverlay";
 
 import backgroundSrc from "@/app/assets/background.png";
@@ -71,7 +72,7 @@ export default function HomePage() {
           <EventSection />
           <RsvpSection />
           <StorySection />
-          {/* sections lainnya akan ditambahkan di sini */}
+          <WishesSection />
         </div>
       )}
     </main>
