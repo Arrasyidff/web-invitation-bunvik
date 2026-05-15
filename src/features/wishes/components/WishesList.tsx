@@ -15,7 +15,7 @@ export function WishesList({ wishes }: WishesListProps) {
   }
 
   return (
-    <div className="mt-7.5 flex flex-col gap-2.5">
+    <div className="mt-7.5 flex flex-col gap-2.5 max-h-125 overflow-y-auto pr-1">
       {wishes.map((wish) => (
         <div key={wish.id} className="rounded-[9px] bg-white/60 p-5 shadow-md w-[95%]">
           <p className="text-[1.125rem] font-bold text-foreground">{wish.guestName}</p>
