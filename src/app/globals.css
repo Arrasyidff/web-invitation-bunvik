@@ -69,3 +69,26 @@ p, h2, h3, h4 {
 .arch-bottom {
   border-radius: 4px 4px 50% 50% / 4px 4px 30% 30%;
 }
+
+.wishes-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(190, 120, 100, 0.35) transparent;
+}
+
+.wishes-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.wishes-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.wishes-scroll::-webkit-scrollbar-thumb {
+  background: rgba(190, 120, 100, 0.35);
+  border-radius: 999px;
+  transition: background 0.2s ease;
+}
+
+.wishes-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(190, 120, 100, 0.65);
+}
