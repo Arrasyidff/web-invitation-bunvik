@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { CoverSection } from "@/features/cover/components/CoverSection";
+import { CoverLeftPanel } from "@/features/cover/components/CoverLeftPanel";
+import { CoverRightPanel } from "@/features/cover/components/CoverRightPanel";
 import { OpeningSection } from "@/features/opening/components/OpeningSection";
 import { CoupleSection } from "@/features/couple/components/CoupleSection";
 import { EventSection } from "@/features/event/components/EventSection";
@@ -25,8 +27,8 @@ const PRELOAD_IMAGE_URLS = [
 ];
 
 export default function HomePage() {
-  const [isInvitationOpen, setIsInvitationOpen] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isInvitationOpen, setIsInvitationOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const MINIMUM_LOAD_MS = 800;
@@ -63,18 +65,41 @@ export default function HomePage() {
   return (
     <main>
       <LoadingOverlay isLoading={isLoading} />
-      {!isInvitationOpen ? (
-        <CoverSection onOpen={() => setIsInvitationOpen(true)} />
-      ) : (
-        <div>
-          <OpeningSection />
-          <CoupleSection />
-          <EventSection />
-          <RsvpSection />
-          <StorySection />
-          <WishesSection />
+
+      {/* Mobile layout */}
+      <div className="md:hidden">
+        {!isInvitationOpen ? (
+          <CoverSection onOpen={() => setIsInvitationOpen(true)} />
+        ) : (
+          <div>
+            <OpeningSection />
+            <CoupleSection />
+            <EventSection />
+            <RsvpSection />
+            <StorySection />
+            <WishesSection />
+          </div>
+        )}
+      </div>
+
+      {/* Desktop/tablet layout */}
+      <div className="hidden md:flex h-screen overflow-hidden">
+        <CoverLeftPanel />
+        <div className="w-100 h-full overflow-y-auto shrink-0">
+          {!isInvitationOpen ? (
+            <CoverRightPanel onOpen={() => setIsInvitationOpen(true)} />
+          ) : (
+            <div>
+              <OpeningSection />
+              <CoupleSection />
+              <EventSection />
+              <RsvpSection />
+              <StorySection />
+              <WishesSection />
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </main>
   );
 }
