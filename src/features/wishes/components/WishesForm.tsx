@@ -69,7 +69,7 @@ export function WishesForm({ onWishSubmitted }: WishesFormProps) {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full rounded-full bg-[#3B9CDA] py-3 text-[1rem] font-semibold text-white disabled:opacity-60"
+        className="mt-1.5 w-full rounded-full bg-[#3B9CDA] py-3 text-[1rem] font-semibold text-white disabled:opacity-60"
       >
         {isSubmitting ? "Mengirim..." : "Kirim"}
       </button>
