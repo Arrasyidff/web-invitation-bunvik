@@ -5,8 +5,8 @@ interface EventCountdownBoxProps {
 
 export function EventCountdownBox({ value, label }: EventCountdownBoxProps) {
   return (
-    <div className="flex flex-col items-center gap-1">
-      <div className="w-[4.906rem] h-[4.906rem] bg-white border border-white flex items-center justify-center">
+    <div className="flex-1 flex flex-col items-center gap-1">
+      <div className="w-full aspect-square bg-white border border-white flex items-center justify-center">
         <span className="text-[2.812rem] font-semibold text-foreground">
           {String(value).padStart(2, "0")}
         </span>
