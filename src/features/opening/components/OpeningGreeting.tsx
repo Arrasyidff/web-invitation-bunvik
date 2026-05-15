@@ -1,6 +1,6 @@
 export function OpeningGreeting() {
   return (
-    <div className="mt-15 px-6.5 text-center bg-red-500">
+    <div className="mt-15 px-6.5 text-center">
       <h2 className="font-bold text-[1.375rem] text-foreground">
         Assalamu&apos;alaikum
         <br />
