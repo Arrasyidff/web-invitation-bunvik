@@ -5,7 +5,7 @@ import { EventVenue } from "./EventVenue";
 export function EventSection() {
   return (
     <section id="event" className="relative w-full px-6 py-14">
-      <div className="bg-[#3B9CDA] rounded-2xl px-7 py-10 text-white text-center">
+      <div className="rounded-2xl px-7 py-10 text-white text-center" style={{ background: 'linear-gradient(142deg, #3B9CDA 0%, #2F83B9 100%)' }}>
         <h2 className="font-[family-name:var(--font-pinyon)] text-[3.5rem] leading-tight">
           Save The Date
         </h2>

@@ -24,10 +24,12 @@
 
 body {
   font-family: var(--font-cormorant), serif;
+  letter-spacing: nor;
 }
 
 p, h2 {
   line-height: 1.275;
+  letter-spacing: normal;
 }
 
 @keyframes fade-in {
