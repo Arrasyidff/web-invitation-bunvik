@@ -25,8 +25,8 @@ const PRELOAD_IMAGE_URLS = [
 ];
 
 export default function HomePage() {
-  const [isInvitationOpen, setIsInvitationOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isInvitationOpen, setIsInvitationOpen] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const MINIMUM_LOAD_MS = 800;
@@ -67,7 +67,7 @@ export default function HomePage() {
         <CoverSection onOpen={() => setIsInvitationOpen(true)} />
       ) : (
         <div>
-            <OpeningSection />
+          <OpeningSection />
           <CoupleSection />
           <EventSection />
           <RsvpSection />

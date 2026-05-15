@@ -30,6 +30,7 @@ export default function RootLayout({
       className={`${cormorantGaramond.variable} ${pinyonScript.variable} h-full antialiased`}
     >
       <body
+        suppressHydrationWarning
         className="min-h-full flex flex-col bg-cover bg-center bg-no-repeat bg-fixed"
         style={{ backgroundImage: `url(${backgroundImage.src})` }}
       >
