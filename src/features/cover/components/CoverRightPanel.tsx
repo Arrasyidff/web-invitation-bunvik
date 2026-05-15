@@ -13,7 +13,7 @@ export function CoverRightPanel({
   guestName = GUEST_NAME_DEFAULT,
 }: CoverRightPanelProps) {
   return (
-    <div className="flex flex-col h-full bg-white/75 backdrop-blur-sm overflow-hidden">
+    <div className="flex flex-col h-full bg-white/75 overflow-hidden">
       <CoverFlower />
 
       <div className="flex-1 flex flex-col items-center justify-center text-center w-full">

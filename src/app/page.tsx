@@ -83,7 +83,7 @@ export default function HomePage() {
       </div>
 
       {/* Desktop/tablet layout */}
-      <div className="hidden md:flex h-screen overflow-hidden">
+      <div className="hidden md:flex h-screen">
         <CoverLeftPanel />
         <div className="w-100 h-full overflow-y-auto shrink-0">
           {!isInvitationOpen ? (
