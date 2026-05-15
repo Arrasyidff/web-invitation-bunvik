@@ -8,7 +8,7 @@ export function OpeningSection() {
       id="opening"
       className="relative flex flex-col items-center overflow-hidden"
     >
-      <SectionFloralFrame isImagePriority />
+      <SectionFloralFrame isImagePriority width="50%" />
       <OpeningVerseArch />
       <OpeningGreeting />
     </section>

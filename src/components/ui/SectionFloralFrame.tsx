@@ -18,7 +18,7 @@ export function SectionFloralFrame({
   isImagePriority = false,
   placement = "top",
   isFlippedVertically = false,
-  width = '52%'
+  width = '50%'
 }: SectionFloralFrameProps) {
   const placementClassName =
     placement === "top" ? "top-0" : "bottom-0";
@@ -26,7 +26,7 @@ export function SectionFloralFrame({
   const verticalFlipClassName = isFlippedVertically ? "scale-y-[-1]" : "";
 
   const rootClassName = [
-    "absolute left-0 w-full flex justify-between z-10",
+    "absolute left-0 w-full z-10",
     placementClassName,
     className,
   ]
@@ -38,16 +38,15 @@ export function SectionFloralFrame({
       <Image
         src={flowerFrameSrc}
         alt="Dekorasi bunga"
-        // className={[`w-[${width}]`, verticalFlipClassName].filter(Boolean).join(" ")}
-        className={[`w-[${width}]`, verticalFlipClassName].filter(Boolean).join(" ")}
+        className={["absolute left-0 top-0", verticalFlipClassName].filter(Boolean).join(" ")}
+        style={{ width, height: "auto" }}
         priority={isImagePriority}
       />
       <Image
         src={flowerFrameSrc}
         alt="Dekorasi bunga"
-        className={[`w-[${width}] scale-x-[-1]`, verticalFlipClassName]
-          .filter(Boolean)
-          .join(" ")}
+        className={["absolute right-0 top-0 scale-x-[-1]", verticalFlipClassName].filter(Boolean).join(" ")}
+        style={{ width, height: "auto" }}
         priority={isImagePriority}
       />
     </div>
