@@ -60,7 +60,7 @@ export function WishesSection({}: WishesSectionProps) {
   }, []);
 
   return (
-    <section id="wishes" className="w-full px-6.5 mt-7.5">
+    <section id="wishes" className="w-full px-6.5 mt-15">
       <h2 className="text-center text-[5rem] font-bold text-foreground" style={{ lineHeight: '0.8' }}>
         UCAPAN
         <br />& DOA
