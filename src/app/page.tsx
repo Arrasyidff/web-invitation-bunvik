@@ -2,18 +2,21 @@
 
 import { useState, useEffect } from "react";
 import { CoverSection } from "@/features/cover/components/CoverSection";
+import { OpeningSection } from "@/features/opening/components/OpeningSection";
 import { LoadingOverlay } from "@/components/ui/LoadingOverlay";
 
 import backgroundSrc from "@/app/assets/background.png";
 import blueEnvelopeSrc from "@/app/assets/blue-envelope.png";
 import candleEnvelopeSrc from "@/app/assets/candle-envelope.png";
 import coverFlowerLeftSrc from "@/app/assets/cover-flower-left.png";
+import flowerFrameSrc from "@/app/assets/flower-frame.png";
 
 const PRELOAD_IMAGE_URLS = [
   backgroundSrc.src,
   blueEnvelopeSrc.src,
   candleEnvelopeSrc.src,
   coverFlowerLeftSrc.src,
+  flowerFrameSrc.src,
 ];
 
 export default function HomePage() {
@@ -58,7 +61,10 @@ export default function HomePage() {
       {!isInvitationOpen ? (
         <CoverSection onOpen={() => setIsInvitationOpen(true)} />
       ) : (
-        <div>{/* sections lainnya akan ditambahkan di sini */}</div>
+        <div>
+            <OpeningSection />
+          {/* sections lainnya akan ditambahkan di sini */}
+        </div>
       )}
     </main>
   );

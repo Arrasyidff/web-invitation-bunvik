@@ -7,10 +7,12 @@
       "Bash(npx tsc *)",
       "Bash(npx next *)",
       "Bash(curl -s http://localhost:3001)",
-      "Bash(mkdir -p /Users/arfafa/projects/personal/web-invitation-bunvik/src/components/ui)"
+      "Bash(mkdir -p /Users/arfafa/projects/personal/web-invitation-bunvik/src/components/ui)",
+      "Bash(mkdir -p /Users/arfafa/projects/personal/web-invitation-bunvik/src/features/opening/components)"
     ],
     "additionalDirectories": [
-      "/Users/arfafa/projects/personal/web-invitation-bunvik/src/components"
+      "/Users/arfafa/projects/personal/web-invitation-bunvik/src/components",
+      "/Users/arfafa/projects/personal/web-invitation-bunvik/src/features/opening"
     ]
   }
 }

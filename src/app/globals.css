@@ -26,6 +26,10 @@ body {
   font-family: var(--font-cormorant), serif;
 }
 
+p {
+  line-height: 1.275;
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;
