@@ -27,7 +27,7 @@ body {
   letter-spacing: nor;
 }
 
-p, h2 {
+p, h2, h3, h4 {
   line-height: 1.275;
   letter-spacing: normal;
 }

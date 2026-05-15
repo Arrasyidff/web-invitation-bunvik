@@ -4,28 +4,27 @@ import { EventVenue } from "./EventVenue";
 
 export function EventSection() {
   return (
-    <section id="event" className="relative w-full px-6 py-14">
-      <div className="rounded-2xl px-7 py-10 text-white text-center" style={{ background: 'linear-gradient(142deg, #3B9CDA 0%, #2F83B9 100%)' }}>
-        <h2 className="font-[family-name:var(--font-pinyon)] text-[3.5rem] leading-tight">
+    <section id="event" className="relative w-full px-6.5">
+      <div className="rounded-[12px] px-5 py-15 text-white text-center" style={{ background: 'linear-gradient(142deg, #3B9CDA 0%, #2F83B9 100%)' }}>
+        <h2 className="text-[5rem]" style={{ fontFamily: 'var(--font-pinyon)', lineHeight: '0.8' }}>
           Save The Date
         </h2>
 
-        <p className="mt-5 text-[0.7rem] uppercase tracking-[0.25em] font-light">
+        <p className="mt-7.5 text-[1.375rem] uppercase font-medium">
           For The Wedding Of
         </p>
-
-        <h3 className="mt-1 text-[1.5rem] font-bold uppercase tracking-[0.15em]">
+        <h3 className="mt-0.5 text-[2.459rem] font-bold uppercase">
           {GROOM_NAME} &amp; {BRIDE_NAME}
         </h3>
+        <p className="mt-0.5 text-[1.375rem] font-medium">{WEDDING_DATE_SHORT}</p>
 
-        <p className="mt-2 text-[1rem] tracking-[0.4em]">{WEDDING_DATE_SHORT}</p>
+        <div className="mx-auto mt-7.5 w-3/4 border-t border-white/30" />
 
-        <div className="mx-auto mt-7 mb-7 w-3/4 border-t border-white/30" />
-
-        <h4 className="text-[1.75rem] uppercase tracking-[0.3em] font-light">Akad</h4>
-        <p className="mt-1 text-[0.9375rem] tracking-wide">{AKAD_TIME}</p>
+        <h4 className="mt-7.5 text-[2.438rem] uppercase font-medium">Akad</h4>
+        <p className="mt-0.5 text-[1.25rem] font-medium">{AKAD_TIME}</p>
 
         <EventCountdown />
+
         <EventVenue />
       </div>
     </section>

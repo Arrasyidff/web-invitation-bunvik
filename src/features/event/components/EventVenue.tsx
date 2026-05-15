@@ -7,13 +7,13 @@ export function EventVenue() {
         href={MAPS_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-7 flex items-center justify-center gap-2 text-white underline underline-offset-2 text-[0.8125rem] uppercase tracking-widest"
+        className="mt-7.5 flex items-center justify-center text-white underline-offset-2 text-[1.25rem] uppercase font-medium"
       >
         <span>📍</span>
         <span>{VENUE_NAME}</span>
       </a>
 
-      <div className="mt-4 w-full h-48 overflow-hidden rounded-lg">
+      <div className="mt-[0.563rem] w-full h-84.5 overflow-hidden">
         <iframe
           src={MAPS_EMBED_URL}
           width="100%"

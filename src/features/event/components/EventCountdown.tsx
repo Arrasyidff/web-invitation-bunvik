@@ -51,7 +51,7 @@ export function EventCountdown() {
   ];
 
   return (
-    <div className="mt-7 flex justify-center gap-3">
+    <div className="mt-7.5 flex justify-center gap-3">
       {boxes.map((box) => (
         <EventCountdownBox key={box.label} value={box.value} label={box.label} />
       ))}

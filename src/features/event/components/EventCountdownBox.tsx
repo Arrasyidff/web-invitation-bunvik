@@ -6,12 +6,12 @@ interface EventCountdownBoxProps {
 export function EventCountdownBox({ value, label }: EventCountdownBoxProps) {
   return (
     <div className="flex flex-col items-center gap-1">
-      <div className="w-[72px] h-[72px] bg-white border border-white flex items-center justify-center">
-        <span className="text-[2rem] font-semibold text-[#343434] leading-none">
+      <div className="w-[4.906rem] h-[4.906rem] bg-white border border-white flex items-center justify-center">
+        <span className="text-[2.812rem] font-semibold text-foreground">
           {String(value).padStart(2, "0")}
         </span>
       </div>
-      <span className="text-[0.75rem] tracking-widest uppercase text-white">{label}</span>
+      <span className="text-[0.875rem] uppercase text-white font-bold">{label}</span>
     </div>
   );
 }
