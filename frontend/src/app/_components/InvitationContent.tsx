@@ -18,6 +18,7 @@ import backgroundSrc from "@/app/assets/background.webp";
 import blueEnvelopeSrc from "@/app/assets/blue-envelope.webp";
 import candleEnvelopeSrc from "@/app/assets/candle-envelope.webp";
 import coverFlowerLeftSrc from "@/app/assets/cover-flower-left.webp";
+import coverPannelSrc from "@/app/assets/cover-pannel.webp";
 import flowerFrameSrc from "@/app/assets/flower-frame.webp";
 import groomSrc from "@/app/assets/groom.webp";
 import brideSrc from "@/app/assets/bride.webp";
@@ -28,6 +29,7 @@ const PRELOAD_IMAGE_URLS = [
   blueEnvelopeSrc.src,
   candleEnvelopeSrc.src,
   coverFlowerLeftSrc.src,
+  coverPannelSrc.src,
   flowerFrameSrc.src,
   groomSrc.src,
   brideSrc.src,
