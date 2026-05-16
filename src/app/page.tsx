@@ -81,7 +81,9 @@ export default function HomePage() {
               <CoupleSection />
               <EventSection />
               <RsvpSection />
+              <hr className="mx-8 border-t border-black" />
               <StorySection />
+              <hr className="mx-8 border-t border-black" />
               <WishesSection />
             </div>
             <BottomNavbar className="fixed bottom-0 left-0 right-0 z-50" />
@@ -102,7 +104,9 @@ export default function HomePage() {
                 <CoupleSection />
                 <EventSection />
                 <RsvpSection />
+                <hr className="mx-8 border-t border-black" />
                 <StorySection />
+                <hr className="mx-8 border-t border-black" />
                 <WishesSection />
               </div>
             )}

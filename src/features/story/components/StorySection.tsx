@@ -7,7 +7,7 @@ const ENTRY_DIRECTIONS = ["left", "right", "left", "right", "left", "right"] as 
 
 export function StorySection({}: StorySectionProps) {
   return (
-    <section id="story" className="w-full px-6.5 mt-15">
+    <section id="story" className="w-full px-6.5 mt-7.5 mb-7.5">
       <ScrollReveal direction="bottom">
         <h2 className="text-center text-[5rem] font-bold text-foreground" style={{ lineHeight: '0.8' }}>
           KISAH
