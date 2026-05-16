@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { WishesForm } from "./WishesForm";
 import { WishesList } from "./WishesList";
 import { getWishesList } from "../services/wishesService";
@@ -61,16 +62,20 @@ export function WishesSection({}: WishesSectionProps) {
 
   return (
     <section id="wishes" className="w-full px-6.5 mt-15">
-      <h2 className="text-center text-[5rem] font-bold text-foreground" style={{ lineHeight: '0.8' }}>
-        UCAPAN
-        <br />& DOA
-      </h2>
+      <ScrollReveal direction="bottom">
+        <h2 className="text-center text-[5rem] font-bold text-foreground" style={{ lineHeight: '0.8' }}>
+          UCAPAN
+          <br />& DOA
+        </h2>
+      </ScrollReveal>
 
-      <div className="mt-7.5">
+      <ScrollReveal direction="left" delay={100} className="mt-7.5">
         <WishesForm onWishSubmitted={fetchWishes} />
-      </div>
+      </ScrollReveal>
 
-      <WishesList wishes={wishesList} />
+      <ScrollReveal direction="right" delay={200}>
+        <WishesList wishes={wishesList} />
+      </ScrollReveal>
     </section>
   );
 }

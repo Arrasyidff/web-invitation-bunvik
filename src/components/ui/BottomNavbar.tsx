@@ -106,7 +106,12 @@ export function BottomNavbar({ scrollContainerRef, className }: BottomNavbarProp
   }, [scrollContainerRef]);
 
   function handleNavClick(id: string) {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    const container = scrollContainerRef?.current;
+    if (container) {
+      container.querySelector<HTMLElement>(`#${id}`)?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    }
   }
 
   return (

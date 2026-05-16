@@ -1,6 +1,8 @@
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
+
 export function OpeningVerseArch() {
   return (
-    <div className="px-6.5 mt-22.75">
+    <ScrollReveal direction="bottom" className="px-6.5 mt-22.75">
       <div
         className="relative w-full font-bold -mt-6 z-0 bg-[#4a85b8] flex flex-col items-center justify-center px-6 text-white text-center"
         style={{ aspectRatio: "3 / 4", borderRadius: "232px 232px 12px 12px", background: 'linear-gradient(142deg, #4299E1 0%, #3783C2 100%)' }}
@@ -14,6 +16,6 @@ export function OpeningVerseArch() {
         </p>
         <p className="text-[1.375rem] font-bold tracking-wide">QS Ar-Rum 21</p>
       </div>
-    </div>
+    </ScrollReveal>
   );
 }

@@ -1,6 +1,8 @@
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
+
 export function OpeningGreeting() {
   return (
-    <div className="mt-15 px-6.5 text-center">
+    <ScrollReveal direction="bottom" delay={150} className="mt-15 px-6.5 text-center">
       <h2 className="font-bold text-[1.375rem] text-foreground">
         Assalamu&apos;alaikum
         <br />
@@ -10,6 +12,6 @@ export function OpeningGreeting() {
         Dengan memohon Rahmat dan Ridho Allah SWT kami bermaksud untuk
         mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami
       </p>
-    </div>
+    </ScrollReveal>
   );
 }

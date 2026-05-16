@@ -70,6 +70,31 @@ p, h2, h3, h4 {
   border-radius: 4px 4px 50% 50% / 4px 4px 30% 30%;
 }
 
+.scroll-reveal {
+  transition: opacity 0.75s ease-out, transform 0.75s ease-out;
+  will-change: opacity, transform;
+}
+
+.scroll-reveal-hidden-bottom {
+  opacity: 0;
+  transform: translateY(48px);
+}
+
+.scroll-reveal-hidden-left {
+  opacity: 0;
+  transform: translateX(-48px);
+}
+
+.scroll-reveal-hidden-right {
+  opacity: 0;
+  transform: translateX(48px);
+}
+
+.scroll-reveal-visible {
+  opacity: 1;
+  transform: translateY(0) translateX(0);
+}
+
 .wishes-scroll {
   scrollbar-width: thin;
   scrollbar-color: rgba(190, 120, 100, 0.35) transparent;

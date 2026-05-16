@@ -1,3 +1,5 @@
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
+
 interface CoupleCardProps {
   fullName: string;
   childOrder: string;
@@ -7,18 +9,24 @@ interface CoupleCardProps {
 
 export function CoupleCard({ fullName, childOrder, parents, photoPosition }: CoupleCardProps) {
   const archClass = photoPosition === "left" ? "arch-top" : "arch-bottom";
+  const photoDirection = photoPosition === "left" ? "left" : "right";
+  const textDirection = photoPosition === "left" ? "right" : "left";
 
   return (
     <div className={`grid grid-cols-2 gap-2.5 items-center ${photoPosition === "right" ? "[&>*:first-child]:order-2 [&>*:last-child]:order-1" : ""}`}>
-      <div className={`h-75 bg-[#FBF3E2] ${archClass} shadow-md`} />
-      <div className="text-center">
-        <h2 className="text-[1.25rem] font-bold uppercase tracking-widest text-foreground">
-          {fullName}
-        </h2>
-        <p className="mt-3 text-[1.125rem] text-foreground">
-          {childOrder} dari {parents}
-        </p>
-      </div>
+      <ScrollReveal direction={photoDirection}>
+        <div className={`h-75 bg-[#FBF3E2] ${archClass} shadow-md`} />
+      </ScrollReveal>
+      <ScrollReveal direction={textDirection} delay={100}>
+        <div className="text-center">
+          <h2 className="text-[1.25rem] font-bold uppercase tracking-widest text-foreground">
+            {fullName}
+          </h2>
+          <p className="mt-3 text-[1.125rem] text-foreground">
+            {childOrder} dari {parents}
+          </p>
+        </div>
+      </ScrollReveal>
     </div>
   );
 }
