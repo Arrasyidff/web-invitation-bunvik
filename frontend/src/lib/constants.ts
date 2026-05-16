@@ -11,7 +11,6 @@ export const BRIDE_PARENTS = "Bapak Ranto P Saragi & Ibu Lemeria Sitorus";
 export const WEDDING_DATE_DISPLAY = "24 . 05 . 2026";
 export const WEDDING_DATE = "2026-05-24";
 export const AKAD_TIME = "09:00 - 10:00 WITA";
-export const RECEPTION_TIME = "11.00 WIB";
 export const VENUE_NAME = "Aula Taklim At Tadzkir";
 export const VENUE_ADDRESS = "Jl. Raya Malang No. 10, Malang";
 export const MAPS_URL = "https://maps.app.goo.gl/Phb495rqUCcagFEx6";

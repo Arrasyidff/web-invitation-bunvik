@@ -1,4 +1,3 @@
-import "./src/config/env.js";
 import { PORT } from "./src/config/env.js";
 import { connectDB } from "./src/config/db.js";
 import app from "./src/app.js";

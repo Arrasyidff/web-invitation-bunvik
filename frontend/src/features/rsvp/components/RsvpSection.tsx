@@ -2,10 +2,16 @@
 
 import { useState } from "react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { SuccessToast } from "@/components/ui/SuccessToast";
 import { RsvpForm } from "./RsvpForm";
 
-export function RsvpSection() {
+interface RsvpSectionProps {
+  onRsvpSubmitSuccess?: () => void;
+}
+
+export function RsvpSection({ onRsvpSubmitSuccess }: RsvpSectionProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isToastVisible, setIsToastVisible] = useState(false);
 
   return (
     <section id="rsvp" className="w-full px-6.5 mt-15 mb-7.5">
@@ -33,8 +39,22 @@ export function RsvpSection() {
         </ScrollReveal>
       ) : (
         <ScrollReveal direction="bottom" delay={150}>
-          <RsvpForm onSubmitSuccess={() => setIsSubmitted(true)} />
+          <RsvpForm
+            onSubmitSuccess={() => {
+              setIsSubmitted(true);
+              setIsToastVisible(true);
+              onRsvpSubmitSuccess?.();
+            }}
+          />
         </ScrollReveal>
+      )}
+
+      {isToastVisible && (
+        <SuccessToast
+          message="RSVP terkirim!"
+          subMessage="Terima kasih telah mengkonfirmasi kehadiran Anda."
+          onClose={() => setIsToastVisible(false)}
+        />
       )}
     </section>
   );

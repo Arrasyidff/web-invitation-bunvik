@@ -1,8 +1,10 @@
 import rateLimit from "express-rate-limit";
 
+const isDev = process.env.NODE_ENV === "development";
+
 export const rsvpRateLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 5,
+  max: isDev ? 100 : 5,
   standardHeaders: true,
   legacyHeaders: false,
   message: {

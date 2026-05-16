@@ -31,6 +31,7 @@ const PRELOAD_IMAGE_URLS = [
 export default function HomePage() {
   const [isInvitationOpen, setIsInvitationOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [wishesRefreshKey, setWishesRefreshKey] = useState(0);
   const desktopScrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -80,11 +81,11 @@ export default function HomePage() {
               <OpeningSection />
               <CoupleSection />
               <EventSection />
-              <RsvpSection />
+              <RsvpSection onRsvpSubmitSuccess={() => setWishesRefreshKey((k) => k + 1)} />
               <hr className="mx-8 border-t border-black" />
               <StorySection />
               <hr className="mx-8 border-t border-black" />
-              <WishesSection />
+              <WishesSection refreshKey={wishesRefreshKey} />
             </div>
             <BottomNavbar className="fixed bottom-0 left-0 right-0 z-50" />
           </>
@@ -103,11 +104,11 @@ export default function HomePage() {
                 <OpeningSection />
                 <CoupleSection />
                 <EventSection />
-                <RsvpSection />
+                <RsvpSection onRsvpSubmitSuccess={() => setWishesRefreshKey((k) => k + 1)} />
                 <hr className="mx-8 border-t border-black" />
                 <StorySection />
                 <hr className="mx-8 border-t border-black" />
-                <WishesSection />
+                <WishesSection refreshKey={wishesRefreshKey} />
               </div>
             )}
           </div>

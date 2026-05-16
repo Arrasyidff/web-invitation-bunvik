@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { WishesForm } from "./WishesForm";
 import { WishesList } from "./WishesList";
 import { getWishesList } from "../services/wishesService";
 import type { WishItem } from "../types";
@@ -45,25 +44,26 @@ const MOCK_WISHES: WishItem[] = [
   },
 ];
 
-interface WishesSectionProps {}
+interface WishesSectionProps {
+  refreshKey?: number;
+}
 
-export function WishesSection({}: WishesSectionProps) {
+export function WishesSection({ refreshKey = 0 }: WishesSectionProps) {
   const [wishesList, setWishesList] = useState<WishItem[]>(MOCK_WISHES);
 
-  async function fetchWishes() {
-    try {
-      const data = await getWishesList();
-      if (data.length > 0) {
-        setWishesList(data);
-      }
-    } catch {
-      // silently fail — mock stays visible
-    }
-  }
-
   useEffect(() => {
+    async function fetchWishes() {
+      try {
+        const data = await getWishesList();
+        if (data.length > 0) {
+          setWishesList(data);
+        }
+      } catch {
+        // silently fail — mock stays visible
+      }
+    }
     fetchWishes();
-  }, []);
+  }, [refreshKey]);
 
   return (
     <section id="wishes" className="w-full px-6.5 mt-7.5">
@@ -74,11 +74,7 @@ export function WishesSection({}: WishesSectionProps) {
         </h2>
       </ScrollReveal>
 
-      <ScrollReveal direction="bottom" delay={100}>
-        <WishesForm onWishSubmitted={fetchWishes} />
-      </ScrollReveal>
-
-      <ScrollReveal direction="right" delay={150}>
+      <ScrollReveal direction="right" delay={100}>
         <WishesList wishes={wishesList} />
       </ScrollReveal>
     </section>
