@@ -10,7 +10,8 @@
       "Bash(npx tsc *)",
       "Bash(rm /Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/lib/wishesStore.ts \\\\ *)",
       "Bash(xargs ls -la)",
-      "Bash(rm /Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/features/wishes/components/WishesForm.tsx)"
+      "Bash(rm /Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/features/wishes/components/WishesForm.tsx)",
+      "Bash(xargs ls)"
     ],
     "additionalDirectories": [
       "/Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/lib",

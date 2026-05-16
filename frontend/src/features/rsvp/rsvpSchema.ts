@@ -18,12 +18,12 @@ export function validateRsvpForm(data: RsvpFormData): RsvpFieldErrors {
   if (!data.attendanceStatus) {
     errors.attendanceStatus = "Status kehadiran wajib dipilih";
   } else if (data.attendanceStatus === "hadir") {
-    if (
-      !Number.isInteger(data.guestCount) ||
-      data.guestCount < 1 ||
-      data.guestCount > 10
-    ) {
-      errors.guestCount = "Jumlah hadir harus antara 1 dan 10";
+    if (!Number.isInteger(data.guestCount) || data.guestCount < 0) {
+      errors.guestCount = "Jumlah hadir tidak valid";
+    } else if (data.guestCount === 0) {
+      errors.guestCount = "Jumlah hadir tidak boleh 0";
+    } else if (data.guestCount > 10) {
+      errors.guestCount = "Jumlah hadir maksimal 10";
     }
   }
 
