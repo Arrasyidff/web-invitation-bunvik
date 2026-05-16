@@ -15,7 +15,7 @@ export function CoupleCard({ fullName, childOrder, parents, photoPosition }: Cou
   return (
     <div className={`grid grid-cols-2 gap-2.5 items-center ${photoPosition === "right" ? "[&>*:first-child]:order-2 [&>*:last-child]:order-1" : ""}`}>
       <ScrollReveal direction={photoDirection}>
-        <div className={`h-75 bg-[#FBF3E2] ${archClass} shadow-md`} />
+        <div className={`aspect-3/5 w-full bg-[#FBF3E2] ${archClass} shadow-md`} />
       </ScrollReveal>
       <ScrollReveal direction={textDirection} delay={100}>
         <div className="text-center">
