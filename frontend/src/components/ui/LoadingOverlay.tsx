@@ -11,7 +11,9 @@ export function LoadingOverlay({ isLoading }: LoadingOverlayProps) {
   const [isMounted, setIsMounted] = useState(true);
 
   useEffect(() => {
-    if (!isLoading) {
+    if (isLoading) {
+      setIsMounted(true);
+    } else {
       const timer = setTimeout(() => setIsMounted(false), 800);
       return () => clearTimeout(timer);
     }

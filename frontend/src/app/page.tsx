@@ -31,6 +31,15 @@ const PRELOAD_IMAGE_URLS = [
 export default function HomePage() {
   const [isInvitationOpen, setIsInvitationOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isOpening, setIsOpening] = useState(false);
+
+  const handleOpen = () => {
+    setIsOpening(true);
+    setTimeout(() => {
+      setIsInvitationOpen(true);
+      setIsOpening(false);
+    }, 1200);
+  };
   const [wishesRefreshKey, setWishesRefreshKey] = useState(0);
   const desktopScrollRef = useRef<HTMLDivElement>(null);
 
@@ -68,13 +77,13 @@ export default function HomePage() {
 
   return (
     <main>
-      <LoadingOverlay isLoading={isLoading} />
+      <LoadingOverlay isLoading={isLoading || isOpening} />
       {!isLoading && isInvitationOpen && <MusicPlayer src="/music.mp3" />}
 
       {/* Mobile layout */}
-      <div className="md:hidden bg-white/80">
+      <div className="md:hidden bg-white/75">
         {!isInvitationOpen ? (
-          <CoverSection onOpen={() => setIsInvitationOpen(true)} />
+          <CoverSection onOpen={handleOpen} />
         ) : (
           <>
             <div className="pb-16">
@@ -83,8 +92,8 @@ export default function HomePage() {
               <EventSection />
               <RsvpSection onRsvpSubmitSuccess={() => setWishesRefreshKey((k) => k + 1)} />
               <hr className="mx-8 border-t border-black" />
-              <StorySection />
-              <hr className="mx-8 border-t border-black" />
+              {/* <StorySection />
+              <hr className="mx-8 border-t border-black" /> */}
               <WishesSection refreshKey={wishesRefreshKey} />
             </div>
             <BottomNavbar className="fixed bottom-0 left-0 right-0 z-50" />
@@ -93,12 +102,12 @@ export default function HomePage() {
       </div>
 
       {/* Desktop/tablet layout */}
-      <div className="hidden md:flex h-screen bg-white/80">
+      <div className="hidden md:flex h-screen bg-white/75">
         <CoverLeftPanel />
         <div className="w-112.5 h-full shrink-0 flex flex-col">
           <div ref={desktopScrollRef} className="flex-1 overflow-y-auto">
             {!isInvitationOpen ? (
-              <CoverRightPanel onOpen={() => setIsInvitationOpen(true)} />
+              <CoverRightPanel onOpen={handleOpen} />
             ) : (
               <div>
                 <OpeningSection />
@@ -106,8 +115,8 @@ export default function HomePage() {
                 <EventSection />
                 <RsvpSection onRsvpSubmitSuccess={() => setWishesRefreshKey((k) => k + 1)} />
                 <hr className="mx-8 border-t border-black" />
-                <StorySection />
-                <hr className="mx-8 border-t border-black" />
+                {/* <StorySection />
+                <hr className="mx-8 border-t border-black" /> */}
                 <WishesSection refreshKey={wishesRefreshKey} />
               </div>
             )}
