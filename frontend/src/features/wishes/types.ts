@@ -9,5 +9,4 @@ export interface WishItem {
 export interface CreateWishInput {
   guestName: string;
   message: string;
-  attendanceStatus: "hadir" | "tidak_hadir";
 }

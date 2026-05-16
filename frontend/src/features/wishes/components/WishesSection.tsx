@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { WishesForm } from "./WishesForm";
 import { WishesList } from "./WishesList";
 import { getWishesList } from "../services/wishesService";
 import type { WishItem } from "../types";
@@ -73,7 +74,11 @@ export function WishesSection({}: WishesSectionProps) {
         </h2>
       </ScrollReveal>
 
-      <ScrollReveal direction="right" delay={100}>
+      <ScrollReveal direction="bottom" delay={100}>
+        <WishesForm onWishSubmitted={fetchWishes} />
+      </ScrollReveal>
+
+      <ScrollReveal direction="right" delay={150}>
         <WishesList wishes={wishesList} />
       </ScrollReveal>
     </section>

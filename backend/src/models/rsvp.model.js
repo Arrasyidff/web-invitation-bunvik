@@ -8,10 +8,15 @@ const rsvpSchema = new mongoose.Schema(
       maxlength: 100,
       trim: true,
     },
+    statusKehadiran: {
+      type: String,
+      required: true,
+      enum: ["hadir", "tidak_hadir"],
+    },
     jumlahHadir: {
       type: Number,
       required: true,
-      min: 1,
+      min: 0,
       max: 10,
     },
     ucapanDoa: {

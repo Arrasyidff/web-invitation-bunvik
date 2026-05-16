@@ -8,7 +8,12 @@ const router = Router();
 
 const rsvpSchema = Joi.object({
   nama: Joi.string().min(2).max(100).trim().required(),
-  jumlahHadir: Joi.number().integer().min(1).max(10).required(),
+  statusKehadiran: Joi.string().valid("hadir", "tidak_hadir").required(),
+  jumlahHadir: Joi.when("statusKehadiran", {
+    is: "hadir",
+    then: Joi.number().integer().min(1).max(10).required(),
+    otherwise: Joi.number().valid(0).default(0),
+  }),
   ucapanDoa: Joi.string().min(5).max(500).trim().required(),
 });
 

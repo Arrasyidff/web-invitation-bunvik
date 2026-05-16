@@ -6,7 +6,8 @@
       "Bash(node --check src/app.js)",
       "Bash(node --check src/config/db.js)",
       "Bash(node --check src/config/env.js)",
-      "Bash(node --check src/models/rsvp.model.js)"
+      "Bash(node --check src/models/rsvp.model.js)",
+      "Bash(npx tsc *)"
     ]
   }
 }

@@ -107,10 +107,11 @@ wedding-backend/
 
 ```js
 {
-  nama:          String,   // required, max 100 chars
-  jumlahHadir:   Number,   // required, min 1, max 10
-  ucapanDoa:     String,   // required, max 500 chars
-  createdAt:     Date      // auto
+  nama:             String,   // required, max 100 chars
+  statusKehadiran:  String,   // required, enum: ['hadir', 'tidak_hadir']
+  jumlahHadir:      Number,   // required jika hadir, min 1, max 10; 0 jika tidak_hadir
+  ucapanDoa:        String,   // required, max 500 chars
+  createdAt:        Date      // auto
 }
 ```
 
@@ -125,9 +126,10 @@ wedding-backend/
 ### Validation Rules (Joi)
 
 ```
-nama        → string, required, min(2), max(100), trim
-jumlahHadir → number, required, integer, min(1), max(10)
-ucapanDoa   → string, required, min(5), max(500), trim
+nama             → string, required, min(2), max(100), trim
+statusKehadiran  → string, required, valid('hadir', 'tidak_hadir')
+jumlahHadir      → number, required when hadir, integer, min(1), max(10); default 0 jika tidak_hadir
+ucapanDoa        → string, required, min(5), max(500), trim
 ```
 
 ### Response Format
