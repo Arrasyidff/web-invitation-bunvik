@@ -31,7 +31,7 @@ export function CoverSection({
           <p className="font-sans font-light text-[1.375rem] tracking-wide text-foreground">
             Bapak/ Ibu/ Saudara/ i
           </p>
-          <p className="font-sans font-medium text-[2rem] text-foreground">
+          <p className="font-sans font-medium text-[2rem] text-foreground capitalize">
             {guestName}
           </p>
         </div>

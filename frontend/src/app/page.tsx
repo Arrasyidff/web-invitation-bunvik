@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { CoverSection } from "@/features/cover/components/CoverSection";
 import { CoverLeftPanel } from "@/features/cover/components/CoverLeftPanel";
 import { CoverRightPanel } from "@/features/cover/components/CoverRightPanel";
@@ -28,7 +29,10 @@ const PRELOAD_IMAGE_URLS = [
   flowerFrameSrc.src,
 ];
 
-export default function HomePage() {
+function HomePageContent() {
+  const searchParams = useSearchParams();
+  const guestName = searchParams.get("to") ?? undefined;
+
   const [isInvitationOpen, setIsInvitationOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isOpening, setIsOpening] = useState(false);
@@ -83,7 +87,7 @@ export default function HomePage() {
       {/* Mobile layout */}
       <div className="md:hidden bg-white/75">
         {!isInvitationOpen ? (
-          <CoverSection onOpen={handleOpen} />
+          <CoverSection onOpen={handleOpen} guestName={guestName} />
         ) : (
           <>
             <div className="pb-16">
@@ -107,7 +111,7 @@ export default function HomePage() {
         <div className="w-112.5 h-full shrink-0 flex flex-col">
           <div ref={desktopScrollRef} className="flex-1 overflow-y-auto">
             {!isInvitationOpen ? (
-              <CoverRightPanel onOpen={handleOpen} />
+              <CoverRightPanel onOpen={handleOpen} guestName={guestName} />
             ) : (
               <div>
                 <OpeningSection />
@@ -127,5 +131,13 @@ export default function HomePage() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function HomePage() {
+  return (
+    <Suspense>
+      <HomePageContent />
+    </Suspense>
   );
 }
