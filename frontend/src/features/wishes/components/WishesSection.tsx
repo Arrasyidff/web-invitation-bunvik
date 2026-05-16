@@ -74,7 +74,13 @@ export function WishesSection({ refreshKey = 0 }: WishesSectionProps) {
         </h2>
       </ScrollReveal>
 
-      <ScrollReveal direction="right" delay={100}>
+      <ScrollReveal direction="bottom" delay={100}>
+        <p className="text-center text-[1.125rem] text-foreground mt-7.5">
+          Dengan penuh rasa syukur, kami mempelai berdua mengucapkan terima kasih yang sebesar-besarnya atas segala doa dan ucapan selamat yang telah Bapak/Ibu/Saudara/i sampaikan. Kehadiran dan restu kalian menjadi berkah yang tak ternilai bagi kami di hari yang paling istimewa dalam hidup kami. Semoga Allah SWT membalas kebaikan kalian berlipat ganda.
+        </p>
+      </ScrollReveal>
+
+      <ScrollReveal direction="right" delay={200}>
         <WishesList wishes={wishesList} />
       </ScrollReveal>
     </section>
