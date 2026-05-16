@@ -1,9 +1,19 @@
-import { GROOM_NAME, BRIDE_NAME, WEDDING_DATE_SHORT, AKAD_TIME } from "@/lib/constants";
+import { GROOM_NAME, BRIDE_NAME, WEDDING_DATE_SHORT, AKAD_TIME, RECEPTION_TIME } from "@/lib/constants";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { EventCountdown } from "./EventCountdown";
 import { EventVenue } from "./EventVenue";
 
-export function EventSection() {
+type EventType = "akad" | "resepsi";
+
+interface EventSectionProps {
+  eventType?: EventType;
+}
+
+export function EventSection({ eventType = "resepsi" }: EventSectionProps) {
+  const isAkad = eventType === "akad";
+  const eventTitle = isAkad ? "Akad" : "Resepsi";
+  const eventTime = isAkad ? AKAD_TIME : RECEPTION_TIME;
+
   return (
     <section id="event" className="relative w-full px-6.5 mt-15">
       <ScrollReveal direction="bottom">
@@ -22,10 +32,10 @@ export function EventSection() {
 
           <div className="mx-auto mt-7.5 w-3/4 border-t border-white/30" />
 
-          <h4 className="mt-7.5 text-[2.438rem] uppercase font-medium">Akad</h4>
-          <p className="mt-0.5 text-[1.25rem] font-medium">{AKAD_TIME}</p>
+          <h4 className="mt-7.5 text-[2.438rem] uppercase font-medium">{eventTitle}</h4>
+          <p className="mt-0.5 text-[1.25rem] font-medium">{eventTime}</p>
 
-          <EventCountdown />
+          <EventCountdown eventType={eventType} />
 
           <EventVenue />
         </div>

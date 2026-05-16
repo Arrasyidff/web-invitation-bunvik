@@ -4,6 +4,12 @@ import { useState, useEffect } from "react";
 import { WEDDING_DATE } from "@/lib/constants";
 import { EventCountdownBox } from "./EventCountdownBox";
 
+type EventType = "akad" | "resepsi";
+
+interface EventCountdownProps {
+  eventType?: EventType;
+}
+
 interface CountdownTime {
   days: number;
   hours: number;
@@ -11,7 +17,7 @@ interface CountdownTime {
   seconds: number;
 }
 
-export function EventCountdown() {
+export function EventCountdown({ eventType = "resepsi" }: EventCountdownProps) {
   const [countdown, setCountdown] = useState<CountdownTime>({
     days: 0,
     hours: 0,
@@ -20,10 +26,11 @@ export function EventCountdown() {
   });
 
   useEffect(() => {
-    const weddingTarget = new Date(`${WEDDING_DATE}T09:00:00+08:00`);
+    const targetTime = eventType === "akad" ? "T09:00:00+08:00" : "T10:30:00+08:00";
+    const eventTarget = new Date(`${WEDDING_DATE}${targetTime}`);
 
     const tick = () => {
-      const diff = weddingTarget.getTime() - Date.now();
+      const diff = eventTarget.getTime() - Date.now();
 
       if (diff <= 0) {
         setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -41,7 +48,7 @@ export function EventCountdown() {
     tick();
     const interval = setInterval(tick, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [eventType]);
 
   const boxes = [
     { value: countdown.days, label: "Hari" },

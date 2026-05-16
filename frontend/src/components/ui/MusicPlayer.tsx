@@ -15,7 +15,7 @@ export function MusicPlayer({ src }: MusicPlayerProps) {
     const audio = audioRef.current;
     if (!audio) return;
 
-    audio.volume = 0.03;
+    audio.volume = 0.5;
 
     // Autoplay on mount — works because user already interacted (clicked cover)
     audio.play().then(() => setIsPlaying(true)).catch(() => {});
