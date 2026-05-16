@@ -16,7 +16,7 @@ const pinyonScript = Pinyon_Script({
 
 export const metadata: Metadata = {
   title: "Undangan Pernikahan Hendra & Vika",
-  description: "Undangan pernikahan Sadiyono Mahendra Puta & Reyvika Nurhayati, 24 Mei 2026",
+  description: "Undangan pernikahan Sadiyono Mahendra Putra & Reyvika Nurhayati, 24 Mei 2026",
 };
 
 export default function RootLayout({
