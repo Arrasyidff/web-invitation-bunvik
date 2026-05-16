@@ -159,7 +159,8 @@ export function RsvpForm({ onSubmitSuccess }: RsvpFormProps) {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="mt-1.5 w-full rounded-full bg-[#3B9CDA] py-3 text-[1rem] font-semibold text-white disabled:opacity-60"
+        className="mt-1.5 w-full rounded-full py-3 text-[1rem] font-semibold text-white disabled:opacity-60"
+        style={{ background: 'linear-gradient(142deg, #4299E1 0%, #3783C2 100%)' }}
       >
         {isSubmitting ? "Mengirim..." : "Submit"}
       </button>
