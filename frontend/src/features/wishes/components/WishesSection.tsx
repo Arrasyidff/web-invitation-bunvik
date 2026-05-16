@@ -49,7 +49,7 @@ interface WishesSectionProps {
 }
 
 export function WishesSection({ refreshKey = 0 }: WishesSectionProps) {
-  const [wishesList, setWishesList] = useState<WishItem[]>(MOCK_WISHES);
+  const [wishesList, setWishesList] = useState<WishItem[]>([]);
 
   useEffect(() => {
     async function fetchWishes() {
