@@ -15,10 +15,10 @@ import { BottomNavbar } from "@/components/ui/BottomNavbar";
 import { MusicPlayer } from "@/components/ui/MusicPlayer";
 
 import backgroundSrc from "@/app/assets/background.webp";
-import blueEnvelopeSrc from "@/app/assets/blue-envelope.png";
-import candleEnvelopeSrc from "@/app/assets/candle-envelope.png";
-import coverFlowerLeftSrc from "@/app/assets/cover-flower-left.png";
-import flowerFrameSrc from "@/app/assets/flower-frame.png";
+import blueEnvelopeSrc from "@/app/assets/blue-envelope.webp";
+import candleEnvelopeSrc from "@/app/assets/candle-envelope.webp";
+import coverFlowerLeftSrc from "@/app/assets/cover-flower-left.webp";
+import flowerFrameSrc from "@/app/assets/flower-frame.webp";
 import groomSrc from "@/app/assets/groom.webp";
 import brideSrc from "@/app/assets/bride.webp";
 import coupleFlowerSrc from "@/app/assets/couple-flower.webp";

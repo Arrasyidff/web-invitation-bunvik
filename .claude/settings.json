@@ -17,7 +17,11 @@
       "Bash(cwebp -q 82 -resize 800 0 bride.jpg -o bride.webp)",
       "Bash(cwebp -q 82 -resize 800 0 groom.jpg -o groom.webp)",
       "Bash(cwebp -q 85 background.png -o background.webp)",
-      "Bash(cwebp -q 85 couple-flower.png -o couple-flower.webp)"
+      "Bash(cwebp -q 85 couple-flower.png -o couple-flower.webp)",
+      "Bash(cwebp -q 85 -lossless blue-envelope.png -o blue-envelope.webp)",
+      "Bash(cwebp -q 85 -lossless candle-envelope.png -o candle-envelope.webp)",
+      "Bash(cwebp -q 85 cover-flower-left.png -o cover-flower-left.webp)",
+      "Bash(cwebp -q 85 flower-frame.png -o flower-frame.webp)"
     ],
     "additionalDirectories": [
       "/Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/lib",

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import flowerFrameSrc from "@/app/assets/flower-frame.png";
+import flowerFrameSrc from "@/app/assets/flower-frame.webp";
 
 interface SectionFloralFrameProps {
   className?: string;

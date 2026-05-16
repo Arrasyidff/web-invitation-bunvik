@@ -1,6 +1,6 @@
 import Image from "next/image";
-import blueEnvelope from "@/app/assets/blue-envelope.png";
-import candleEnvelope from "@/app/assets/candle-envelope.png";
+import blueEnvelope from "@/app/assets/blue-envelope.webp";
+import candleEnvelope from "@/app/assets/candle-envelope.webp";
 
 interface CoverEnvelopeButtonProps {
   onOpen: () => void;

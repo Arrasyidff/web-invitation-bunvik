@@ -1,5 +1,5 @@
 import Image from "next/image";
-import coverFlowerLeft from "@/app/assets/cover-flower-left.png";
+import coverFlowerLeft from "@/app/assets/cover-flower-left.webp";
 
 interface CoverFlowerProps {
   isFlipped?: boolean;
