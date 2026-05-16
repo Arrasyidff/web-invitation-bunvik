@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { CoverSection } from "@/features/cover/components/CoverSection";
 import { CoverLeftPanel } from "@/features/cover/components/CoverLeftPanel";
 import { CoverRightPanel } from "@/features/cover/components/CoverRightPanel";
@@ -11,6 +11,7 @@ import { RsvpSection } from "@/features/rsvp/components/RsvpSection";
 import { StorySection } from "@/features/story/components/StorySection";
 import { WishesSection } from "@/features/wishes/components/WishesSection";
 import { LoadingOverlay } from "@/components/ui/LoadingOverlay";
+import { BottomNavbar } from "@/components/ui/BottomNavbar";
 
 import backgroundSrc from "@/app/assets/background.png";
 import blueEnvelopeSrc from "@/app/assets/blue-envelope.png";
@@ -29,6 +30,7 @@ const PRELOAD_IMAGE_URLS = [
 export default function HomePage() {
   const [isInvitationOpen, setIsInvitationOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const desktopScrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const MINIMUM_LOAD_MS = 800;
@@ -71,25 +73,8 @@ export default function HomePage() {
         {!isInvitationOpen ? (
           <CoverSection onOpen={() => setIsInvitationOpen(true)} />
         ) : (
-          <div>
-            <OpeningSection />
-            <CoupleSection />
-            <EventSection />
-            <RsvpSection />
-            <StorySection />
-            <WishesSection />
-          </div>
-        )}
-      </div>
-
-      {/* Desktop/tablet layout */}
-      <div className="hidden md:flex h-screen">
-        <CoverLeftPanel />
-        <div className="w-100 h-full overflow-y-auto shrink-0">
-          {!isInvitationOpen ? (
-            <CoverRightPanel onOpen={() => setIsInvitationOpen(true)} />
-          ) : (
-            <div>
+          <>
+            <div className="pb-16">
               <OpeningSection />
               <CoupleSection />
               <EventSection />
@@ -97,6 +82,31 @@ export default function HomePage() {
               <StorySection />
               <WishesSection />
             </div>
+            <BottomNavbar className="fixed bottom-0 left-0 right-0 z-50" />
+          </>
+        )}
+      </div>
+
+      {/* Desktop/tablet layout */}
+      <div className="hidden md:flex h-screen">
+        <CoverLeftPanel />
+        <div className="w-112.5 h-full shrink-0 flex flex-col">
+          <div ref={desktopScrollRef} className="flex-1 overflow-y-auto">
+            {!isInvitationOpen ? (
+              <CoverRightPanel onOpen={() => setIsInvitationOpen(true)} />
+            ) : (
+              <div>
+                <OpeningSection />
+                <CoupleSection />
+                <EventSection />
+                <RsvpSection />
+                <StorySection />
+                <WishesSection />
+              </div>
+            )}
+          </div>
+          {isInvitationOpen && (
+            <BottomNavbar scrollContainerRef={desktopScrollRef} />
           )}
         </div>
       </div>
