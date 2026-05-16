@@ -25,7 +25,7 @@ export function EventSection({ eventType = "resepsi" }: EventSectionProps) {
           <p className="mt-7.5 text-[1.375rem] uppercase font-medium">
             For The Wedding Of
           </p>
-          <h3 className="mt-0.5 text-[2.459rem] font-bold uppercase">
+          <h3 className="mt-0.5 text-[2rem] font-bold uppercase">
             {GROOM_NAME} &amp; {BRIDE_NAME}
           </h3>
           <p className="mt-0.5 text-[1.375rem] font-medium">{WEDDING_DATE_SHORT}</p>
