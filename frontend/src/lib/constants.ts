@@ -1,5 +1,5 @@
 export const GROOM_NAME = "Hendra";
-export const BRIDE_NAME = "VIKA";
+export const BRIDE_NAME = "Vika";
 export const GROOM_NAME_SHORT = "Sadiyono";
 export const BRIDE_NAME_SHORT = "Reyvika";
 export const GROOM_FULL_NAME = "Sadiyono Mahendra Putra";
