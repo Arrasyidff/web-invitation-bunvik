@@ -74,7 +74,7 @@ export default function HomePage() {
           <CoverSection onOpen={() => setIsInvitationOpen(true)} />
         ) : (
           <>
-            <div className="pb-16">
+            <div className="pb-16 bg-white/50">
               <OpeningSection />
               <CoupleSection />
               <EventSection />
@@ -95,7 +95,7 @@ export default function HomePage() {
             {!isInvitationOpen ? (
               <CoverRightPanel onOpen={() => setIsInvitationOpen(true)} />
             ) : (
-              <div>
+              <div className="bg-white/50">
                 <OpeningSection />
                 <CoupleSection />
                 <EventSection />
