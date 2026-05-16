@@ -1,3 +1,4 @@
+import Image, { StaticImageData } from "next/image";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 interface CoupleCardProps {
@@ -5,9 +6,10 @@ interface CoupleCardProps {
   childOrder: string;
   parents: string;
   photoPosition: "left" | "right";
+  photoSrc: StaticImageData;
 }
 
-export function CoupleCard({ fullName, childOrder, parents, photoPosition }: CoupleCardProps) {
+export function CoupleCard({ fullName, childOrder, parents, photoPosition, photoSrc }: CoupleCardProps) {
   const archClass = photoPosition === "left" ? "arch-top" : "arch-bottom";
   const photoDirection = photoPosition === "left" ? "left" : "right";
   const textDirection = photoPosition === "left" ? "right" : "left";
@@ -15,7 +17,14 @@ export function CoupleCard({ fullName, childOrder, parents, photoPosition }: Cou
   return (
     <div className={`grid grid-cols-2 gap-2.5 items-center ${photoPosition === "right" ? "[&>*:first-child]:order-2 [&>*:last-child]:order-1" : ""}`}>
       <ScrollReveal direction={photoDirection}>
-        <div className={`aspect-3/5 w-full bg-[#FBF3E2] ${archClass} shadow-md`} />
+        <div className={`relative aspect-3/5 w-full overflow-hidden ${archClass} shadow-md`}>
+          <Image
+            src={photoSrc}
+            alt={fullName}
+            fill
+            className="object-cover object-top"
+          />
+        </div>
       </ScrollReveal>
       <ScrollReveal direction={textDirection} delay={100}>
         <div className="text-center">

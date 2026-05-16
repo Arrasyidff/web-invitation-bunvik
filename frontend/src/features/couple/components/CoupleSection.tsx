@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   GROOM_FULL_NAME,
   BRIDE_FULL_NAME,
@@ -5,11 +6,12 @@ import {
   BRIDE_CHILD_ORDER,
   GROOM_PARENTS,
   BRIDE_PARENTS,
-  GROOM_NAME,
-  BRIDE_NAME,
 } from "@/lib/constants";
+import groomPhoto from "@/app/assets/groom.jpg";
+import bridePhoto from "@/app/assets/bride.jpg";
+import coupleFlowerSrc from "@/app/assets/couple-flower.png";
 import { CoupleCard } from "./CoupleCard";
-import { CoupleMonogram } from "./CoupleMonogram";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 export function CoupleSection() {
   return (
@@ -19,16 +21,21 @@ export function CoupleSection() {
         childOrder={GROOM_CHILD_ORDER}
         parents={GROOM_PARENTS}
         photoPosition="left"
+        photoSrc={groomPhoto}
       />
-      <CoupleMonogram
-        groomInitial={GROOM_NAME.charAt(0)}
-        brideInitial={BRIDE_NAME.charAt(0)}
-      />
+      <ScrollReveal direction="bottom" className="flex justify-center my-2">
+        <Image
+          src={coupleFlowerSrc}
+          alt="Dekorasi bunga pasangan"
+          className="w-36 h-auto"
+        />
+      </ScrollReveal>
       <CoupleCard
         fullName={BRIDE_FULL_NAME}
         childOrder={BRIDE_CHILD_ORDER}
         parents={BRIDE_PARENTS}
         photoPosition="right"
+        photoSrc={bridePhoto}
       />
     </section>
   );
