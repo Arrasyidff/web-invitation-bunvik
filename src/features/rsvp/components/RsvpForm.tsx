@@ -13,6 +13,7 @@ export function RsvpForm({ onSubmitSuccess }: RsvpFormProps) {
     guestName: "",
     guestCount: 1,
     attendanceStatus: "hadir",
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [hasError, setHasError] = useState(false);
@@ -81,6 +82,16 @@ export function RsvpForm({ onSubmitSuccess }: RsvpFormProps) {
           />
           <span className="text-[1.125rem] text-foreground">Maaf, Saya tidak bisa hadir</span>
         </label>
+      </div>
+
+      <div className="flex flex-col gap-1.5">
+        <label className="text-[1.125rem] text-foreground">Ucapan & Doa (opsional):</label>
+        <textarea
+          value={formData.message}
+          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+          rows={3}
+          className="w-full rounded-2xl border border-foreground/25 bg-transparent px-5 py-2.5 text-[1.125rem] text-foreground outline-none focus:border-foreground/50 resize-none"
+        />
       </div>
 
       {hasError && (
