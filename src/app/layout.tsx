@@ -27,11 +27,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorantGaramond.variable} ${pinyonScript.variable} h-full antialiased`}
+      className={`${cormorantGaramond.variable} ${pinyonScript.variable} h-full antialiased overflow-x-hidden`}
     >
       <body
         suppressHydrationWarning
-        className="min-h-full flex flex-col bg-cover bg-center bg-no-repeat bg-fixed"
+        className="min-h-full flex flex-col bg-cover bg-center bg-no-repeat bg-fixed overflow-x-hidden"
         style={{ backgroundImage: `url(${backgroundImage.src})` }}
       >
         {children}
