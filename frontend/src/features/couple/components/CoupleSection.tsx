@@ -23,11 +23,11 @@ export function CoupleSection() {
         photoPosition="left"
         photoSrc={groomPhoto}
       />
-      <ScrollReveal direction="bottom" className="flex justify-center my-2">
+      <ScrollReveal direction="bottom" className="flex justify-center relative z-10 -my-20">
         <Image
           src={coupleFlowerSrc}
           alt="Dekorasi bunga pasangan"
-          className="w-36 h-auto"
+          className="w-72 h-auto -scale-x-100"
         />
       </ScrollReveal>
       <CoupleCard
