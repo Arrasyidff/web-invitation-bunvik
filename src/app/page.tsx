@@ -12,6 +12,7 @@ import { StorySection } from "@/features/story/components/StorySection";
 import { WishesSection } from "@/features/wishes/components/WishesSection";
 import { LoadingOverlay } from "@/components/ui/LoadingOverlay";
 import { BottomNavbar } from "@/components/ui/BottomNavbar";
+import { MusicPlayer } from "@/components/ui/MusicPlayer";
 
 import backgroundSrc from "@/app/assets/background.png";
 import blueEnvelopeSrc from "@/app/assets/blue-envelope.png";
@@ -67,6 +68,7 @@ export default function HomePage() {
   return (
     <main>
       <LoadingOverlay isLoading={isLoading} />
+      {!isLoading && isInvitationOpen && <MusicPlayer src="/music.mp3" />}
 
       {/* Mobile layout */}
       <div className="md:hidden">

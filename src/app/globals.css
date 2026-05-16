@@ -117,3 +117,17 @@ p, h2, h3, h4 {
 .wishes-scroll::-webkit-scrollbar-thumb:hover {
   background: rgba(190, 120, 100, 0.65);
 }
+
+@keyframes spin-disc {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-disc {
+  animation: spin-disc 4s linear infinite;
+}
+
+.animate-spin-disc-paused {
+  animation: spin-disc 4s linear infinite;
+  animation-play-state: paused;
+}
