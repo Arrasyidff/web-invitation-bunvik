@@ -14,11 +14,14 @@ import { LoadingOverlay } from "@/components/ui/LoadingOverlay";
 import { BottomNavbar } from "@/components/ui/BottomNavbar";
 import { MusicPlayer } from "@/components/ui/MusicPlayer";
 
-import backgroundSrc from "@/app/assets/background.png";
+import backgroundSrc from "@/app/assets/background.webp";
 import blueEnvelopeSrc from "@/app/assets/blue-envelope.png";
 import candleEnvelopeSrc from "@/app/assets/candle-envelope.png";
 import coverFlowerLeftSrc from "@/app/assets/cover-flower-left.png";
 import flowerFrameSrc from "@/app/assets/flower-frame.png";
+import groomSrc from "@/app/assets/groom.webp";
+import brideSrc from "@/app/assets/bride.webp";
+import coupleFlowerSrc from "@/app/assets/couple-flower.webp";
 
 const PRELOAD_IMAGE_URLS = [
   backgroundSrc.src,
@@ -26,6 +29,9 @@ const PRELOAD_IMAGE_URLS = [
   candleEnvelopeSrc.src,
   coverFlowerLeftSrc.src,
   flowerFrameSrc.src,
+  groomSrc.src,
+  brideSrc.src,
+  coupleFlowerSrc.src,
 ];
 
 type EventType = "akad" | "resepsi";

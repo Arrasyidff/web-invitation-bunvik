@@ -7,9 +7,9 @@ import {
   GROOM_PARENTS,
   BRIDE_PARENTS,
 } from "@/lib/constants";
-import groomPhoto from "@/app/assets/groom.jpg";
-import bridePhoto from "@/app/assets/bride.jpg";
-import coupleFlowerSrc from "@/app/assets/couple-flower.png";
+import groomPhoto from "@/app/assets/groom.webp";
+import bridePhoto from "@/app/assets/bride.webp";
+import coupleFlowerSrc from "@/app/assets/couple-flower.webp";
 import { CoupleCard } from "./CoupleCard";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 

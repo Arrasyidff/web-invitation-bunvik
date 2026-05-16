@@ -12,7 +12,12 @@
       "Bash(xargs ls -la)",
       "Bash(rm /Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/features/wishes/components/WishesForm.tsx)",
       "Bash(xargs ls)",
-      "Bash(xargs cat -n)"
+      "Bash(xargs cat -n)",
+      "Bash(sips -g pixelWidth -g pixelHeight /Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/app/assets/bride.jpg /Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/app/assets/groom.jpg /Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/app/assets/background.png /Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/app/assets/couple-flower.png)",
+      "Bash(cwebp -q 82 -resize 800 0 bride.jpg -o bride.webp)",
+      "Bash(cwebp -q 82 -resize 800 0 groom.jpg -o groom.webp)",
+      "Bash(cwebp -q 85 background.png -o background.webp)",
+      "Bash(cwebp -q 85 couple-flower.png -o couple-flower.webp)"
     ],
     "additionalDirectories": [
       "/Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/lib",

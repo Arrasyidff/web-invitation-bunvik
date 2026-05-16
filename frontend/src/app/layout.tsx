@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Pinyon_Script } from "next/font/google";
 import "./globals.css";
-import backgroundImage from "@/app/assets/background.png";
+import backgroundImage from "@/app/assets/background.webp";
 
 const cormorantGaramond = Cormorant_Garamond({
   variable: "--font-cormorant",
