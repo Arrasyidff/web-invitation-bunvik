@@ -31,10 +31,10 @@ export function WishesList({ wishes }: WishesListProps) {
               </span>
             )}
           </div>
-          <p className="mt-1 font-bold text-[0.9375rem] text-foreground leading-relaxed">
+          <p className="mt-1 font-medium text-[0.9375rem] text-foreground leading-relaxed">
             {wish.message}
           </p>
-          <p className="mt-3 font-bold text-right text-[0.8125rem] text-foreground/40">
+          <p className="mt-3 font-medium text-right text-[0.8125rem] text-foreground/40">
             {formatTimeAgo(wish.createdAt)}
           </p>
         </div>
