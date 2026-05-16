@@ -71,12 +71,12 @@ export default function HomePage() {
       {!isLoading && isInvitationOpen && <MusicPlayer src="/music.mp3" />}
 
       {/* Mobile layout */}
-      <div className="md:hidden">
+      <div className="md:hidden bg-white/50">
         {!isInvitationOpen ? (
           <CoverSection onOpen={() => setIsInvitationOpen(true)} />
         ) : (
           <>
-            <div className="pb-16 bg-white/50">
+            <div className="pb-16">
               <OpeningSection />
               <CoupleSection />
               <EventSection />
@@ -92,14 +92,14 @@ export default function HomePage() {
       </div>
 
       {/* Desktop/tablet layout */}
-      <div className="hidden md:flex h-screen">
+      <div className="hidden md:flex h-screen bg-white/50">
         <CoverLeftPanel />
         <div className="w-112.5 h-full shrink-0 flex flex-col">
           <div ref={desktopScrollRef} className="flex-1 overflow-y-auto">
             {!isInvitationOpen ? (
               <CoverRightPanel onOpen={() => setIsInvitationOpen(true)} />
             ) : (
-              <div className="bg-white/50">
+              <div>
                 <OpeningSection />
                 <CoupleSection />
                 <EventSection />
