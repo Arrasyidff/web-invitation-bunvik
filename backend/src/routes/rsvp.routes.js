@@ -2,7 +2,15 @@ import { Router } from "express";
 import Joi from "joi";
 import { validate } from "../middlewares/validate.js";
 import { rsvpRateLimiter } from "../middlewares/rateLimiter.js";
-import { createRsvp, getAllRsvp, getRsvpById } from "../controllers/rsvp.controller.js";
+import {
+  createRsvp,
+  getAllRsvp,
+  getAllRsvpAdmin,
+  getRsvpById,
+  deleteRsvp,
+  softDeleteRsvp,
+  restoreRsvp,
+} from "../controllers/rsvp.controller.js";
 
 const router = Router();
 
@@ -19,6 +27,10 @@ const rsvpSchema = Joi.object({
 
 router.post("/", rsvpRateLimiter, validate(rsvpSchema), createRsvp);
 router.get("/", getAllRsvp);
+router.get("/admin", getAllRsvpAdmin);
 router.get("/:id", getRsvpById);
+router.delete("/:id", deleteRsvp);
+router.patch("/:id/soft-delete", softDeleteRsvp);
+router.patch("/:id/restore", restoreRsvp);
 
 export default router;

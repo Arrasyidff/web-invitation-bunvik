@@ -25,6 +25,14 @@ const rsvpSchema = new mongoose.Schema(
       maxlength: 500,
       trim: true,
     },
+    isDeleted: {
+      type: Boolean,
+      default: false,
+    },
+    deletedAt: {
+      type: Date,
+      default: null,
+    },
   },
   {
     timestamps: { createdAt: true, updatedAt: false },

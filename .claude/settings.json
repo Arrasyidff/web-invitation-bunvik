@@ -21,11 +21,14 @@
       "Bash(cwebp -q 85 -lossless blue-envelope.png -o blue-envelope.webp)",
       "Bash(cwebp -q 85 -lossless candle-envelope.png -o candle-envelope.webp)",
       "Bash(cwebp -q 85 cover-flower-left.png -o cover-flower-left.webp)",
-      "Bash(cwebp -q 85 flower-frame.png -o flower-frame.webp)"
+      "Bash(cwebp -q 85 flower-frame.png -o flower-frame.webp)",
+      "Bash(mkdir -p /Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/app/api/admin/rsvp/[id])",
+      "Bash(mkdir -p \"/Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/app/api/admin/rsvp/[id]\")"
     ],
     "additionalDirectories": [
       "/Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/lib",
-      "/Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/features/wishes/components"
+      "/Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/features/wishes/components",
+      "/Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/app/api/admin/rsvp"
     ]
   }
 }
