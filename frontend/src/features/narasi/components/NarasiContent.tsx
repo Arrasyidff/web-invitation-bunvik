@@ -135,20 +135,20 @@ export function NarasiContent() {
         <div className="flex flex-col gap-1">
           <Link
             href="/"
-            className="font-sans text-xs tracking-widest uppercase text-foreground/40 hover:text-foreground/60 transition-colors w-fit"
+            className="font-sans text-xs tracking-widest uppercase text-foreground/80 hover:text-foreground transition-colors w-fit"
           >
             ← Kembali
           </Link>
           <h1 className="font-display text-5xl text-foreground mt-3 leading-none">
             Narasi Undangan
           </h1>
-          <p className="font-sans text-sm text-foreground/50 mt-1">
+          <p className="font-sans text-sm text-foreground/90 mt-1">
             Pilih template, isi nama penerima, lalu salin teksnya.
           </p>
         </div>
 
         <div className="flex flex-col gap-2">
-          <label className="font-sans text-xs tracking-widest uppercase text-foreground/40">
+          <label className="font-sans text-xs tracking-widest uppercase text-foreground/90">
             Nama Penerima
           </label>
           <input
@@ -161,7 +161,7 @@ export function NarasiContent() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <p className="font-sans text-xs tracking-widest uppercase text-foreground/40">
+          <p className="font-sans text-xs tracking-widest uppercase text-foreground/90">
             Agama
           </p>
           <div className="flex gap-2">
@@ -171,8 +171,8 @@ export function NarasiContent() {
                 onClick={() => setActiveReligion(r.id)}
                 className={`flex-1 border py-3 px-2 transition-colors cursor-pointer font-sans text-sm ${
                   activeReligion === r.id
-                    ? "border-foreground/50 bg-foreground/5 text-foreground/80"
-                    : "border-foreground/15 hover:border-foreground/30 text-foreground/50"
+                    ? "border-foreground/50 bg-foreground/5 text-foreground"
+                    : "border-foreground/20 hover:border-foreground/40 text-foreground/90"
                 }`}
               >
                 {r.label}
@@ -182,7 +182,7 @@ export function NarasiContent() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <p className="font-sans text-xs tracking-widest uppercase text-foreground/40">
+          <p className="font-sans text-xs tracking-widest uppercase text-foreground/90">
             Template
           </p>
           <div className="flex gap-2">
@@ -193,21 +193,21 @@ export function NarasiContent() {
                 className={`flex-1 flex flex-col items-center gap-0.5 border py-3 px-2 transition-colors cursor-pointer ${
                   activeTemplate === t.id
                     ? "border-foreground/50 bg-foreground/5"
-                    : "border-foreground/15 hover:border-foreground/30"
+                    : "border-foreground/20 hover:border-foreground/40"
                 }`}
               >
-                <span className="font-sans text-sm text-foreground/80">{t.label}</span>
-                <span className="font-sans text-[10px] text-foreground/40">{t.hint}</span>
+                <span className="font-sans text-sm text-foreground">{t.label}</span>
+                <span className="font-sans text-[10px] text-foreground/80">{t.hint}</span>
               </button>
             ))}
           </div>
         </div>
 
         <div className="flex flex-col gap-3">
-          <p className="font-sans text-xs tracking-widest uppercase text-foreground/40">
+          <p className="font-sans text-xs tracking-widest uppercase text-foreground/90">
             Pratinjau
           </p>
-          <pre className="font-sans text-sm text-foreground/70 leading-relaxed whitespace-pre-wrap bg-foreground/[0.03] border border-foreground/10 p-5">
+          <pre className="font-sans text-sm text-foreground leading-relaxed whitespace-pre-wrap bg-foreground/3 border border-foreground/10 p-5">
             {narasi}
           </pre>
           <button
@@ -215,7 +215,7 @@ export function NarasiContent() {
             className={`w-full py-3 font-sans text-sm tracking-widest uppercase transition-colors cursor-pointer ${
               isCopied
                 ? "bg-foreground text-background"
-                : "border border-foreground/30 text-foreground/70 hover:bg-foreground/5"
+                : "border border-foreground/30 text-foreground/90 hover:bg-foreground/5"
             }`}
           >
             {isCopied ? "Tersalin ✓" : "Salin Teks"}

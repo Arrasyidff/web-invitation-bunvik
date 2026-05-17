@@ -157,7 +157,7 @@ export function AdminContent() {
       <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
         <div className="w-full max-w-sm bg-white rounded-2xl shadow-lg p-8">
           <h1 className="text-2xl font-bold text-gray-800 mb-1">Admin Panel</h1>
-          <p className="text-sm text-gray-500 mb-6">Masukkan password untuk melanjutkan</p>
+          <p className="text-sm text-gray-600 mb-6">Masukkan password untuk melanjutkan</p>
           <form onSubmit={handleLogin} className="flex flex-col gap-4">
             <input
               type="password"
@@ -207,9 +207,9 @@ export function AdminContent() {
       <header className="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
         <div>
           <h1 className="text-xl font-bold text-gray-800">Admin Panel</h1>
-          <p className="text-xs text-gray-400 mt-0.5">Data RSVP & Ucapan Tamu</p>
+          <p className="text-xs text-gray-500 mt-0.5">Data RSVP & Ucapan Tamu</p>
         </div>
-        <button onClick={handleLogout} className="text-sm text-gray-500 hover:text-gray-800 transition-colors">
+        <button onClick={handleLogout} className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
           Keluar
         </button>
       </header>
@@ -238,20 +238,20 @@ export function AdminContent() {
           </div>
 
           {isFetchLoading && (
-            <div className="py-16 text-center text-gray-400 text-sm">Memuat data...</div>
+            <div className="py-16 text-center text-gray-500 text-sm">Memuat data...</div>
           )}
           {fetchError && !isFetchLoading && (
             <div className="py-16 text-center text-red-500 text-sm">{fetchError}</div>
           )}
           {!isFetchLoading && !fetchError && entries.length === 0 && (
-            <div className="py-16 text-center text-gray-400 text-sm">Belum ada data RSVP.</div>
+            <div className="py-16 text-center text-gray-500 text-sm">Belum ada data RSVP.</div>
           )}
 
           {!isFetchLoading && !fetchError && entries.length > 0 && (
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="bg-gray-50 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">
+                  <tr className="bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wide">
                     <th className="px-6 py-3">Nama</th>
                     <th className="px-6 py-3">Status</th>
                     <th className="px-6 py-3 text-center">Tamu</th>
@@ -271,7 +271,7 @@ export function AdminContent() {
                           {entry.isDeleted && (
                             <span className="text-xs text-red-500 font-semibold">[Disembunyikan]</span>
                           )}
-                          <span className={entry.isDeleted ? "line-through text-gray-400" : ""}>
+                          <span className={entry.isDeleted ? "line-through text-gray-500" : ""}>
                             {entry.nama}
                           </span>
                         </div>
@@ -280,14 +280,14 @@ export function AdminContent() {
                         {entry.statusKehadiran === "hadir" ? (
                           <span className="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-semibold text-green-700">Hadir</span>
                         ) : (
-                          <span className="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-semibold text-gray-500">Tidak Hadir</span>
+                          <span className="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-semibold text-gray-600">Tidak Hadir</span>
                         )}
                       </td>
-                      <td className="px-6 py-4 text-center text-gray-600">{entry.jumlahHadir}</td>
-                      <td className="px-6 py-4 text-gray-600 max-w-xs">
+                      <td className="px-6 py-4 text-center text-gray-700">{entry.jumlahHadir}</td>
+                      <td className="px-6 py-4 text-gray-700 max-w-xs">
                         <p className="line-clamp-2">{entry.ucapanDoa}</p>
                       </td>
-                      <td className="px-6 py-4 text-gray-400 whitespace-nowrap text-xs">
+                      <td className="px-6 py-4 text-gray-500 whitespace-nowrap text-xs">
                         {formatTimeAgo(entry.createdAt)}
                       </td>
                       <td className="px-6 py-4">
@@ -319,7 +319,7 @@ interface ActionCellProps {
 
 function ActionCell({ entry, isProcessing, onAction, onOpenPicker }: ActionCellProps) {
   if (isProcessing) {
-    return <div className="text-center text-gray-400 text-xs">Memproses...</div>;
+    return <div className="text-center text-gray-500 text-xs">Memproses...</div>;
   }
 
   if (entry.isDeleted) {
@@ -331,7 +331,7 @@ function ActionCell({ entry, isProcessing, onAction, onOpenPicker }: ActionCellP
         >
           Pulihkan
         </button>
-        <span className="text-gray-300">|</span>
+        <span className="text-gray-400">|</span>
         <button
           onClick={() => onAction("hardDelete")}
           className="text-xs text-red-500 font-semibold hover:text-red-700 transition-colors whitespace-nowrap"
@@ -346,7 +346,7 @@ function ActionCell({ entry, isProcessing, onAction, onOpenPicker }: ActionCellP
     <div className="flex justify-center">
       <button
         onClick={onOpenPicker}
-        className="text-gray-300 hover:text-red-500 transition-colors"
+        className="text-gray-400 hover:text-red-500 transition-colors"
         title="Hapus"
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
@@ -368,21 +368,21 @@ function ActionPickerModalComponent({ nama, onSelect, onCancel }: ActionPickerMo
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
       <div className="w-full max-w-sm bg-white rounded-2xl shadow-xl p-6">
         <h3 className="text-base font-bold text-gray-800 mb-1">Kelola ucapan</h3>
-        <p className="text-sm text-gray-500 mb-5">Pilih tindakan untuk ucapan dari <span className="font-medium text-gray-700">{nama}</span>.</p>
+        <p className="text-sm text-gray-600 mb-5">Pilih tindakan untuk ucapan dari <span className="font-medium text-gray-700">{nama}</span>.</p>
         <div className="flex flex-col gap-2 mb-4">
           <button
             onClick={() => onSelect("softDelete")}
             className="w-full text-left px-4 py-3 rounded-xl border border-amber-200 bg-amber-50 hover:bg-amber-100 transition-colors"
           >
             <span className="block text-sm font-semibold text-amber-700">Sembunyikan</span>
-            <span className="block text-xs text-amber-600/70 mt-0.5">Tersimpan di database, tidak tampil di halaman publik</span>
+            <span className="block text-xs text-amber-700 mt-0.5">Tersimpan di database, tidak tampil di halaman publik</span>
           </button>
           <button
             onClick={() => onSelect("hardDelete")}
             className="w-full text-left px-4 py-3 rounded-xl border border-red-200 bg-red-50 hover:bg-red-100 transition-colors"
           >
             <span className="block text-sm font-semibold text-red-700">Hapus Permanen</span>
-            <span className="block text-xs text-red-600/70 mt-0.5">Dihapus selamanya dari database, tidak bisa dipulihkan</span>
+            <span className="block text-xs text-red-700 mt-0.5">Dihapus selamanya dari database, tidak bisa dipulihkan</span>
           </button>
         </div>
         <button
@@ -431,7 +431,7 @@ function ConfirmModal({ action, entryName, onConfirm, onCancel }: ConfirmModalPr
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
       <div className="w-full max-w-sm bg-white rounded-2xl shadow-xl p-6">
         <h3 className="text-base font-bold text-gray-800 mb-2">{title}</h3>
-        <p className="text-sm text-gray-500 mb-6">{description}</p>
+        <p className="text-sm text-gray-600 mb-6">{description}</p>
         <div className="flex gap-3">
           <button
             onClick={onCancel}
@@ -467,7 +467,7 @@ const colorMap = {
 function StatCard({ label, value, color }: StatCardProps) {
   return (
     <div className="bg-white rounded-xl border border-gray-100 shadow-sm px-5 py-4">
-      <p className="text-xs font-medium text-gray-400 mb-1">{label}</p>
+      <p className="text-xs font-medium text-gray-500 mb-1">{label}</p>
       <p className={`text-2xl font-bold ${colorMap[color]}`}>{value}</p>
     </div>
   );
