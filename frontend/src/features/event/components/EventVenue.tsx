@@ -1,4 +1,4 @@
-import { VENUE_NAME, MAPS_URL, MAPS_EMBED_URL } from "@/lib/constants";
+import { VENUE_NAME, VENUE_ADDRESS, MAPS_URL, MAPS_EMBED_URL } from "@/lib/constants";
 
 export function EventVenue() {
   return (
@@ -12,6 +12,7 @@ export function EventVenue() {
         <span>📍</span>
         <span>{VENUE_NAME}</span>
       </a>
+      <p className="mt-1 text-white/70 text-sm leading-snug">{VENUE_ADDRESS}</p>
 
       <div className="mt-[0.563rem] w-full h-84.5 overflow-hidden">
         <iframe

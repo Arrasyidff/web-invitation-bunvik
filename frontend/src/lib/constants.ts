@@ -13,11 +13,12 @@ export const WEDDING_DATE = "2026-05-24";
 export const AKAD_TIME = "09.00 - 10.00 WITA";
 export const RECEPTION_TIME = "10.30 - 12.00 WITA";
 export const VENUE_NAME = "Aula Taklim At Tadzkir";
-export const VENUE_ADDRESS = "Jl. Raya Malang No. 10, Malang";
-export const MAPS_URL = "https://maps.app.goo.gl/Phb495rqUCcagFEx6";
+export const VENUE_ADDRESS = "Jl. Pura Demak Barat, Jl. Labak IV No.1, Tegal Harum, Denpasar Barat, Bali 80119";
+export const MAPS_URL = "https://maps.app.goo.gl/HDFcsfT41SqL88ai8";
 export const MAPS_EMBED_URL = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3944.1833809589334!2d115.18912307424395!3d-8.67410409137375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd240cafea30fed%3A0x845f20572a7e27d1!2sAttadzkir%20Bali!5e0!3m2!1sid!2sid!4v1778851673775!5m2!1sid!2sid";
 export const WEDDING_DATE_SHORT = "24 . 05 . 26";
 export const WEDDING_DATE_LONG = "24 MEI 2026";
+export const WEDDING_DATE_FULL = "Minggu, 24 Mei 2026";
 export const GUEST_NAME_DEFAULT = "-";
 
 export const LOVE_STORY_ENTRIES = [
