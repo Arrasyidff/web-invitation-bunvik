@@ -13,6 +13,11 @@ interface PendingAction {
   type: DeleteAction | "restore";
 }
 
+interface ActionPickerModal {
+  id: string;
+  nama: string;
+}
+
 export function AdminContent() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [passwordInput, setPasswordInput] = useState("");
@@ -24,6 +29,7 @@ export function AdminContent() {
   const [fetchError, setFetchError] = useState("");
 
   const [pendingAction, setPendingAction] = useState<PendingAction | null>(null);
+  const [actionPicker, setActionPicker] = useState<ActionPickerModal | null>(null);
   const [processingId, setProcessingId] = useState<string | null>(null);
 
   useEffect(() => {
@@ -179,6 +185,16 @@ export function AdminContent() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {actionPicker && (
+        <ActionPickerModalComponent
+          nama={actionPicker.nama}
+          onSelect={(type) => {
+            setPendingAction({ id: actionPicker.id, type });
+            setActionPicker(null);
+          }}
+          onCancel={() => setActionPicker(null)}
+        />
+      )}
       {pendingAction && (
         <ConfirmModal
           action={pendingAction.type}
@@ -279,6 +295,7 @@ export function AdminContent() {
                           entry={entry}
                           isProcessing={processingId === entry.id}
                           onAction={(type) => setPendingAction({ id: entry.id, type })}
+                          onOpenPicker={() => setActionPicker({ id: entry.id, nama: entry.nama })}
                         />
                       </td>
                     </tr>
@@ -297,11 +314,10 @@ interface ActionCellProps {
   entry: RsvpEntry;
   isProcessing: boolean;
   onAction: (type: DeleteAction | "restore") => void;
+  onOpenPicker: () => void;
 }
 
-function ActionCell({ entry, isProcessing, onAction }: ActionCellProps) {
-  const [isOpen, setIsOpen] = useState(false);
-
+function ActionCell({ entry, isProcessing, onAction, onOpenPicker }: ActionCellProps) {
   if (isProcessing) {
     return <div className="text-center text-gray-400 text-xs">Memproses...</div>;
   }
@@ -327,9 +343,9 @@ function ActionCell({ entry, isProcessing, onAction }: ActionCellProps) {
   }
 
   return (
-    <div className="relative flex justify-center">
+    <div className="flex justify-center">
       <button
-        onClick={() => setIsOpen((v) => !v)}
+        onClick={onOpenPicker}
         className="text-gray-300 hover:text-red-500 transition-colors"
         title="Hapus"
       >
@@ -337,29 +353,45 @@ function ActionCell({ entry, isProcessing, onAction }: ActionCellProps) {
           <path fillRule="evenodd" d="M8.75 1A2.75 2.75 0 0 0 6 3.75v.443c-.795.077-1.584.176-2.365.298a.75.75 0 1 0 .23 1.482l.149-.022.841 10.518A2.75 2.75 0 0 0 7.596 19h4.807a2.75 2.75 0 0 0 2.742-2.53l.841-10.52.149.023a.75.75 0 0 0 .23-1.482A41.03 41.03 0 0 0 14 4.193V3.75A2.75 2.75 0 0 0 11.25 1h-2.5ZM10 4c.84 0 1.673.025 2.5.075V3.75c0-.69-.56-1.25-1.25-1.25h-2.5c-.69 0-1.25.56-1.25 1.25v.325C8.327 4.025 9.16 4 10 4ZM8.58 7.72a.75.75 0 0 0-1.5.06l.3 7.5a.75.75 0 1 0 1.5-.06l-.3-7.5Zm4.34.06a.75.75 0 1 0-1.5-.06l-.3 7.5a.75.75 0 1 0 1.5.06l.3-7.5Z" clipRule="evenodd" />
         </svg>
       </button>
+    </div>
+  );
+}
 
-      {isOpen && (
-        <>
-          <div className="fixed inset-0 z-10" onClick={() => setIsOpen(false)} />
-          <div className="absolute right-0 top-6 z-20 w-48 bg-white rounded-xl shadow-lg border border-gray-100 py-1 text-sm">
-            <button
-              onClick={() => { setIsOpen(false); onAction("softDelete"); }}
-              className="w-full text-left px-4 py-2.5 hover:bg-gray-50 text-amber-600 font-medium"
-            >
-              Sembunyikan
-              <span className="block text-xs text-gray-400 font-normal">Tersimpan, tidak tampil publik</span>
-            </button>
-            <div className="h-px bg-gray-100 mx-2" />
-            <button
-              onClick={() => { setIsOpen(false); onAction("hardDelete"); }}
-              className="w-full text-left px-4 py-2.5 hover:bg-gray-50 text-red-600 font-medium"
-            >
-              Hapus Permanen
-              <span className="block text-xs text-gray-400 font-normal">Dihapus selamanya dari database</span>
-            </button>
-          </div>
-        </>
-      )}
+interface ActionPickerModalComponentProps {
+  nama: string;
+  onSelect: (type: DeleteAction) => void;
+  onCancel: () => void;
+}
+
+function ActionPickerModalComponent({ nama, onSelect, onCancel }: ActionPickerModalComponentProps) {
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
+      <div className="w-full max-w-sm bg-white rounded-2xl shadow-xl p-6">
+        <h3 className="text-base font-bold text-gray-800 mb-1">Kelola ucapan</h3>
+        <p className="text-sm text-gray-500 mb-5">Pilih tindakan untuk ucapan dari <span className="font-medium text-gray-700">{nama}</span>.</p>
+        <div className="flex flex-col gap-2 mb-4">
+          <button
+            onClick={() => onSelect("softDelete")}
+            className="w-full text-left px-4 py-3 rounded-xl border border-amber-200 bg-amber-50 hover:bg-amber-100 transition-colors"
+          >
+            <span className="block text-sm font-semibold text-amber-700">Sembunyikan</span>
+            <span className="block text-xs text-amber-600/70 mt-0.5">Tersimpan di database, tidak tampil di halaman publik</span>
+          </button>
+          <button
+            onClick={() => onSelect("hardDelete")}
+            className="w-full text-left px-4 py-3 rounded-xl border border-red-200 bg-red-50 hover:bg-red-100 transition-colors"
+          >
+            <span className="block text-sm font-semibold text-red-700">Hapus Permanen</span>
+            <span className="block text-xs text-red-600/70 mt-0.5">Dihapus selamanya dari database, tidak bisa dipulihkan</span>
+          </button>
+        </div>
+        <button
+          onClick={onCancel}
+          className="w-full border border-gray-200 text-gray-600 font-semibold py-2.5 rounded-lg text-sm hover:bg-gray-50 transition-colors"
+        >
+          Batal
+        </button>
+      </div>
     </div>
   );
 }
