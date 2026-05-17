@@ -23,12 +23,18 @@
       "Bash(cwebp -q 85 cover-flower-left.png -o cover-flower-left.webp)",
       "Bash(cwebp -q 85 flower-frame.png -o flower-frame.webp)",
       "Bash(mkdir -p /Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/app/api/admin/rsvp/[id])",
-      "Bash(mkdir -p \"/Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/app/api/admin/rsvp/[id]\")"
+      "Bash(mkdir -p \"/Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/app/api/admin/rsvp/[id]\")",
+      "Bash(cwebp -q 80 /Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/app/assets/logo.png -o /Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/app/assets/logo.webp)",
+      "Bash(cp /Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/app/assets/logo.png /Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/app/icon.png && ls -lh /Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/app/icon.png)",
+      "Bash(convert --version)",
+      "Bash(sips -s format png /Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/app/assets/logo.png --resampleHeightWidth 32 32 --out /tmp/logo-32.png)",
+      "Bash(ffmpeg -y -i /tmp/logo-32.png /Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/app/favicon.ico)"
     ],
     "additionalDirectories": [
       "/Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/lib",
       "/Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/features/wishes/components",
-      "/Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/app/api/admin/rsvp"
+      "/Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/app/api/admin/rsvp",
+      "/Users/arfafa/projects/personal/web-invitation-bunvik/frontend/src/app/assets"
     ]
   }
 }
