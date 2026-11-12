@@ -1,10 +1,10 @@
 import { Suspense } from "react";
-import { InvitationContent } from "./_components/InvitationContent";
+import { ActiveInvitationTemplate } from "@/templates/registry";
 
 export default function HomePage() {
   return (
     <Suspense>
-      <InvitationContent eventType="resepsi" />
+      <ActiveInvitationTemplate eventType="resepsi" />
     </Suspense>
   );
 }

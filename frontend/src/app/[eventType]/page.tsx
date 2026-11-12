@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
-import { InvitationContent } from "../_components/InvitationContent";
+import { ActiveInvitationTemplate } from "@/templates/registry";
 
 interface EventPageProps {
   params: Promise<{ eventType: string }>;
@@ -15,7 +15,7 @@ export default async function EventPage({ params }: EventPageProps) {
 
   return (
     <Suspense>
-      <InvitationContent eventType={eventType} />
+      <ActiveInvitationTemplate eventType={eventType} />
     </Suspense>
   );
 }

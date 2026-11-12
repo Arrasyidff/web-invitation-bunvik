@@ -21,69 +21,59 @@ Wedding invitation berbasis web dengan Next.js. Satu halaman utama yang terdiri 
 
 ## 📁 Struktur Folder
 
+Project ini mendukung **beberapa template desain** untuk data pernikahan yang sama.
+Tampilan (per template) dipisah dari data & logika (dipakai bersama semua template).
+
 ```
 src/
 ├── app/
-│   ├── layout.tsx               ← font, metadata, global wrapper
-│   ├── page.tsx                 ← merakit semua section, handle open state
-│   └── api/
-│       ├── rsvp/
-│       │   └── route.ts         ← POST /api/rsvp
-│       └── wishes/
-│           └── route.ts         ← POST & GET /api/wishes
+│   ├── layout.tsx                    ← font, metadata, global wrapper
+│   ├── page.tsx                      ← render ActiveInvitationTemplate (resepsi)
+│   ├── [eventType]/page.tsx          ← /akad, /resepsi
+│   ├── preview/[templateId]/page.tsx ← /preview/<id>?event=akad&to=Nama
+│   ├── admin/ , narasi/              ← halaman internal
+│   ├── assets/                       ← aset bersama (background, foto mempelai, logo)
+│   └── api/                          ← rsvp, wishes, admin
 │
-├── features/
-│   ├── cover/
-│   │   └── components/
-│   │       └── CoverSection.tsx
-│   │
-│   ├── opening/
-│   │   └── components/
-│   │       └── OpeningSection.tsx
-│   │
-│   ├── couple/
-│   │   └── components/
-│   │       └── CoupleSection.tsx
-│   │
-│   ├── event/
-│   │   └── components/
-│   │       └── EventSection.tsx
-│   │
-│   ├── rsvp/
-│   │   ├── components/
-│   │   │   └── RsvpSection.tsx
-│   │   ├── services/
-│   │   │   └── rsvpService.ts
-│   │   └── types.ts
-│   │
-│   ├── story/
-│   │   └── components/
-│   │       └── StorySection.tsx
-│   │
-│   └── wishes/
-│       ├── components/
-│       │   ├── WishesSection.tsx
-│       │   ├── WishesList.tsx
-│       │   └── WishesForm.tsx
-│       ├── services/
-│       │   └── wishesService.ts
-│       └── types.ts
+├── templates/                        ← SATU FOLDER PER DESAIN
+│   ├── registry.ts                   ← daftar template + ACTIVE_TEMPLATE_ID
+│   └── classic-blue/
+│       ├── ClassicBlueInvitation.tsx ← root template (cover → sections, loading, musik)
+│       ├── sections/
+│       │   ├── cover/  opening/  couple/  event/
+│       │   ├── rsvp/   story/    wishes/
+│       ├── components/               ← komponen khusus template ini (BottomNavbar, SectionFloralFrame)
+│       └── assets/                   ← aset dekorasi khusus template ini
 │
-├── components/
-│   └── ui/
-│       ├── Button.tsx
-│       └── SectionWrapper.tsx
+├── features/                         ← LOGIKA SAJA, tanpa tampilan undangan
+│   ├── rsvp/      services/, types.ts, rsvpSchema.ts
+│   ├── wishes/    services/, types.ts
+│   ├── admin/     components/, types.ts
+│   └── narasi/    components/
 │
-├── lib/
-│   ├── supabase.ts
-│   └── utils.ts
+├── components/ui/                    ← UI netral lintas template (MusicPlayer, LoadingOverlay, ScrollReveal, SuccessToast)
 │
-├── config/
-│   └── env.ts
-│
-└── styles/
-    └── globals.css
+└── lib/
+    ├── constants.ts                  ← data pernikahan (nama, tanggal, venue)
+    ├── types.ts                      ← EventType, InvitationTemplateProps
+    ├── countdown.ts                  ← kalkulasi hitung mundur acara
+    └── utils.ts
 ```
+
+### Menambah Template Baru
+
+1. Buat `src/templates/<nama-template>/` (kebab-case) dengan struktur sama seperti `classic-blue/`
+2. Root component `<NamaTemplate>Invitation.tsx` menerima `InvitationTemplateProps` dari `@/lib/types`
+3. Daftarkan di `templates/registry.ts` → cek di `/preview/<nama-template>`
+4. Aktifkan untuk tamu dengan mengubah `ACTIVE_TEMPLATE_ID`
+
+### Aturan Template
+
+- Template **boleh** import dari `features/`, `components/ui/`, `lib/`, dan `app/assets/`
+- Template **JANGAN** import dari template lain — salin lalu modifikasi jika perlu
+- `features/` **JANGAN** import dari `templates/`
+- Data pernikahan tetap dari `lib/constants.ts`, logika RSVP/ucapan tetap dari `features/<fitur>/services/`
+- Section tetap pakai `<section id="...">` dengan id: `cover`, `opening`, `couple`, `event`, `rsvp`, `story`, `wishes`
 
 ---
 
@@ -111,7 +101,10 @@ src/
 |---|---|
 | Route & halaman | `app/` |
 | API route (server) | `app/api/<nama>/route.ts` |
-| Komponen per section | `features/<nama-section>/components/` |
+| Root template | `templates/<template>/<Template>Invitation.tsx` |
+| Komponen per section | `templates/<template>/sections/<nama-section>/` |
+| Komponen khusus template | `templates/<template>/components/` |
+| Aset khusus template | `templates/<template>/assets/` |
 | Service / Supabase call | `features/<nama-section>/services/` |
 | Types per fitur | `features/<nama-section>/types.ts` |
 | Komponen UI reusable | `components/ui/` |
@@ -122,7 +115,7 @@ src/
 ### Larangan Arsitektur
 
 - **JANGAN** tulis JSX panjang langsung di `page.tsx` — delegate ke komponen fitur
-- **JANGAN** taruh komponen spesifik section di `components/` — gunakan `features/`
+- **JANGAN** taruh komponen spesifik section di `components/` atau `features/` — gunakan `templates/<template>/sections/`
 - **JANGAN** import dari `features/` ke `features/` lain secara langsung
 - **JANGAN** hardcode URL, key, atau nilai konfigurasi — gunakan `config/env.ts`
 - **JANGAN** buat file di luar struktur ini tanpa alasan yang jelas
@@ -453,7 +446,7 @@ export const MAPS_URL = "https://maps.google.com/?q=...";
 
 ## ✅ Checklist Sebelum Membuat Section Baru
 
-- [ ] File diletakkan di `features/<nama-section>/components/<NamaSection>.tsx`
+- [ ] File diletakkan di `templates/<template>/sections/<nama-section>/<NamaSection>.tsx`
 - [ ] Komponen menggunakan named export (`export function`)
 - [ ] Props memiliki interface TypeScript yang eksplisit
 - [ ] Tidak ada `any` dalam kode
