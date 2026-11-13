@@ -29,15 +29,15 @@ export function ClosingSection() {
           <OrnamentDivider className="mt-10" colorClassName="text-petal/60" />
 
           <p className="mt-8 text-[0.75rem] uppercase tracking-[0.35em]! text-petal">Kami yang berbahagia</p>
-          <motion.p
-            variants={HANDWRITING_VARIANTS}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.8 }}
-            className="mt-2 font-(family-name:--font-story-script) text-[3.5rem] leading-[1.05]!"
-          >
-            {BRIDE.nickname} &amp; {GROOM.nickname}
-          </motion.p>
+          {/* Pemicu di pembungkus: elemen yang ter-clip selebar 0 tidak pernah dianggap "terlihat" oleh browser. */}
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }}>
+            <motion.p
+              variants={HANDWRITING_VARIANTS}
+              className="mt-2 font-(family-name:--font-story-script) text-[3.5rem] leading-[1.05]!"
+            >
+              {BRIDE.nickname} &amp; {GROOM.nickname}
+            </motion.p>
+          </motion.div>
           {/* Setangkai mawar yang bergoyang; bisa diketuk. */}
           <motion.div
             aria-hidden="true"

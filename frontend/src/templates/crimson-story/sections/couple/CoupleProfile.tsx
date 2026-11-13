@@ -16,15 +16,15 @@ export function CoupleProfile({ member, revealDirection }: CoupleProfileProps) {
   return (
     <StoryReveal direction={revealDirection} className="text-center">
       <p className="text-[0.75rem] uppercase tracking-[0.35em]! text-antique">{member.roleLabel}</p>
-      <motion.h3
-        variants={HANDWRITING_VARIANTS}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.8 }}
-        className="mt-2 font-(family-name:--font-story-script) text-[2.5rem] leading-[1.15]! text-balance text-maroon"
-      >
-        {member.fullName}
-      </motion.h3>
+      {/* Pemicu di pembungkus: elemen yang ter-clip selebar 0 tidak pernah dianggap "terlihat" oleh browser. */}
+      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }}>
+        <motion.h3
+          variants={HANDWRITING_VARIANTS}
+          className="mt-2 font-(family-name:--font-story-script) text-[2.5rem] leading-[1.15]! text-balance text-maroon"
+        >
+          {member.fullName}
+        </motion.h3>
+      </motion.div>
       <p className="mt-3 text-[1rem] leading-snug! text-ink/85">
         <span className="text-ink/60">{member.childLabel}</span>
         <br />

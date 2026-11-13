@@ -61,7 +61,9 @@ export function StorySidePanel({ activeChapterId, isInvitationOpen, onSelectChap
             <motion.p
               key="open-hint"
               className="mt-6 text-center text-[1rem] text-ivory/70"
-              exit={{ opacity: 0, y: -8 }}
+              // Transisi exit sendiri: tanpa ini exit ikut `repeat: Infinity` di bawah, tak pernah selesai,
+              // dan AnimatePresence mode="wait" tidak pernah menampilkan daftar isi.
+              exit={{ opacity: 0, y: -8, transition: { duration: 0.3 } }}
               animate={{ opacity: [0.5, 1, 0.5] }}
               transition={{ opacity: { duration: 3, repeat: Infinity, ease: "easeInOut" } }}
             >

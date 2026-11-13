@@ -31,8 +31,7 @@ export function ChapterProgressBar({ activeChapterId, onSelectChapter }: Chapter
       className="fixed inset-x-0 top-0 z-30 mx-auto w-full max-w-107.5 lg:hidden"
       initial={{ y: "-100%" }}
       animate={{ y: 0 }}
-      // Tunggu sampul selesai dibalik (±0.9 dtk) sebelum bilah turun.
-      transition={{ duration: 0.6, ease: STORY_EASE, delay: 1.1 }}
+      transition={{ duration: 0.6, ease: STORY_EASE, delay: 0.2 }}
     >
       <div className="bg-white/90 backdrop-blur-md">
         <button

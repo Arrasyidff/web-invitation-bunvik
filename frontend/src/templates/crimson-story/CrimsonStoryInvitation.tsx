@@ -33,11 +33,13 @@ export function CrimsonStoryInvitation() {
   const guestName = searchParams.get("to") ?? undefined;
 
   const [isInvitationOpen, setIsInvitationOpen] = useState(false);
+  /** true setelah sampul selesai dibalik dan section-section bab sudah terpasang di DOM. */
+  const [isStoryMounted, setIsStoryMounted] = useState(false);
   const [activeChapterId, setActiveChapterId] = useState<ChapterId | null>(null);
 
   // Tandai bab yang sedang berada di tengah layar.
   useEffect(() => {
-    if (!isInvitationOpen) return;
+    if (!isStoryMounted) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -53,7 +55,12 @@ export function CrimsonStoryInvitation() {
     });
 
     return () => observer.disconnect();
-  }, [isInvitationOpen]);
+  }, [isStoryMounted]);
+
+  function handleCoverExitComplete() {
+    window.scrollTo({ top: 0 });
+    setIsStoryMounted(true);
+  }
 
   return (
     <MotionConfig reducedMotion="user">
@@ -68,12 +75,12 @@ export function CrimsonStoryInvitation() {
 
         <div className="relative mx-auto w-full max-w-107.5 bg-white lg:mr-0 lg:ml-auto">
           {/* Di luar pembungkus beranimasi: elemen `fixed` tidak boleh berada di dalam elemen ber-transform. */}
-          {isInvitationOpen && (
+          {isStoryMounted && (
             <ChapterProgressBar activeChapterId={activeChapterId} onSelectChapter={scrollToChapter} />
           )}
 
           {/* Sampul "dibalik" dulu sampai selesai, baru isi buku masuk. */}
-          <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo({ top: 0 })}>
+          <AnimatePresence mode="wait" onExitComplete={handleCoverExitComplete}>
             {isInvitationOpen ? (
               <motion.div
                 key="story"

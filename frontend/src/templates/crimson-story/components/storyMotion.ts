@@ -27,6 +27,8 @@ export const PRESS_INTERACTION = {
 /**
  * Tulisan script tampak "ditulis tangan" dari kiri ke kanan.
  * Inset negatif memberi ruang untuk ekor huruf Great Vibes yang keluar dari kotak teks.
+ * PENTING: jangan pasang `whileInView` di elemen yang memakai varian ini; pasang di
+ * pembungkusnya. Elemen yang ter-clip selebar 0 tidak pernah dianggap terlihat, jadi tak pernah muncul.
  */
 export const HANDWRITING_VARIANTS: Variants = {
   hidden: { clipPath: "inset(-40% 100% -40% -20%)" },
