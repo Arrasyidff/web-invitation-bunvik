@@ -14,6 +14,11 @@
   --color-maroon-dark: #4f0e14;
   --color-petal: #f5d9d2;
   --color-ivory: #fcf5f0;
+
+  /* Tambahan template crimson-story (nuansa kertas buku tua) */
+  --color-parchment: #f4e9de;
+  --color-ink: #3b2a27;
+  --color-antique: #a8814f;
 }
 
 @theme inline {
@@ -161,4 +166,27 @@ p, h2, h3, h4 {
 
 .animate-petal-sway {
   animation: petal-sway 6s ease-in-out infinite;
+}
+
+/* Sampul dibuka seperti halaman buku (template crimson-story) */
+@keyframes story-cover-turn {
+  from {
+    opacity: 1;
+    transform: perspective(1800px) rotateY(0deg);
+  }
+  to {
+    opacity: 0;
+    transform: perspective(1800px) rotateY(-95deg);
+  }
+}
+
+.animate-story-cover-turn {
+  transform-origin: left center;
+  animation: story-cover-turn 0.9s cubic-bezier(0.6, 0.05, 0.4, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-story-cover-turn {
+    animation-duration: 0.01s;
+  }
 }
