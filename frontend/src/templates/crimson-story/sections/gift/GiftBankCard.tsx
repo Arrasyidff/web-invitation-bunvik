@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { AnimatePresence, motion } from "motion/react";
+import { PRESS_INTERACTION, STORY_EASE } from "@/templates/crimson-story/components/storyMotion";
+import { StoryReveal } from "@/templates/crimson-story/components/StoryReveal";
 import type { WEDDING_GIFT } from "@/templates/crimson-story/content";
 
 interface GiftBankCardProps {
@@ -33,9 +35,10 @@ export function GiftBankCard({ bankAccount, revealDelay = 0 }: GiftBankCardProps
   }
 
   return (
-    <ScrollReveal
+    <StoryReveal
       direction="bottom"
       delay={revealDelay}
+      isLiftedOnHover
       className="flex items-center justify-between gap-4 rounded-2xl bg-white px-5 py-4"
     >
       <div className="min-w-0">
@@ -47,16 +50,44 @@ export function GiftBankCard({ bankAccount, revealDelay = 0 }: GiftBankCardProps
         {hasCopyError && <p className="mt-1 text-[0.75rem] text-red-700">Gagal menyalin, salin manual ya.</p>}
       </div>
 
-      <button
+      <motion.button
+        {...PRESS_INTERACTION}
         type="button"
         onClick={handleCopyButtonClick}
         aria-live="polite"
-        className={`shrink-0 rounded-full px-4 py-2 text-[0.75rem] uppercase tracking-[0.15em] transition-colors ${
+        className={`inline-flex min-w-26 shrink-0 items-center justify-center overflow-hidden rounded-full px-4 py-2 text-[0.75rem] uppercase tracking-[0.15em] transition-colors ${
           isCopied ? "bg-maroon text-ivory" : "bg-maroon/10 text-maroon hover:bg-maroon/15"
         }`}
       >
-        {isCopied ? "Tersalin" : "Salin"}
-      </button>
-    </ScrollReveal>
+        {/* Label lama keluar ke atas, label baru masuk dari bawah. */}
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.span
+            key={isCopied ? "copied" : "idle"}
+            className="inline-flex items-center gap-1.5"
+            initial={{ y: 12, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -12, opacity: 0 }}
+            transition={{ duration: 0.18, ease: STORY_EASE }}
+          >
+            {isCopied && (
+              <svg viewBox="0 0 12 12" aria-hidden="true" className="h-3 w-3">
+                <motion.path
+                  d="M2 6.5l2.5 2.5L10 3.5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={1.8}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 0.35, delay: 0.1 }}
+                />
+              </svg>
+            )}
+            {isCopied ? "Tersalin" : "Salin"}
+          </motion.span>
+        </AnimatePresence>
+      </motion.button>
+    </StoryReveal>
   );
 }

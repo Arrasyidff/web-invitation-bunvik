@@ -1,4 +1,8 @@
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
+"use client";
+
+import { motion } from "motion/react";
+import { BOUNCY_SPRING } from "@/templates/crimson-story/components/storyMotion";
+import { StoryReveal } from "@/templates/crimson-story/components/StoryReveal";
 import { PhotoFrame } from "@/templates/crimson-story/components/PhotoFrame";
 import type { LoveStoryChapter } from "@/templates/crimson-story/content";
 
@@ -17,14 +21,18 @@ export function StoryTimelineEntry({ loveStoryChapter, chapterNumber }: StoryTim
 
   return (
     <li className="relative pb-12 pl-14">
-      <span
+      <motion.span
         aria-hidden="true"
         className="absolute left-0 top-0 flex h-9 w-9 items-center justify-center rounded-full bg-petal text-[0.8125rem] font-medium text-maroon"
+        initial={{ scale: 0 }}
+        whileInView={{ scale: 1 }}
+        viewport={{ once: true, amount: 1, margin: "0px 0px -20% 0px" }}
+        transition={BOUNCY_SPRING}
       >
         {romanNumeral}
-      </span>
+      </motion.span>
 
-      <ScrollReveal direction="right">
+      <StoryReveal direction="right">
         <p className="text-[0.75rem] uppercase tracking-[0.3em]! text-antique">Bagian {romanNumeral}</p>
         <h3 className="mt-1 font-(family-name:--font-story-script) text-[2.125rem] leading-tight! text-maroon">
           {loveStoryChapter.title}
@@ -34,12 +42,13 @@ export function StoryTimelineEntry({ loveStoryChapter, chapterNumber }: StoryTim
           <PhotoFrame
             label={`Foto kenangan: ${loveStoryChapter.title}`}
             caption={loveStoryChapter.title}
-            className={`mt-4 w-[86%] ${isEven ? "ml-auto rotate-2" : "-rotate-2"}`}
+            tiltDegrees={isEven ? 2 : -2}
+            className={`mt-4 w-[86%] ${isEven ? "ml-auto" : ""}`}
           />
         )}
 
         <p className="mt-4 text-[1rem] leading-normal! text-ink/85">{loveStoryChapter.story}</p>
-      </ScrollReveal>
+      </StoryReveal>
     </li>
   );
 }

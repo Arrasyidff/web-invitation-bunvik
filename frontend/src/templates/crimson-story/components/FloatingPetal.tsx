@@ -1,4 +1,5 @@
 import Image, { type StaticImageData } from "next/image";
+import { ParallaxLayer } from "./ParallaxLayer";
 
 interface FloatingPetalProps {
   src: StaticImageData;
@@ -6,22 +7,31 @@ interface FloatingPetalProps {
   className: string;
   rotateDegrees?: number;
   delaySeconds?: number;
+  /** Seberapa jauh kelopak "melayang" mengikuti scroll (px). */
+  parallaxDistance?: number;
 }
 
-/** Kelopak dekoratif yang bergoyang pelan; murni hiasan. */
-export function FloatingPetal({ src, className, rotateDegrees = 0, delaySeconds = 0 }: FloatingPetalProps) {
+/** Kelopak dekoratif yang bergoyang pelan dan melayang mengikuti scroll; murni hiasan. */
+export function FloatingPetal({
+  src,
+  className,
+  rotateDegrees = 0,
+  delaySeconds = 0,
+  parallaxDistance = 60,
+}: FloatingPetalProps) {
   return (
-    <Image
-      src={src}
-      alt=""
-      aria-hidden="true"
-      className={`pointer-events-none absolute h-auto animate-petal-sway ${className}`}
-      style={
-        {
-          "--petal-rotate": `${rotateDegrees}deg`,
-          animationDelay: `${delaySeconds}s`,
-        } as React.CSSProperties
-      }
-    />
+    <ParallaxLayer className={`absolute ${className}`} distance={parallaxDistance}>
+      <Image
+        src={src}
+        alt=""
+        className="h-auto w-full animate-petal-sway"
+        style={
+          {
+            "--petal-rotate": `${rotateDegrees}deg`,
+            animationDelay: `${delaySeconds}s`,
+          } as React.CSSProperties
+        }
+      />
+    </ParallaxLayer>
   );
 }

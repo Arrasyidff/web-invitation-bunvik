@@ -1,19 +1,27 @@
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
+"use client";
+
+import { motion } from "motion/react";
+import { BOUNCY_SPRING } from "@/templates/crimson-story/components/storyMotion";
+import { StoryReveal } from "@/templates/crimson-story/components/StoryReveal";
 import { HOLY_VERSE } from "@/templates/crimson-story/content";
 
 /** Ayat suci dalam blok kutipan bergaya halaman buku. */
 export function OpeningVerse() {
   return (
-    <ScrollReveal
+    <StoryReveal
       direction="bottom"
       className="relative mt-12 px-2 pb-2 pt-10 text-center"
     >
-      <span
+      <motion.span
         aria-hidden="true"
         className="absolute -top-6 left-1/2 -translate-x-1/2 font-(family-name:--font-story-script) text-[4rem] leading-none text-antique/70"
+        initial={{ scale: 0, rotate: -30 }}
+        whileInView={{ scale: 1, rotate: 0 }}
+        viewport={{ once: true }}
+        transition={{ ...BOUNCY_SPRING, delay: 0.3 }}
       >
         &ldquo;
-      </span>
+      </motion.span>
 
       <p
         dir="rtl"
@@ -28,6 +36,6 @@ export function OpeningVerse() {
       <p className="mt-5 text-[0.8125rem] font-semibold uppercase tracking-[0.3em]! text-maroon">
         {HOLY_VERSE.reference}
       </p>
-    </ScrollReveal>
+    </StoryReveal>
   );
 }

@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "motion/react";
+
 interface RsvpChoiceOption<OptionValue> {
   value: OptionValue;
   label: string;
@@ -13,7 +17,7 @@ interface RsvpChoiceGroupProps<OptionValue extends string | number> {
   isStacked?: boolean;
 }
 
-/** Grup radio bergaya tombol pil. */
+/** Grup radio bergaya tombol pil; latar marun meluncur ke pilihan yang dipilih. */
 export function RsvpChoiceGroup<OptionValue extends string | number>({
   legend,
   name,
@@ -29,14 +33,21 @@ export function RsvpChoiceGroup<OptionValue extends string | number>({
         {options.map((option) => {
           const isSelected = option.value === selectedValue;
           return (
-            <label
+            <motion.label
               key={String(option.value)}
-              className={`flex flex-1 cursor-pointer items-center justify-center rounded-full px-4 py-2.5 text-[0.9375rem] transition-colors has-focus-visible:ring-2 has-focus-visible:ring-maroon/40 ${
-                isSelected
-                  ? "bg-maroon text-ivory"
-                  : "bg-neutral-100 text-ink hover:bg-maroon/10"
+              whileTap={{ scale: 0.97 }}
+              className={`relative flex flex-1 cursor-pointer items-center justify-center rounded-full bg-neutral-100 px-4 py-2.5 text-[0.9375rem] transition-colors has-focus-visible:ring-2 has-focus-visible:ring-maroon/40 ${
+                isSelected ? "text-ivory" : "text-ink hover:bg-maroon/10"
               }`}
             >
+              {isSelected && (
+                <motion.span
+                  layoutId={`${name}-selected`}
+                  aria-hidden="true"
+                  className="absolute inset-0 rounded-full bg-maroon"
+                  transition={{ type: "spring", stiffness: 420, damping: 34 }}
+                />
+              )}
               <input
                 type="radio"
                 name={name}
@@ -45,8 +56,8 @@ export function RsvpChoiceGroup<OptionValue extends string | number>({
                 onChange={() => onSelect(option.value)}
                 className="sr-only"
               />
-              {option.label}
-            </label>
+              <span className="relative">{option.label}</span>
+            </motion.label>
           );
         })}
       </div>

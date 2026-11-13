@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { AnimatePresence, motion } from "motion/react";
+import { StoryReveal } from "@/templates/crimson-story/components/StoryReveal";
 import type { RsvpFormData } from "@/features/rsvp/types";
 import { submitRsvp } from "@/features/rsvp/services/rsvpService";
 import { ChapterHeading } from "@/templates/crimson-story/components/ChapterHeading";
@@ -24,21 +25,26 @@ export function RsvpSection() {
       <SectionWaves />
 
       <div className="relative">
-        <ScrollReveal direction="bottom">
+        <StoryReveal direction="bottom">
           <ChapterHeading chapter={getStoryChapter("rsvp")} />
           <p className="mx-auto mt-4 max-w-88 text-center text-[0.9375rem] leading-normal! text-ink/70">{RSVP_INTRO}</p>
-        </ScrollReveal>
+        </StoryReveal>
 
-        <ScrollReveal direction="bottom" delay={100} className="mt-10">
-          {submittedGuestName ? (
-            <RsvpSubmitted guestName={submittedGuestName} />
-          ) : (
-            <RsvpForm
-              onSubmitRsvp={submitZakiyaFadelRsvp}
-              onSubmitSuccess={(formData) => setSubmittedGuestName(formData.guestName.trim())}
-            />
-          )}
-        </ScrollReveal>
+        <StoryReveal direction="bottom" delay={100} className="mt-10">
+          {/* Form menghilang dulu, lalu kartu terima kasih muncul. */}
+          <AnimatePresence mode="wait">
+            {submittedGuestName ? (
+              <RsvpSubmitted key="submitted" guestName={submittedGuestName} />
+            ) : (
+              <motion.div key="form" exit={{ opacity: 0, scale: 0.95, filter: "blur(4px)" }} transition={{ duration: 0.3 }}>
+                <RsvpForm
+                  onSubmitRsvp={submitZakiyaFadelRsvp}
+                  onSubmitSuccess={(formData) => setSubmittedGuestName(formData.guestName.trim())}
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </StoryReveal>
       </div>
     </section>
   );

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "motion/react";
+import { RISE_VARIANTS, STORY_EASE, createStaggerVariants } from "@/templates/crimson-story/components/storyMotion";
 import { calculateCountdown, EMPTY_COUNTDOWN, type CountdownTime } from "@/lib/countdown";
 
 interface EventCountdownProps {
@@ -40,15 +42,32 @@ export function EventCountdown({ targetIsoDate }: EventCountdownProps) {
   ];
 
   return (
-    <div className="mt-8 grid grid-cols-4 py-2">
+    <motion.div
+      className="mt-8 grid grid-cols-4 py-2"
+      variants={createStaggerVariants(0.1)}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.6 }}
+    >
       {countdownUnits.map((unit) => (
-        <div key={unit.label} className="flex flex-col items-center">
-          <span className="text-[1.875rem] font-medium leading-none tabular-nums">
-            {String(unit.value).padStart(2, "0")}
+        <motion.div key={unit.label} variants={RISE_VARIANTS} className="flex flex-col items-center">
+          {/* Angka lama keluar ke atas, angka baru masuk dari bawah, seperti kalender sobek. */}
+          <span className="relative flex h-[1em] items-center overflow-hidden text-[1.875rem] font-medium leading-none tabular-nums">
+            <AnimatePresence mode="popLayout" initial={false}>
+              <motion.span
+                key={unit.value}
+                initial={{ y: "100%", opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: "-100%", opacity: 0 }}
+                transition={{ duration: 0.4, ease: STORY_EASE }}
+              >
+                {String(unit.value).padStart(2, "0")}
+              </motion.span>
+            </AnimatePresence>
           </span>
           <span className="mt-1.5 text-[0.75rem] uppercase tracking-[0.2em] text-ivory/65">{unit.label}</span>
-        </div>
+        </motion.div>
       ))}
-    </div>
+    </motion.div>
   );
 }

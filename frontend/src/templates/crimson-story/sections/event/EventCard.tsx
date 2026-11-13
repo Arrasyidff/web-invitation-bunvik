@@ -1,4 +1,8 @@
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
+"use client";
+
+import { motion } from "motion/react";
+import { PRESS_INTERACTION } from "@/templates/crimson-story/components/storyMotion";
+import { StoryReveal } from "@/templates/crimson-story/components/StoryReveal";
 import { OrnamentDivider } from "@/templates/crimson-story/components/OrnamentDivider";
 import type { WeddingEvent } from "@/templates/crimson-story/content";
 
@@ -10,9 +14,10 @@ interface EventCardProps {
 /** Kartu acara bergaya halaman buku: satu kalimat naratif, lalu info praktis yang mudah dipindai. */
 export function EventCard({ weddingEvent, revealDelay = 0 }: EventCardProps) {
   return (
-    <ScrollReveal
+    <StoryReveal
       direction="bottom"
       delay={revealDelay}
+      isLiftedOnHover
       className="relative rounded-3xl bg-white px-6 pb-8 pt-9 text-center"
     >
       <h3 className="font-(family-name:--font-story-script) text-[2.5rem] leading-none! text-maroon">
@@ -38,18 +43,29 @@ export function EventCard({ weddingEvent, revealDelay = 0 }: EventCardProps) {
 
       <OrnamentDivider className="my-6 w-40" />
 
-      <a
+      <motion.a
+        {...PRESS_INTERACTION}
         href={weddingEvent.mapsUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="relative inline-flex items-center gap-2 rounded-full bg-maroon px-6 py-2.5 text-[0.8125rem] uppercase tracking-[0.2em] text-ivory transition-transform active:scale-95"
+        className="relative inline-flex items-center gap-2 rounded-full bg-maroon px-6 py-2.5 text-[0.8125rem] uppercase tracking-[0.2em] text-ivory"
       >
-        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth={1.6} className="h-4.5 w-4.5">
+        {/* Pin peta memantul pelan supaya terlihat bisa ditekan. */}
+        <motion.svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={1.6}
+          className="h-4.5 w-4.5"
+          animate={{ y: [0, -3, 0] }}
+          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+        >
           <path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0113 0c0 5.4-6.5 11-6.5 11z" />
           <circle cx="12" cy="10" r="2.4" />
-        </svg>
+        </motion.svg>
         Lihat Lokasi
-      </a>
-    </ScrollReveal>
+      </motion.a>
+    </StoryReveal>
   );
 }

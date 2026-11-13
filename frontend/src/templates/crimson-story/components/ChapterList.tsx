@@ -1,4 +1,8 @@
+"use client";
+
+import { motion } from "motion/react";
 import { STORY_CHAPTERS, type ChapterId } from "@/templates/crimson-story/content";
+import { PRESS_SPRING } from "./storyMotion";
 
 interface ChapterListProps {
   activeChapterId: ChapterId | null;
@@ -7,7 +11,7 @@ interface ChapterListProps {
   tone?: "dark" | "light";
 }
 
-/** Daftar isi undangan; bab yang sedang dibaca ditandai. */
+/** Daftar isi undangan; penanda bab aktif meluncur ke bab yang sedang dibaca. */
 export function ChapterList({ activeChapterId, onSelectChapter, tone = "dark" }: ChapterListProps) {
   const isLight = tone === "light";
 
@@ -19,11 +23,23 @@ export function ChapterList({ activeChapterId, onSelectChapter, tone = "dark" }:
         const idleClassName = isLight ? "text-ivory/55 hover:text-ivory/85" : "text-ink/60 hover:text-ink";
 
         return (
-          <li key={chapter.id}>
-            <button
+          <li key={chapter.id} className="relative">
+            {isActive && (
+              <motion.span
+                // layoutId berbeda per tone: daftar mobile & desktop bisa ter-render bersamaan.
+                layoutId={`story-chapter-indicator-${tone}`}
+                aria-hidden="true"
+                className={`absolute -left-3 bottom-2.5 top-2.5 w-0.5 rounded-full ${isLight ? "bg-petal" : "bg-maroon"}`}
+                transition={{ type: "spring", stiffness: 380, damping: 32 }}
+              />
+            )}
+            <motion.button
               type="button"
               onClick={() => onSelectChapter(chapter.id)}
               aria-current={isActive ? "true" : undefined}
+              whileHover={{ x: 4 }}
+              whileTap={{ x: 2, scale: 0.98 }}
+              transition={PRESS_SPRING}
               className={`flex w-full items-baseline gap-3 py-2 text-left transition-colors ${
                 isActive ? activeClassName : idleClassName
               }`}
@@ -36,7 +52,7 @@ export function ChapterList({ activeChapterId, onSelectChapter, tone = "dark" }:
                 {chapter.label}
               </span>
               <span className="text-[0.9375rem] font-medium">{chapter.title}</span>
-            </button>
+            </motion.button>
           </li>
         );
       })}

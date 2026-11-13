@@ -1,4 +1,8 @@
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
+"use client";
+
+import { motion } from "motion/react";
+import { PRESS_INTERACTION } from "@/templates/crimson-story/components/storyMotion";
+import { StoryReveal } from "@/templates/crimson-story/components/StoryReveal";
 import { ChapterHeading } from "@/templates/crimson-story/components/ChapterHeading";
 import { FloatingPetal } from "@/templates/crimson-story/components/FloatingPetal";
 import {
@@ -21,26 +25,25 @@ export function EventSaveTheDate() {
       </div>
 
       <div className="relative">
-        <ScrollReveal direction="bottom">
-          <ChapterHeading chapter={getStoryChapter("event")} tone="light" />
-        </ScrollReveal>
+        <ChapterHeading chapter={getStoryChapter("event")} tone="light" />
 
-        <ScrollReveal direction="bottom" delay={100} className="mt-8 flex items-center justify-center gap-5">
-          <p className="w-24 text-right text-[0.9375rem] uppercase tracking-[0.3em]! text-ivory/80">
+        <StoryReveal direction="zoom" delay={100} className="mt-8 flex items-center justify-center gap-5">
+          <p className="w-24 text-right font-(family-name:--font-story-date) text-[1.125rem] font-medium uppercase tracking-[0.3em]! text-ivory/80">
             {WEDDING_DATE_PARTS.weekday}
           </p>
-          <p className="px-3 text-[5rem] font-light leading-none!">
+          <p className="border-x border-ivory/30 px-6 font-(family-name:--font-story-date) text-[6rem] font-light leading-[0.85]! lining-nums">
             {WEDDING_DATE_PARTS.day}
           </p>
-          <p className="w-24 text-left text-[0.9375rem] uppercase leading-snug! tracking-[0.2em]! text-ivory/80">
+          <p className="w-24 text-left font-(family-name:--font-story-date) text-[1.125rem] font-medium uppercase leading-snug! tracking-[0.2em]! lining-nums text-ivory/80">
             {WEDDING_DATE_PARTS.monthYear}
           </p>
-        </ScrollReveal>
+        </StoryReveal>
 
         <EventCountdown targetIsoDate={COUNTDOWN_TARGET} />
 
         <div className="mt-9 text-center">
-          <a
+          <motion.a
+            {...PRESS_INTERACTION}
             href={ADD_TO_CALENDAR_URL}
             target="_blank"
             rel="noopener noreferrer"
@@ -51,7 +54,7 @@ export function EventSaveTheDate() {
               <path d="M3.5 10h17M8 3v4M16 3v4" />
             </svg>
             Simpan ke Kalender
-          </a>
+          </motion.a>
         </div>
       </div>
     </div>

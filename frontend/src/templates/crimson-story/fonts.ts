@@ -1,4 +1,4 @@
-import { Amiri, DM_Sans, Great_Vibes } from "next/font/google";
+import { Amiri, Cormorant_Garamond, DM_Sans, Great_Vibes } from "next/font/google";
 
 /**
  * Font khusus template crimson-story; dipasang lewat className di root template.
@@ -24,4 +24,15 @@ export const arabicFont = Amiri({
   variable: "--font-story-arabic",
   subsets: ["arabic"],
   weight: ["400", "700"],
+});
+
+/**
+ * Tanggal: serif tegak yang anggun dengan angka lining (bukan script),
+ * jadi tetap mudah dibaca. Selalu pakai bersama `lining-nums`, tanpa italic.
+ */
+export const dateFont = Cormorant_Garamond({
+  variable: "--font-story-date",
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  style: "normal",
 });

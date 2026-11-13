@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { AnimatePresence, motion, useAnimate } from "motion/react";
+import { PRESS_INTERACTION, STORY_EASE } from "@/templates/crimson-story/components/storyMotion";
 import type { RsvpFormData } from "@/features/rsvp/types";
 import { validateRsvpForm, type RsvpFieldErrors } from "@/features/rsvp/rsvpSchema";
 import { RsvpChoiceGroup } from "./RsvpChoiceGroup";
@@ -31,8 +33,20 @@ const ATTENDANCE_OPTIONS: { value: RsvpFormData["attendanceStatus"]; label: stri
 ];
 
 function FieldError({ message }: FieldErrorProps) {
-  if (!message) return null;
-  return <p className="mt-1.5 text-[0.8125rem] text-red-700">{message}</p>;
+  return (
+    <AnimatePresence>
+      {message && (
+        <motion.p
+          className="mt-1.5 text-[0.8125rem] text-red-700"
+          initial={{ opacity: 0, y: -4 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0 }}
+        >
+          {message}
+        </motion.p>
+      )}
+    </AnimatePresence>
+  );
 }
 
 export function RsvpForm({ onSubmitRsvp, onSubmitSuccess }: RsvpFormProps) {
@@ -40,6 +54,7 @@ export function RsvpForm({ onSubmitRsvp, onSubmitSuccess }: RsvpFormProps) {
   const [fieldErrors, setFieldErrors] = useState<RsvpFieldErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [hasSubmitError, setHasSubmitError] = useState(false);
+  const [formScope, animateForm] = useAnimate<HTMLFormElement>();
 
   const isAttending = formData.attendanceStatus === "hadir";
 
@@ -56,6 +71,8 @@ export function RsvpForm({ onSubmitRsvp, onSubmitSuccess }: RsvpFormProps) {
     const errors = validateRsvpForm(submittedData);
     if (Object.keys(errors).length > 0) {
       setFieldErrors(errors);
+      // Form "menggeleng" pelan sebagai tanda ada yang belum diisi.
+      animateForm(formScope.current, { x: [0, -10, 10, -6, 6, 0] }, { duration: 0.45 });
       return;
     }
 
@@ -72,6 +89,7 @@ export function RsvpForm({ onSubmitRsvp, onSubmitSuccess }: RsvpFormProps) {
 
   return (
     <form
+      ref={formScope}
       onSubmit={handleFormSubmit}
       noValidate
       className="flex flex-col gap-6 rounded-3xl bg-white px-6 py-8 text-ink"
@@ -102,30 +120,42 @@ export function RsvpForm({ onSubmitRsvp, onSubmitSuccess }: RsvpFormProps) {
       />
       <FieldError message={fieldErrors.attendanceStatus} />
 
-      {isAttending && (
-        <div>
-          <RsvpChoiceGroup
-            legend="Jumlah Tamu"
-            name="story-rsvp-guest-count"
-            options={GUEST_COUNT_OPTIONS}
-            selectedValue={formData.guestCount}
-            onSelect={(guestCount) => updateFormData({ guestCount })}
-          />
-          <FieldError message={fieldErrors.guestCount} />
-        </div>
-      )}
+      {/* Pilihan jumlah tamu membuka/menutup halus; margin negatif menetralkan gap saat tertutup. */}
+      <AnimatePresence initial={false}>
+        {isAttending && (
+          <motion.div
+            className="-mx-1 overflow-hidden px-1 pb-1"
+            initial={{ height: 0, opacity: 0, marginTop: -24 }}
+            animate={{ height: "auto", opacity: 1, marginTop: 0 }}
+            exit={{ height: 0, opacity: 0, marginTop: -24 }}
+            transition={{ duration: 0.35, ease: STORY_EASE }}
+          >
+            <RsvpChoiceGroup
+              legend="Jumlah Tamu"
+              name="story-rsvp-guest-count"
+              options={GUEST_COUNT_OPTIONS}
+              selectedValue={formData.guestCount}
+              onSelect={(guestCount) => updateFormData({ guestCount })}
+            />
+            <FieldError message={fieldErrors.guestCount} />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {hasSubmitError && (
         <p className="text-center text-[0.875rem] text-red-700">Gagal mengirim. Silakan coba lagi.</p>
       )}
 
-      <button
+      <motion.button
+        {...PRESS_INTERACTION}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.97 }}
         type="submit"
         disabled={isSubmitting}
-        className="mt-2 rounded-full bg-maroon py-3 text-[0.9375rem] uppercase tracking-[0.25em] text-ivory transition-transform active:scale-[0.98] disabled:opacity-60"
+        className="mt-2 rounded-full bg-maroon py-3 text-[0.9375rem] uppercase tracking-[0.25em] text-ivory disabled:opacity-60"
       >
         {isSubmitting ? "Mengirim..." : "Kirim Konfirmasi"}
-      </button>
+      </motion.button>
     </form>
   );
 }

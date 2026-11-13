@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { arabicFont, sansFont, scriptFont } from "@/templates/crimson-story/fonts";
+import { AnimatePresence, MotionConfig, motion } from "motion/react";
+import { arabicFont, sansFont, scriptFont, dateFont } from "@/templates/crimson-story/fonts";
 import { STORY_CHAPTERS, type ChapterId } from "@/templates/crimson-story/content";
 import { ChapterProgressBar } from "@/templates/crimson-story/components/ChapterProgressBar";
 import { StorySidePanel } from "@/templates/crimson-story/components/StorySidePanel";
@@ -15,9 +16,6 @@ import { RsvpSection } from "@/templates/crimson-story/sections/rsvp/RsvpSection
 import { GiftSection } from "@/templates/crimson-story/sections/gift/GiftSection";
 import { ClosingSection } from "@/templates/crimson-story/sections/closing/ClosingSection";
 
-/** Lama animasi sampul dibuka; harus sama dengan `.animate-story-cover-turn` di globals.css. */
-const COVER_TURN_DURATION_MS = 900;
-
 function scrollToChapter(chapterId: ChapterId) {
   document.getElementById(chapterId)?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
@@ -26,6 +24,8 @@ function scrollToChapter(chapterId: ChapterId) {
  * Template crimson-story (undangan Zakiya & Fadel, versi storytelling).
  * Undangan disusun seperti buku: sampul → Prolog → Bab I–IV → Catatan Kecil → Epilog,
  * dengan daftar isi yang mengikuti bab yang sedang dibaca.
+ * Animasi memakai `motion`; `MotionConfig reducedMotion="user"` mematikan gerak besar
+ * bagi pengunjung yang memilih "kurangi gerakan" di perangkatnya.
  * Props `eventType` belum dipakai karena undangan ini menampilkan akad & resepsi sekaligus.
  */
 export function CrimsonStoryInvitation() {
@@ -33,18 +33,7 @@ export function CrimsonStoryInvitation() {
   const guestName = searchParams.get("to") ?? undefined;
 
   const [isInvitationOpen, setIsInvitationOpen] = useState(false);
-  const [isCoverOpening, setIsCoverOpening] = useState(false);
   const [activeChapterId, setActiveChapterId] = useState<ChapterId | null>(null);
-
-  useEffect(() => {
-    if (!isCoverOpening) return;
-    const timeout = setTimeout(() => {
-      setIsInvitationOpen(true);
-      setIsCoverOpening(false);
-      window.scrollTo({ top: 0 });
-    }, COVER_TURN_DURATION_MS);
-    return () => clearTimeout(timeout);
-  }, [isCoverOpening]);
 
   // Tandai bab yang sedang berada di tengah layar.
   useEffect(() => {
@@ -67,31 +56,45 @@ export function CrimsonStoryInvitation() {
   }, [isInvitationOpen]);
 
   return (
-    <main
-      className={`${arabicFont.variable} ${scriptFont.variable} ${sansFont.variable} min-h-screen bg-maroon-dark font-(family-name:--font-story-sans) text-ink lg:flex`}
-    >
-      <StorySidePanel
-        activeChapterId={activeChapterId}
-        isInvitationOpen={isInvitationOpen}
-        onSelectChapter={scrollToChapter}
-      />
+    <MotionConfig reducedMotion="user">
+      <main
+        className={`${arabicFont.variable} ${scriptFont.variable} ${sansFont.variable} ${dateFont.variable} min-h-screen bg-maroon-dark font-(family-name:--font-story-sans) text-ink lg:flex`}
+      >
+        <StorySidePanel
+          activeChapterId={activeChapterId}
+          isInvitationOpen={isInvitationOpen}
+          onSelectChapter={scrollToChapter}
+        />
 
-      <div className="relative mx-auto w-full max-w-107.5 bg-white lg:mr-0 lg:ml-auto">
-        {isInvitationOpen ? (
-          <div className="animate-fade-in">
+        <div className="relative mx-auto w-full max-w-107.5 bg-white lg:mr-0 lg:ml-auto">
+          {/* Di luar pembungkus beranimasi: elemen `fixed` tidak boleh berada di dalam elemen ber-transform. */}
+          {isInvitationOpen && (
             <ChapterProgressBar activeChapterId={activeChapterId} onSelectChapter={scrollToChapter} />
-            <OpeningSection />
-            <CoupleSection />
-            <StorySection />
-            <EventSection />
-            <RsvpSection />
-            <GiftSection />
-            <ClosingSection />
-          </div>
-        ) : (
-          <CoverSection guestName={guestName} isOpening={isCoverOpening} onOpen={() => setIsCoverOpening(true)} />
-        )}
-      </div>
-    </main>
+          )}
+
+          {/* Sampul "dibalik" dulu sampai selesai, baru isi buku masuk. */}
+          <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo({ top: 0 })}>
+            {isInvitationOpen ? (
+              <motion.div
+                key="story"
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+              >
+                <OpeningSection />
+                <CoupleSection />
+                <StorySection />
+                <EventSection />
+                <RsvpSection />
+                <GiftSection />
+                <ClosingSection />
+              </motion.div>
+            ) : (
+              <CoverSection key="cover" guestName={guestName} onOpen={() => setIsInvitationOpen(true)} />
+            )}
+          </AnimatePresence>
+        </div>
+      </main>
+    </MotionConfig>
   );
 }

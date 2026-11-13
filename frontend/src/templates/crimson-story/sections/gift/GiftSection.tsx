@@ -1,4 +1,4 @@
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { StoryReveal } from "@/templates/crimson-story/components/StoryReveal";
 import { ChapterHeading } from "@/templates/crimson-story/components/ChapterHeading";
 import { SectionWaves } from "@/templates/crimson-story/components/SectionWaves";
 import { WEDDING_GIFT, getStoryChapter } from "@/templates/crimson-story/content";
@@ -12,9 +12,7 @@ export function GiftSection() {
       <SectionWaves />
 
       <div className="relative">
-        <ScrollReveal direction="bottom">
-          <ChapterHeading chapter={getStoryChapter("gift")} />
-        </ScrollReveal>
+        <ChapterHeading chapter={getStoryChapter("gift")} />
 
         <div className="mt-10 flex flex-col gap-6">
           {WEDDING_GIFT.bankAccounts.map((bankAccount, i) => (
@@ -23,7 +21,7 @@ export function GiftSection() {
           <GiftShippingCard recipientName={WEDDING_GIFT.shippingRecipient} address={WEDDING_GIFT.shippingAddress} />
         </div>
 
-        <ScrollReveal direction="bottom">
+        <StoryReveal direction="bottom">
           <ul className="mt-8 flex flex-col gap-2 text-[0.875rem] leading-normal text-ink/65">
             {WEDDING_GIFT.notes.map((note) => (
               <li key={note} className="flex gap-2">
@@ -32,7 +30,7 @@ export function GiftSection() {
               </li>
             ))}
           </ul>
-        </ScrollReveal>
+        </StoryReveal>
       </div>
     </section>
   );

@@ -1,4 +1,3 @@
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { ChapterHeading } from "@/templates/crimson-story/components/ChapterHeading";
 import { OrnamentDivider } from "@/templates/crimson-story/components/OrnamentDivider";
 import { SectionWaves } from "@/templates/crimson-story/components/SectionWaves";
@@ -14,9 +13,7 @@ export function CoupleSection() {
       <SectionWaves isTopWaveVisible={false} />
 
       <div className="relative">
-        <ScrollReveal direction="bottom">
-          <ChapterHeading chapter={getStoryChapter("couple")} />
-        </ScrollReveal>
+        <ChapterHeading chapter={getStoryChapter("couple")} />
 
         <CouplePortraits />
 
