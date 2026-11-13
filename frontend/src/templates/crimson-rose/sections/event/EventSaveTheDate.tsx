@@ -39,7 +39,7 @@ export function EventSaveTheDate() {
           <span className="block text-[2.5rem]">&amp;</span>
           {GROOM.nickname}
         </h2>
-        <ScriptSwash className="mt-1 w-40 text-ivory/80" />
+        <ScriptSwash className="mt-1 w-40" colorClassName="text-ivory/80" />
         <p className="mt-4 text-[1.5rem] tracking-[0.3em]!">{WEDDING_DATE_SHORT}</p>
 
         <EventCountdown targetIsoDate={COUNTDOWN_TARGET} />
