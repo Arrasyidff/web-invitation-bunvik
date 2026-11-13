@@ -8,20 +8,6 @@
 @theme {
   --color-background: #ffffff;
   --color-foreground: #343434;
-
-  /* Palet template ardhian-wilda */
-  --color-wine: #5b1e2d;
-  --color-wine-light: #7b3443;
-  --color-cream: #f7f3ee;
-  --color-sage: #8fa38a;
-  --color-dusty-rose: #c48a92;
-
-  /* Palet template burgundy-rose */
-  --color-burgundy: #5e1219;
-  --color-burgundy-deep: #3f0a0f;
-  --color-blush: #fbf6f2;
-  --color-blush-rose: #d49a96;
-  --color-gold: #c4a06a;
 }
 
 @theme inline {
@@ -159,13 +145,4 @@ p, h2, h3, h4 {
 .animate-spin-disc-paused {
   animation: spin-disc 4s linear infinite;
   animation-play-state: paused;
-}
-
-/* Kertas krem dengan noda cat-air merah muda (template burgundy-rose) */
-.blush-paper {
-  background-color: #fbf6f2;
-  background-image:
-    radial-gradient(ellipse at 18% 12%, rgba(232, 180, 176, 0.28), transparent 55%),
-    radial-gradient(ellipse at 88% 42%, rgba(232, 180, 176, 0.2), transparent 50%),
-    radial-gradient(ellipse at 28% 88%, rgba(232, 180, 176, 0.22), transparent 55%);
 }
