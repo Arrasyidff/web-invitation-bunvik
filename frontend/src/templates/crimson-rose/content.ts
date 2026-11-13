@@ -6,19 +6,35 @@
  * dengan undangan utama (Hendra & Vika).
  */
 
-export const BRIDE = {
+export interface CoupleMember {
+  nickname: string;
+  fullName: string;
+  childLabel: string;
+  fatherName: string;
+  motherName: string;
+  instagramHandle: string;
+  instagramUrl: string;
+}
+
+export const BRIDE: CoupleMember = {
   nickname: "Zakiya",
   fullName: "Nurotuz Zakiya",
-  childOf: "Putri dari Alm. Bapak H. Ali Masyhar & Ibu Anggia Murni",
+  childLabel: "Putri dari",
+  fatherName: "Alm. Bapak H. Ali Masyhar",
+  motherName: "Ibu Anggia Murni",
+  instagramHandle: "nzakiyaaa_",
   instagramUrl: "https://www.instagram.com/nzakiyaaa_/",
-} as const;
+};
 
-export const GROOM = {
+export const GROOM: CoupleMember = {
   nickname: "Fadel",
   fullName: "Arrasyiid Fadel Fatonsyah",
-  childOf: "Putra dari Bapak H. Sunoto & Ibu Hj. Eli Ernawati",
+  childLabel: "Putra dari",
+  fatherName: "Bapak H. Sunoto",
+  motherName: "Ibu Hj. Eli Ernawati",
+  instagramHandle: "arfafa.dev",
   instagramUrl: "https://www.instagram.com/arfafa.dev/",
-} as const;
+};
 
 export const COUPLE_TITLE = `${BRIDE.nickname} & ${GROOM.nickname}`;
 
