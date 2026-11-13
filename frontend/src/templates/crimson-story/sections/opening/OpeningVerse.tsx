@@ -6,11 +6,11 @@ export function OpeningVerse() {
   return (
     <ScrollReveal
       direction="bottom"
-      className="relative mt-12 rounded-2xl border border-antique/30 bg-parchment/70 px-6 pb-8 pt-10 text-center"
+      className="relative mt-12 rounded-2xl border border-antique/30 bg-white px-6 pb-8 pt-10 text-center"
     >
       <span
         aria-hidden="true"
-        className="absolute -top-6 left-1/2 -translate-x-1/2 font-(family-name:--font-story-display) text-[4rem] leading-none text-antique/70"
+        className="absolute -top-6 left-1/2 -translate-x-1/2 font-(family-name:--font-story-script) text-[4rem] leading-none text-antique/70"
       >
         &ldquo;
       </span>
@@ -23,7 +23,7 @@ export function OpeningVerse() {
         {HOLY_VERSE.arabic}
       </p>
 
-      <p className="mt-5 text-[1rem] italic leading-relaxed! text-ink/80">{HOLY_VERSE.translation}</p>
+      <p className="mt-5 text-[1rem] leading-normal! text-ink/80">{HOLY_VERSE.translation}</p>
 
       <p className="mt-5 text-[0.8125rem] font-semibold uppercase tracking-[0.3em]! text-maroon">
         {HOLY_VERSE.reference}

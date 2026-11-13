@@ -35,7 +35,7 @@ export function ChapterList({ activeChapterId, onSelectChapter, tone = "dark" }:
               >
                 {chapter.label}
               </span>
-              <span className="font-(family-name:--font-story-display) text-[1.0625rem] italic">{chapter.title}</span>
+              <span className="text-[0.9375rem] font-medium">{chapter.title}</span>
             </button>
           </li>
         );

@@ -13,14 +13,14 @@ export function EventCard({ weddingEvent, revealDelay = 0 }: EventCardProps) {
     <ScrollReveal
       direction="bottom"
       delay={revealDelay}
-      className="relative rounded-3xl border border-maroon/15 bg-white/80 px-6 pb-8 pt-9 text-center shadow-[0_14px_32px_rgba(59,42,39,0.08)]"
+      className="relative rounded-3xl border border-maroon/15 bg-white px-6 pb-8 pt-9 text-center shadow-[0_14px_32px_rgba(59,42,39,0.08)]"
     >
       <span aria-hidden="true" className="pointer-events-none absolute inset-2 rounded-[1.25rem] border border-antique/25" />
 
       <h3 className="font-(family-name:--font-story-script) text-[2.5rem] leading-none! text-maroon">
         {weddingEvent.title}
       </h3>
-      <p className="mt-3 text-[1rem] italic text-ink/70">{weddingEvent.narrative}</p>
+      <p className="mt-3 text-[1rem] text-ink/70">{weddingEvent.narrative}</p>
 
       <dl className="mt-6 grid grid-cols-2 divide-x divide-antique/30 border-y border-antique/30 py-4">
         <div>
@@ -36,7 +36,7 @@ export function EventCard({ weddingEvent, revealDelay = 0 }: EventCardProps) {
       <p className="mt-6 text-[0.875rem] font-semibold uppercase tracking-[0.2em]! text-maroon">
         {weddingEvent.venueName}
       </p>
-      <p className="mt-2 text-[0.9375rem] leading-relaxed! text-ink/75">{weddingEvent.address}</p>
+      <p className="mt-2 text-[0.9375rem] leading-normal! text-ink/75">{weddingEvent.address}</p>
 
       <OrnamentDivider className="my-6 w-40" />
 

@@ -19,14 +19,14 @@ export function StoryTimelineEntry({ loveStoryChapter, chapterNumber }: StoryTim
     <li className="relative pb-12 pl-14">
       <span
         aria-hidden="true"
-        className="absolute left-0 top-0 flex h-9 w-9 items-center justify-center rounded-full border border-antique/60 bg-ivory font-(family-name:--font-story-display) text-[0.875rem] italic text-maroon shadow-sm"
+        className="absolute left-0 top-0 flex h-9 w-9 items-center justify-center rounded-full border border-antique/60 bg-white text-[0.8125rem] font-medium text-maroon shadow-sm"
       >
         {romanNumeral}
       </span>
 
       <ScrollReveal direction="right">
         <p className="text-[0.75rem] uppercase tracking-[0.3em]! text-antique">Bagian {romanNumeral}</p>
-        <h3 className="mt-1 font-(family-name:--font-story-display) text-[1.625rem] italic leading-tight! text-maroon">
+        <h3 className="mt-1 font-(family-name:--font-story-script) text-[2.125rem] leading-tight! text-maroon">
           {loveStoryChapter.title}
         </h3>
 
@@ -39,7 +39,7 @@ export function StoryTimelineEntry({ loveStoryChapter, chapterNumber }: StoryTim
           />
         )}
 
-        <p className="mt-4 text-[1rem] leading-relaxed! text-ink/85">{loveStoryChapter.story}</p>
+        <p className="mt-4 text-[1rem] leading-normal! text-ink/85">{loveStoryChapter.story}</p>
       </ScrollReveal>
     </li>
   );

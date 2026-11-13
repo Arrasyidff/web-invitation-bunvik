@@ -74,7 +74,7 @@ export function RsvpForm({ onSubmitRsvp, onSubmitSuccess }: RsvpFormProps) {
     <form
       onSubmit={handleFormSubmit}
       noValidate
-      className="flex flex-col gap-6 rounded-3xl border border-antique/25 bg-white/85 px-6 py-8 text-ink shadow-[0_14px_32px_rgba(59,42,39,0.1)]"
+      className="flex flex-col gap-6 rounded-3xl border border-antique/25 bg-white px-6 py-8 text-ink shadow-[0_14px_32px_rgba(59,42,39,0.1)]"
     >
       <div>
         <label htmlFor="story-rsvp-name" className="text-[0.9375rem] uppercase tracking-[0.2em]! text-antique">

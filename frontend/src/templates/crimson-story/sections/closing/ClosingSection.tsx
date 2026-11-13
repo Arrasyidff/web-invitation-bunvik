@@ -23,8 +23,8 @@ export function ClosingSection() {
         </ScrollReveal>
 
         <ScrollReveal direction="bottom" delay={100}>
-          <p className="mx-auto mt-6 max-w-88 text-[1rem] leading-relaxed! text-ivory/80">{CLOSING_MESSAGE}</p>
-          <p className="mt-6 text-[0.9375rem] italic text-ivory/85">{CLOSING_SALAM}</p>
+          <p className="mx-auto mt-6 max-w-88 text-[1rem] leading-normal! text-ivory/80">{CLOSING_MESSAGE}</p>
+          <p className="mt-6 text-[0.9375rem] text-ivory/85">{CLOSING_SALAM}</p>
 
           <OrnamentDivider className="mt-10" colorClassName="text-petal/60" />
 

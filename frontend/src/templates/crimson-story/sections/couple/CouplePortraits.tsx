@@ -9,10 +9,10 @@ export function CouplePortraits() {
   return (
     <div className="relative mx-auto mt-12 h-72 max-w-80">
       <ScrollReveal direction="left" className="absolute left-0 top-0 w-[54%] -rotate-4">
-        <PhotoFrame shape="arch" label={`Foto ${BRIDE.nickname}`} className="bg-ivory shadow-[0_14px_30px_rgba(59,42,39,0.16)]" />
+        <PhotoFrame shape="arch" label={`Foto ${BRIDE.nickname}`} className="bg-white shadow-[0_14px_30px_rgba(59,42,39,0.16)]" />
       </ScrollReveal>
       <ScrollReveal direction="right" delay={120} className="absolute right-0 top-8 w-[54%] rotate-4">
-        <PhotoFrame shape="arch" label={`Foto ${GROOM.nickname}`} className="bg-ivory shadow-[0_14px_30px_rgba(59,42,39,0.16)]" />
+        <PhotoFrame shape="arch" label={`Foto ${GROOM.nickname}`} className="bg-white shadow-[0_14px_30px_rgba(59,42,39,0.16)]" />
       </ScrollReveal>
 
       <span

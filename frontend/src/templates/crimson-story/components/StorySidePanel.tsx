@@ -10,10 +10,10 @@ interface StorySidePanelProps {
   onSelectChapter: (chapterId: ChapterId) => void;
 }
 
-/** Panel kiri (desktop): judul buku dan daftar isi yang mengikuti bab yang dibaca. */
+/** Panel kiri (desktop), fixed agar tidak ikut ter-scroll: judul buku dan daftar isi yang mengikuti bab yang dibaca. */
 export function StorySidePanel({ activeChapterId, isInvitationOpen, onSelectChapter }: StorySidePanelProps) {
   return (
-    <aside className="sticky top-0 hidden h-screen flex-1 items-center justify-center overflow-hidden px-10 text-ivory lg:flex">
+    <aside className="fixed inset-y-0 left-0 right-107.5 hidden items-center justify-center overflow-y-auto px-10 py-10 text-ivory lg:flex">
       <div className="w-full max-w-sm">
         <Image src={bouquetRosesWide} alt="" aria-hidden="true" className="mx-auto h-auto w-56 opacity-95" />
 
@@ -21,7 +21,7 @@ export function StorySidePanel({ activeChapterId, isInvitationOpen, onSelectChap
         <h1 className="mt-3 text-center font-(family-name:--font-story-script) text-[4rem] leading-[1.05]">
           {BRIDE.nickname} <span className="text-[2.75rem] text-petal">&amp;</span> {GROOM.nickname}
         </h1>
-        <p className="mt-3 text-center font-(family-name:--font-story-display) text-[1.125rem] tracking-[0.2em]! text-ivory/80">
+        <p className="mt-3 text-center text-[1.0625rem] tracking-[0.2em]! text-ivory/80">
           {WEDDING_DATE_DOTTED}
         </p>
 
@@ -33,7 +33,7 @@ export function StorySidePanel({ activeChapterId, isInvitationOpen, onSelectChap
             <ChapterList activeChapterId={activeChapterId} onSelectChapter={onSelectChapter} tone="light" />
           </nav>
         ) : (
-          <p className="mt-6 text-center text-[1rem] italic text-ivory/70">
+          <p className="mt-6 text-center text-[1rem] text-ivory/70">
             Buka sampul di samping untuk mulai membaca.
           </p>
         )}

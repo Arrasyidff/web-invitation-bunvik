@@ -36,11 +36,11 @@ export function GiftBankCard({ bankAccount, revealDelay = 0 }: GiftBankCardProps
     <ScrollReveal
       direction="bottom"
       delay={revealDelay}
-      className="flex items-center justify-between gap-4 rounded-2xl border border-antique/30 bg-white/80 px-5 py-4"
+      className="flex items-center justify-between gap-4 rounded-2xl border border-antique/30 bg-white px-5 py-4"
     >
       <div className="min-w-0">
         <p className="text-[0.75rem] font-semibold uppercase tracking-[0.25em]! text-maroon">{bankAccount.bankName}</p>
-        <p className="mt-1 font-(family-name:--font-story-display) text-[1.375rem] tracking-wider! tabular-nums text-ink">
+        <p className="mt-1 text-[1.25rem] font-medium tracking-wider! tabular-nums text-ink">
           {bankAccount.accountNumber}
         </p>
         <p className="text-[0.875rem] text-ink/65">a.n. {bankAccount.accountHolder}</p>
@@ -52,7 +52,7 @@ export function GiftBankCard({ bankAccount, revealDelay = 0 }: GiftBankCardProps
         onClick={handleCopyButtonClick}
         aria-live="polite"
         className={`shrink-0 rounded-full border px-4 py-2 text-[0.75rem] uppercase tracking-[0.15em] transition-colors ${
-          isCopied ? "border-maroon bg-maroon text-ivory" : "border-maroon/40 text-maroon hover:bg-parchment"
+          isCopied ? "border-maroon bg-maroon text-ivory" : "border-maroon/40 text-maroon hover:bg-maroon/5"
         }`}
       >
         {isCopied ? "Tersalin" : "Salin"}

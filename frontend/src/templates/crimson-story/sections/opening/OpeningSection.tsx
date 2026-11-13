@@ -13,7 +13,7 @@ import { OpeningGreeting } from "./OpeningGreeting";
 /** Prolog: ayat suci lalu salam pembuka. */
 export function OpeningSection() {
   return (
-    <section id="opening" className="relative scroll-mt-12 overflow-hidden bg-ivory px-7 pb-24 pt-28">
+    <section id="opening" className="relative scroll-mt-12 overflow-hidden bg-white px-7 pb-24 pt-28">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         <Image src={bouquetRoseBranch} alt="" className="absolute -right-12 -top-6 h-auto w-[58%] -scale-x-100" />
         <FloatingPetal src={petalCrimson3} className="left-[8%] top-[10%] w-6" rotateDegrees={-25} />

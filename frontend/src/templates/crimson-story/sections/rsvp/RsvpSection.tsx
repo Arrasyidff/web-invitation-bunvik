@@ -19,10 +19,10 @@ export function RsvpSection() {
   const [submittedGuestName, setSubmittedGuestName] = useState<string | null>(null);
 
   return (
-    <section id="rsvp" className="relative scroll-mt-12 overflow-hidden bg-parchment px-6 pb-20 pt-24">
+    <section id="rsvp" className="relative border-t border-antique/20 scroll-mt-12 overflow-hidden bg-white px-6 pb-20 pt-24">
       <ScrollReveal direction="bottom">
         <ChapterHeading chapter={getStoryChapter("rsvp")} />
-        <p className="mx-auto mt-4 max-w-88 text-center text-[0.9375rem] leading-relaxed! text-ink/70">{RSVP_INTRO}</p>
+        <p className="mx-auto mt-4 max-w-88 text-center text-[0.9375rem] leading-normal! text-ink/70">{RSVP_INTRO}</p>
       </ScrollReveal>
 
       <ScrollReveal direction="bottom" delay={100} className="mt-10">

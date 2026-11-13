@@ -16,7 +16,7 @@ export function CoupleProfile({ member, revealDirection }: CoupleProfileProps) {
         {member.fullName}
       </h3>
       <p className="mt-3 text-[1rem] leading-snug! text-ink/85">
-        <span className="italic text-ink/60">{member.childLabel}</span>
+        <span className="text-ink/60">{member.childLabel}</span>
         <br />
         {member.fatherName}
         <br />

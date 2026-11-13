@@ -25,7 +25,7 @@ interface EmptyPhotoAreaProps {
 function EmptyPhotoArea({ roundedClassName }: EmptyPhotoAreaProps) {
   return (
     <div
-      className={`flex h-full w-full flex-col items-center justify-center gap-2 border border-dashed border-antique/50 bg-[radial-gradient(circle_at_50%_35%,#fbf3ec,#efdccd)] text-antique/80 ${roundedClassName}`}
+      className={`flex h-full w-full flex-col items-center justify-center gap-2 border border-dashed border-antique/50 bg-[radial-gradient(circle_at_50%_35%,#ffffff,#f3f0ee)] text-antique/80 ${roundedClassName}`}
     >
       <CameraIcon />
       <span className="text-[0.75rem] uppercase tracking-[0.3em]!">Foto</span>

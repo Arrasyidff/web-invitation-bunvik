@@ -26,7 +26,7 @@ export function EventCountdown({ targetIsoDate }: EventCountdownProps) {
 
   if (hasEventStarted) {
     return (
-      <p className="mt-8 text-center font-(family-name:--font-story-display) text-[1.25rem] italic text-ivory/85">
+      <p className="mt-8 text-center text-[1.0625rem] text-ivory/85">
         Alhamdulillah, hari yang dinanti telah tiba.
       </p>
     );
@@ -43,7 +43,7 @@ export function EventCountdown({ targetIsoDate }: EventCountdownProps) {
     <div className="mt-8 grid grid-cols-4 divide-x divide-ivory/20 rounded-2xl border border-ivory/25 bg-maroon-dark/40 py-4">
       {countdownUnits.map((unit) => (
         <div key={unit.label} className="flex flex-col items-center">
-          <span className="font-(family-name:--font-story-display) text-[1.875rem] leading-none tabular-nums">
+          <span className="text-[1.875rem] font-medium leading-none tabular-nums">
             {String(unit.value).padStart(2, "0")}
           </span>
           <span className="mt-1.5 text-[0.75rem] uppercase tracking-[0.2em] text-ivory/65">{unit.label}</span>

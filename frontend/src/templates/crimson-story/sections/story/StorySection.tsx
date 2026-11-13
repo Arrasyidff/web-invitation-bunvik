@@ -8,7 +8,7 @@ import { StoryTimelineEntry } from "./StoryTimelineEntry";
 /** Bab II · Perjalanan: lini masa kisah cinta, ditutup penanda "bersambung". */
 export function StorySection() {
   return (
-    <section id="story" className="relative scroll-mt-12 overflow-hidden bg-ivory px-6 pb-24 pt-24">
+    <section id="story" className="relative border-t border-antique/20 scroll-mt-12 overflow-hidden bg-white px-6 pb-24 pt-24">
       <Image
         src={branchBerryLong}
         alt=""
@@ -33,7 +33,7 @@ export function StorySection() {
       </ol>
 
       <ScrollReveal direction="bottom" className="mt-4 text-center">
-        <p className="font-(family-name:--font-story-display) text-[1.0625rem] italic text-ink/60">
+        <p className="text-[0.9375rem] tracking-wide text-ink/60">
           — bersambung di Bab III —
         </p>
       </ScrollReveal>

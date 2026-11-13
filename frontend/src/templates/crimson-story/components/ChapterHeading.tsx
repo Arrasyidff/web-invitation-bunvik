@@ -25,7 +25,7 @@ export function ChapterHeading({ chapter, tone = "dark", isLeadVisible = true }:
       </p>
 
       <h2
-        className={`mt-4 font-(family-name:--font-story-display) text-[2.5rem] italic leading-[1.1]! text-balance ${
+        className={`mt-4 font-(family-name:--font-story-script) text-[3.25rem] leading-[1.1]! text-balance ${
           isLight ? "text-ivory" : "text-maroon"
         }`}
       >
@@ -40,7 +40,7 @@ export function ChapterHeading({ chapter, tone = "dark", isLeadVisible = true }:
 
       {isLeadVisible && (
         <p
-          className={`mx-auto mt-6 max-w-80 text-[1.0625rem] italic leading-relaxed! text-balance ${
+          className={`mx-auto mt-6 max-w-80 text-[1.0625rem] leading-normal! text-balance ${
             isLight ? "text-ivory/85" : "text-ink/80"
           }`}
         >

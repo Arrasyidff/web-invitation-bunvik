@@ -34,7 +34,7 @@ export function RsvpChoiceGroup<OptionValue extends string | number>({
               className={`flex flex-1 cursor-pointer items-center justify-center rounded-full border px-4 py-2.5 text-[0.9375rem] transition-colors has-focus-visible:ring-2 has-focus-visible:ring-maroon/40 ${
                 isSelected
                   ? "border-maroon bg-maroon text-ivory"
-                  : "border-maroon/35 bg-transparent text-ink hover:bg-parchment"
+                  : "border-maroon/35 bg-transparent text-ink hover:bg-maroon/5"
               }`}
             >
               <input

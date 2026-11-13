@@ -7,7 +7,7 @@ import { GiftShippingCard } from "./GiftShippingCard";
 /** Catatan Kecil · Tanda Kasih: rekening, alamat kirim hadiah, dan catatan. */
 export function GiftSection() {
   return (
-    <section id="gift" className="relative scroll-mt-12 bg-ivory px-6 pb-20 pt-24">
+    <section id="gift" className="relative border-t border-antique/20 scroll-mt-12 bg-white px-6 pb-20 pt-24">
       <ScrollReveal direction="bottom">
         <ChapterHeading chapter={getStoryChapter("gift")} />
       </ScrollReveal>
@@ -20,7 +20,7 @@ export function GiftSection() {
       </div>
 
       <ScrollReveal direction="bottom">
-        <ul className="mt-8 flex flex-col gap-2 text-[0.875rem] italic leading-relaxed text-ink/65">
+        <ul className="mt-8 flex flex-col gap-2 text-[0.875rem] leading-normal text-ink/65">
           {WEDDING_GIFT.notes.map((note) => (
             <li key={note} className="flex gap-2">
               <span aria-hidden="true" className="text-antique">✦</span>

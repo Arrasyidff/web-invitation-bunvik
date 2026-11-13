@@ -9,7 +9,7 @@ interface ChapterProgressBarProps {
   onSelectChapter: (chapterId: ChapterId) => void;
 }
 
-/** Bilah atas (mobile): bab yang sedang dibaca, progres baca, dan daftar isi. */
+/** Bilah atas (mobile), fixed karena `sticky` tidak jalan akibat overflow-x-hidden di body: bab yang sedang dibaca, progres baca, dan daftar isi. */
 export function ChapterProgressBar({ activeChapterId, onSelectChapter }: ChapterProgressBarProps) {
   const [readingProgress, setReadingProgress] = useState(0);
   const [isTableOfContentsOpen, setIsTableOfContentsOpen] = useState(false);
@@ -33,8 +33,8 @@ export function ChapterProgressBar({ activeChapterId, onSelectChapter }: Chapter
   }
 
   return (
-    <nav aria-label="Daftar isi" className="sticky top-0 z-30 lg:hidden">
-      <div className="border-b border-antique/25 bg-ivory/90 backdrop-blur-md">
+    <nav aria-label="Daftar isi" className="fixed inset-x-0 top-0 z-30 mx-auto w-full max-w-107.5 lg:hidden">
+      <div className="border-b border-antique/25 bg-white/90 backdrop-blur-md">
         <button
           type="button"
           onClick={() => setIsTableOfContentsOpen((isOpen) => !isOpen)}
@@ -45,7 +45,7 @@ export function ChapterProgressBar({ activeChapterId, onSelectChapter }: Chapter
             <span className="shrink-0 text-[0.75rem] uppercase tracking-[0.2em] text-antique">
               {activeChapter.label}
             </span>
-            <span className="truncate font-(family-name:--font-story-display) text-[1rem] italic text-maroon">
+            <span className="truncate text-[0.9375rem] font-medium text-maroon">
               {activeChapter.title}
             </span>
           </span>
@@ -67,7 +67,7 @@ export function ChapterProgressBar({ activeChapterId, onSelectChapter }: Chapter
       </div>
 
       {isTableOfContentsOpen && (
-        <div className="absolute inset-x-0 top-full animate-fade-in border-b border-antique/25 bg-ivory px-5 py-3 shadow-[0_12px_24px_rgba(59,42,39,0.12)]">
+        <div className="absolute inset-x-0 top-full animate-fade-in border-b border-antique/25 bg-white px-5 py-3 shadow-[0_12px_24px_rgba(59,42,39,0.12)]">
           <ChapterList activeChapterId={activeChapterId} onSelectChapter={handleChapterSelect} />
         </div>
       )}

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { arabicFont, displayFont, sansFont, scriptFont } from "@/templates/crimson-story/fonts";
+import { arabicFont, sansFont, scriptFont } from "@/templates/crimson-story/fonts";
 import { STORY_CHAPTERS, type ChapterId } from "@/templates/crimson-story/content";
 import { ChapterProgressBar } from "@/templates/crimson-story/components/ChapterProgressBar";
 import { StorySidePanel } from "@/templates/crimson-story/components/StorySidePanel";
@@ -68,7 +68,7 @@ export function CrimsonStoryInvitation() {
 
   return (
     <main
-      className={`${arabicFont.variable} ${scriptFont.variable} ${displayFont.variable} ${sansFont.variable} min-h-screen bg-maroon-dark font-(family-name:--font-story-sans) text-ink lg:flex`}
+      className={`${arabicFont.variable} ${scriptFont.variable} ${sansFont.variable} min-h-screen bg-maroon-dark font-(family-name:--font-story-sans) text-ink lg:flex`}
     >
       <StorySidePanel
         activeChapterId={activeChapterId}
@@ -76,7 +76,7 @@ export function CrimsonStoryInvitation() {
         onSelectChapter={scrollToChapter}
       />
 
-      <div className="relative mx-auto w-full max-w-107.5 bg-ivory shadow-2xl lg:mx-0 lg:shrink-0">
+      <div className="relative mx-auto w-full max-w-107.5 bg-white shadow-2xl lg:mr-0 lg:ml-auto">
         {isInvitationOpen ? (
           <div className="animate-fade-in">
             <ChapterProgressBar activeChapterId={activeChapterId} onSelectChapter={scrollToChapter} />
