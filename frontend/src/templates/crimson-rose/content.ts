@@ -64,6 +64,21 @@ export const WEDDING_EVENTS = [
   },
 ] as const;
 
+/** Hitung mundur menuju acara pertama (akad). */
+export const COUNTDOWN_TARGET = WEDDING_EVENTS[0].startsAt;
+
+/**
+ * Link "Add to Calendar" (Google Calendar) sebagai acara seharian, karena
+ * resepsi tidak punya jam selesai ("13:00 WIB - Selesai").
+ */
+export const ADD_TO_CALENDAR_URL = `https://calendar.google.com/calendar/render?${new URLSearchParams({
+  action: "TEMPLATE",
+  text: `Pernikahan ${COUPLE_TITLE}`,
+  dates: "20250924/20250925",
+  details: WEDDING_EVENTS.map((event) => `${event.title}: ${event.timeLabel}`).join("\n"),
+  location: `${BRIDE_RESIDENCE.venueName}, ${BRIDE_RESIDENCE.address}`,
+}).toString()}`;
+
 export const HOLY_VERSE = {
   arabic:
     "وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً",
