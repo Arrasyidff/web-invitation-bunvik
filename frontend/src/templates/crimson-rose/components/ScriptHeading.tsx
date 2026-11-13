@@ -14,7 +14,7 @@ export function ScriptHeading({ label, scriptTitle }: ScriptHeadingProps) {
         <p className="text-[1.125rem] font-medium uppercase tracking-[0.35em]!">{label}</p>
         <span className="h-px flex-1 bg-maroon/60" />
       </div>
-      <h2 className="-mt-2 font-(family-name:--font-crimson-script) text-[4rem] leading-[1.1]!">{scriptTitle}</h2>
+      <h2 className="mt-2 font-(family-name:--font-crimson-script) text-[4rem] leading-[1.1]!">{scriptTitle}</h2>
       <ScriptSwash className="-mt-1 w-48" />
     </div>
   );

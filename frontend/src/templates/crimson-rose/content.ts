@@ -41,10 +41,17 @@ export const COUPLE_TITLE = `${BRIDE.nickname} & ${GROOM.nickname}`;
 export const WEDDING_DATE_LONG = "24 September 2025";
 export const WEDDING_DATE_SHORT = "24.09.25";
 
+const BRIDE_RESIDENCE_ADDRESS =
+  "Jl. Raya Sukolilo No.67, Dusun Gandon Barat, Sukolilo, Kec. Jabung, Kabupaten Malang, Jawa Timur 65155";
+
 const BRIDE_RESIDENCE = {
   venueName: "Kediaman Mempelai Wanita",
-  address:
-    "Jl. Raya Sukolilo No.67, Dusun Gandon Barat, Sukolilo, Kec. Jabung, Kabupaten Malang, Jawa Timur 65155",
+  address: BRIDE_RESIDENCE_ADDRESS,
+  /** Sumber tidak menyertakan link peta; ini pencarian Google Maps dari alamat. */
+  mapsUrl: `https://www.google.com/maps/search/?${new URLSearchParams({
+    api: "1",
+    query: BRIDE_RESIDENCE_ADDRESS,
+  }).toString()}`,
 } as const;
 
 export const WEDDING_EVENTS = [

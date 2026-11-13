@@ -5,7 +5,7 @@ import { EventSection } from "@/templates/crimson-rose/sections/event/EventSecti
 
 /**
  * Template crimson-rose (undangan Zakiya & Fadel).
- * Sedang dibangun bertahap; saat ini: Ayat Suci + Pembukaan, Profil Mempelai, Save the Date.
+ * Sedang dibangun bertahap; saat ini: Ayat Suci + Pembukaan, Profil Mempelai, Save the Date, Detail Acara.
  * Props `eventType` belum dipakai karena undangan ini menampilkan akad & resepsi sekaligus.
  */
 export function CrimsonRoseInvitation() {
