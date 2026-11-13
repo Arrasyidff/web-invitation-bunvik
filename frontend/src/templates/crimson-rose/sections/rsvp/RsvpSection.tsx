@@ -3,23 +3,20 @@
 import { useState } from "react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import type { RsvpFormData } from "@/features/rsvp/types";
+import { submitRsvp } from "@/features/rsvp/services/rsvpService";
 import { FloatingPetal } from "@/templates/crimson-rose/components/FloatingPetal";
 import { ScriptHeading } from "@/templates/crimson-rose/components/ScriptHeading";
-import { RSVP_INTRO } from "@/templates/crimson-rose/content";
+import { INVITATION_ID, RSVP_INTRO } from "@/templates/crimson-rose/content";
 import petalBlush1 from "@/templates/crimson-rose/assets/petal-blush-1.webp";
 import petalBlush4 from "@/templates/crimson-rose/assets/petal-blush-4.webp";
 import petalBlush6 from "@/templates/crimson-rose/assets/petal-blush-6.webp";
 import { RsvpForm } from "./RsvpForm";
 import { RsvpSubmitted } from "./RsvpSubmitted";
 
-/**
- * SEMENTARA: belum menulis ke database. API RSVP proyek ini menyimpan semua RSVP
- * di satu tabel tanpa penanda undangan, sehingga data Zakiya & Fadel akan
- * tercampur dengan undangan Hendra & Vika. Ganti dengan `submitRsvp` dari
- * `@/features/rsvp/services/rsvpService` setelah cara pemisahannya diputuskan.
- */
-const submitRsvpPreview: (formData: RsvpFormData) => Promise<void> = () =>
-  new Promise((resolve) => setTimeout(resolve, 600));
+/** Simpan RSVP ke backend, ditandai sebagai milik undangan Zakiya & Fadel. */
+function submitZakiyaFadelRsvp(formData: RsvpFormData): Promise<void> {
+  return submitRsvp(formData, INVITATION_ID);
+}
 
 export function RsvpSection() {
   const [submittedGuestName, setSubmittedGuestName] = useState<string | null>(null);
@@ -43,7 +40,7 @@ export function RsvpSection() {
             <RsvpSubmitted guestName={submittedGuestName} />
           ) : (
             <RsvpForm
-              onSubmitRsvp={submitRsvpPreview}
+              onSubmitRsvp={submitZakiyaFadelRsvp}
               onSubmitSuccess={(formData) => setSubmittedGuestName(formData.guestName.trim())}
             />
           )}

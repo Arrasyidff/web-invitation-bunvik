@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import type { WishItem, CreateWishInput } from "@/features/wishes/types";
+import { invitationIdPayload, resolveInvitationId, type InvitationId } from "@/lib/invitations";
 
 const BACKEND_URL = process.env.BACKEND_URL ?? "http://localhost:3002";
 
@@ -11,9 +12,12 @@ interface BackendRsvpItem {
   createdAt: string;
 }
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  // Selalu filter per undangan agar ucapan undangan lain tidak ikut tampil.
+  const invitationId = resolveInvitationId(request.nextUrl.searchParams.get("invitationId"));
+
   try {
-    const response = await fetch(`${BACKEND_URL}/api/v1/rsvp`, {
+    const response = await fetch(`${BACKEND_URL}/api/v1/rsvp?${new URLSearchParams({ invitationId }).toString()}`, {
       cache: "no-store",
     });
 
@@ -39,13 +43,14 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   try {
-    const body: CreateWishInput = await request.json();
+    const body: CreateWishInput & { invitationId?: InvitationId } = await request.json();
 
     if (!body.guestName || !body.message) {
       return NextResponse.json({ error: "Data tidak lengkap" }, { status: 400 });
     }
 
     const backendPayload = {
+      ...invitationIdPayload(body.invitationId),
       nama: body.guestName,
       statusKehadiran: "hadir",
       jumlahHadir: 1,

@@ -6,6 +6,11 @@
  * dengan undangan utama (Hendra & Vika).
  */
 
+import type { InvitationId } from "@/lib/invitations";
+
+/** Penanda undangan ini di backend; RSVP & ucapan disimpan terpisah dari undangan lain. */
+export const INVITATION_ID: InvitationId = "zakiya-fadel";
+
 export interface CoupleMember {
   nickname: string;
   fullName: string;

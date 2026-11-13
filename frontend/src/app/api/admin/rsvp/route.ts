@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { resolveInvitationId } from "@/lib/invitations";
 
 const BACKEND_URL = process.env.BACKEND_URL ?? "http://localhost:3002";
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD ?? "";
@@ -24,8 +25,11 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
+  // Default ke undangan utama agar panel admin tidak mencampur data undangan lain.
+  const invitationId = resolveInvitationId(request.nextUrl.searchParams.get("invitationId"));
+
   try {
-    const response = await fetch(`${BACKEND_URL}/api/v1/rsvp/admin`, {
+    const response = await fetch(`${BACKEND_URL}/api/v1/rsvp/admin?${new URLSearchParams({ invitationId }).toString()}`, {
       cache: "no-store",
     });
 

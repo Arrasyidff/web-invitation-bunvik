@@ -1,17 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
-import type { RsvpFormData } from "@/features/rsvp/types";
+import type { RsvpSubmission } from "@/features/rsvp/types";
+import { invitationIdPayload } from "@/lib/invitations";
 
 const BACKEND_URL = process.env.BACKEND_URL ?? "http://localhost:3002";
 
 export async function POST(request: NextRequest) {
   try {
-    const body: RsvpFormData = await request.json();
+    const body: RsvpSubmission = await request.json();
 
     if (!body.guestName || !body.attendanceStatus) {
       return NextResponse.json({ error: "Data tidak lengkap" }, { status: 400 });
     }
 
     const backendPayload = {
+      ...invitationIdPayload(body.invitationId),
       nama: body.guestName,
       statusKehadiran: body.attendanceStatus,
       jumlahHadir: body.attendanceStatus === "hadir" ? body.guestCount : 0,

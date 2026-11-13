@@ -107,6 +107,7 @@ wedding-backend/
 
 ```js
 {
+  invitationId:     String,   // enum: INVITATION_IDS (src/config/invitations.js), default 'hendra-vika'
   nama:             String,   // required, max 100 chars
   statusKehadiran:  String,   // required, enum: ['hadir', 'tidak_hadir']
   jumlahHadir:      Number,   // required jika hadir, min 1, max 10; 0 jika tidak_hadir
@@ -120,12 +121,23 @@ wedding-backend/
 | Method | Path            | Deskripsi                        |
 |--------|-----------------|----------------------------------|
 | POST   | /api/v1/rsvp    | Tamu kirim konfirmasi + ucapan   |
-| GET    | /api/v1/rsvp    | Ambil semua data RSVP            |
+| GET    | /api/v1/rsvp    | Ambil data RSVP (`?invitationId=` opsional) |
+| GET    | /api/v1/rsvp/admin | Semua RSVP termasuk yang disembunyikan (`?invitationId=` opsional) |
 | GET    | /api/v1/rsvp/:id| Ambil satu data RSVP by ID       |
+
+### Multi-undangan (`invitationId`)
+
+Satu backend melayani beberapa undangan. Daftar id ada di `src/config/invitations.js`
+(harus sama dengan `frontend/src/lib/invitations.ts`).
+
+- RSVP lama tanpa field `invitationId` dianggap milik `DEFAULT_INVITATION_ID` (`hendra-vika`) — tidak perlu migrasi
+- `GET` tanpa `invitationId` mengembalikan semua undangan (perilaku lama); id tidak dikenal → 400
+- Menambah undangan baru: tambahkan id di kedua file di atas
 
 ### Validation Rules (Joi)
 
 ```
+invitationId     → string, optional, valid(...INVITATION_IDS)
 nama             → string, required, min(2), max(100), trim
 statusKehadiran  → string, required, valid('hadir', 'tidak_hadir')
 jumlahHadir      → number, required when hadir, integer, min(1), max(10); default 0 jika tidak_hadir

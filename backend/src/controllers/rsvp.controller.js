@@ -15,7 +15,7 @@ export const createRsvp = async (req, res, next) => {
 
 export const getAllRsvp = async (req, res, next) => {
   try {
-    const rsvps = await rsvpService.getAllRsvp();
+    const rsvps = await rsvpService.getAllRsvp(req.query.invitationId);
     res.status(200).json({
       success: true,
       data: rsvps,
@@ -27,7 +27,7 @@ export const getAllRsvp = async (req, res, next) => {
 
 export const getAllRsvpAdmin = async (req, res, next) => {
   try {
-    const rsvps = await rsvpService.getAllRsvpAdmin();
+    const rsvps = await rsvpService.getAllRsvpAdmin(req.query.invitationId);
     res.status(200).json({
       success: true,
       data: rsvps,

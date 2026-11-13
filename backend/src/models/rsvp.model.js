@@ -1,7 +1,14 @@
 import mongoose from "mongoose";
+import { DEFAULT_INVITATION_ID, INVITATION_IDS } from "../config/invitations.js";
 
 const rsvpSchema = new mongoose.Schema(
   {
+    invitationId: {
+      type: String,
+      enum: INVITATION_IDS,
+      default: DEFAULT_INVITATION_ID,
+      index: true,
+    },
     nama: {
       type: String,
       required: true,

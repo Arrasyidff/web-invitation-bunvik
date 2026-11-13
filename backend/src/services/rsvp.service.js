@@ -1,16 +1,20 @@
 import { Rsvp } from "../models/rsvp.model.js";
+import { buildInvitationFilter } from "../config/invitations.js";
 
 export const createRsvp = async (data) => {
   const rsvp = new Rsvp(data);
   return await rsvp.save();
 };
 
-export const getAllRsvp = async () => {
-  return await Rsvp.find({ isDeleted: false }).sort({ createdAt: -1 });
+/** Tanpa `invitationId`: semua undangan (perilaku lama). */
+export const getAllRsvp = async (invitationId) => {
+  return await Rsvp.find({ isDeleted: false, ...buildInvitationFilter(invitationId) }).sort({
+    createdAt: -1,
+  });
 };
 
-export const getAllRsvpAdmin = async () => {
-  return await Rsvp.find().sort({ createdAt: -1 });
+export const getAllRsvpAdmin = async (invitationId) => {
+  return await Rsvp.find(buildInvitationFilter(invitationId)).sort({ createdAt: -1 });
 };
 
 export const getRsvpById = async (id) => {
