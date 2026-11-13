@@ -6,7 +6,7 @@ export function OpeningVerse() {
   return (
     <ScrollReveal
       direction="bottom"
-      className="relative mt-12 rounded-2xl border border-antique/30 bg-white px-6 pb-8 pt-10 text-center"
+      className="relative mt-12 px-2 pb-2 pt-10 text-center"
     >
       <span
         aria-hidden="true"

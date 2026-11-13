@@ -29,7 +29,7 @@ export function EventSaveTheDate() {
           <p className="w-24 text-right text-[0.9375rem] uppercase tracking-[0.3em]! text-ivory/80">
             {WEDDING_DATE_PARTS.weekday}
           </p>
-          <p className="border-x border-ivory/30 px-5 text-[5rem] font-light leading-none!">
+          <p className="px-3 text-[5rem] font-light leading-none!">
             {WEDDING_DATE_PARTS.day}
           </p>
           <p className="w-24 text-left text-[0.9375rem] uppercase leading-snug! tracking-[0.2em]! text-ivory/80">
@@ -44,7 +44,7 @@ export function EventSaveTheDate() {
             href={ADD_TO_CALENDAR_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-ivory/60 px-6 py-2.5 text-[0.8125rem] uppercase tracking-[0.2em] text-ivory transition-colors hover:bg-white hover:text-maroon"
+            className="inline-flex items-center gap-2 rounded-full bg-ivory/15 px-6 py-2.5 text-[0.8125rem] uppercase tracking-[0.2em] text-ivory transition-colors hover:bg-white hover:text-maroon"
           >
             <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth={1.6} className="h-4.5 w-4.5">
               <rect x="3.5" y="5" width="17" height="15" rx="2" />

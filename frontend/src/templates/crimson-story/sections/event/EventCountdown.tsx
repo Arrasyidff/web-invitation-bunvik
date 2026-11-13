@@ -40,7 +40,7 @@ export function EventCountdown({ targetIsoDate }: EventCountdownProps) {
   ];
 
   return (
-    <div className="mt-8 grid grid-cols-4 divide-x divide-ivory/20 rounded-2xl border border-ivory/25 bg-maroon-dark/40 py-4">
+    <div className="mt-8 grid grid-cols-4 py-2">
       {countdownUnits.map((unit) => (
         <div key={unit.label} className="flex flex-col items-center">
           <span className="text-[1.875rem] font-medium leading-none tabular-nums">

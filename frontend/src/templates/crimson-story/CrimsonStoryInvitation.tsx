@@ -76,7 +76,7 @@ export function CrimsonStoryInvitation() {
         onSelectChapter={scrollToChapter}
       />
 
-      <div className="relative mx-auto w-full max-w-107.5 bg-white shadow-2xl lg:mr-0 lg:ml-auto">
+      <div className="relative mx-auto w-full max-w-107.5 bg-white lg:mr-0 lg:ml-auto">
         {isInvitationOpen ? (
           <div className="animate-fade-in">
             <ChapterProgressBar activeChapterId={activeChapterId} onSelectChapter={scrollToChapter} />

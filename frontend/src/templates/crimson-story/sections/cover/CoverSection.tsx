@@ -20,9 +20,6 @@ export function CoverSection({ guestName, isOpening, onOpen }: CoverSectionProps
         isOpening ? "animate-story-cover-turn" : ""
       }`}
     >
-      {/* Bingkai ganda seperti sampul buku bersampul kain */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-4 rounded-sm border border-antique/60" />
-      <div aria-hidden="true" className="pointer-events-none absolute inset-6 rounded-sm border border-ivory/15" />
       <Image
         src={bouquetRoseBranch}
         alt=""
@@ -49,7 +46,7 @@ export function CoverSection({ guestName, isOpening, onOpen }: CoverSectionProps
           type="button"
           onClick={onOpen}
           disabled={isOpening}
-          className="mt-8 inline-flex items-center gap-2.5 rounded-full bg-white px-7 py-3 text-[0.875rem] font-semibold uppercase tracking-[0.2em] text-maroon shadow-[0_10px_24px_rgba(0,0,0,0.3)] transition-transform hover:-translate-y-0.5 active:scale-95"
+          className="mt-8 inline-flex items-center gap-2.5 rounded-full bg-white px-7 py-3 text-[0.875rem] font-semibold uppercase tracking-[0.2em] text-maroon transition-transform hover:-translate-y-0.5 active:scale-95"
         >
           <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth={1.6} className="h-5 w-5">
             <path d="M12 6.5C9.5 4.8 6 4.5 3 5.5v13c3-1 6.5-.7 9 1 2.5-1.7 6-2 9-1v-13c-3-1-6.5-.7-9 1z" />

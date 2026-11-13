@@ -36,7 +36,7 @@ export function GiftBankCard({ bankAccount, revealDelay = 0 }: GiftBankCardProps
     <ScrollReveal
       direction="bottom"
       delay={revealDelay}
-      className="flex items-center justify-between gap-4 rounded-2xl border border-antique/30 bg-white px-5 py-4"
+      className="flex items-center justify-between gap-4 rounded-2xl bg-white px-5 py-4"
     >
       <div className="min-w-0">
         <p className="text-[0.75rem] font-semibold uppercase tracking-[0.25em]! text-maroon">{bankAccount.bankName}</p>
@@ -51,8 +51,8 @@ export function GiftBankCard({ bankAccount, revealDelay = 0 }: GiftBankCardProps
         type="button"
         onClick={handleCopyButtonClick}
         aria-live="polite"
-        className={`shrink-0 rounded-full border px-4 py-2 text-[0.75rem] uppercase tracking-[0.15em] transition-colors ${
-          isCopied ? "border-maroon bg-maroon text-ivory" : "border-maroon/40 text-maroon hover:bg-maroon/5"
+        className={`shrink-0 rounded-full px-4 py-2 text-[0.75rem] uppercase tracking-[0.15em] transition-colors ${
+          isCopied ? "bg-maroon text-ivory" : "bg-maroon/10 text-maroon hover:bg-maroon/15"
         }`}
       >
         {isCopied ? "Tersalin" : "Salin"}

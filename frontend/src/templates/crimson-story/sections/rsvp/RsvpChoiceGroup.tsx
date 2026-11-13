@@ -31,10 +31,10 @@ export function RsvpChoiceGroup<OptionValue extends string | number>({
           return (
             <label
               key={String(option.value)}
-              className={`flex flex-1 cursor-pointer items-center justify-center rounded-full border px-4 py-2.5 text-[0.9375rem] transition-colors has-focus-visible:ring-2 has-focus-visible:ring-maroon/40 ${
+              className={`flex flex-1 cursor-pointer items-center justify-center rounded-full px-4 py-2.5 text-[0.9375rem] transition-colors has-focus-visible:ring-2 has-focus-visible:ring-maroon/40 ${
                 isSelected
-                  ? "border-maroon bg-maroon text-ivory"
-                  : "border-maroon/35 bg-transparent text-ink hover:bg-maroon/5"
+                  ? "bg-maroon text-ivory"
+                  : "bg-neutral-100 text-ink hover:bg-maroon/10"
               }`}
             >
               <input

@@ -34,7 +34,7 @@ export function ChapterProgressBar({ activeChapterId, onSelectChapter }: Chapter
 
   return (
     <nav aria-label="Daftar isi" className="fixed inset-x-0 top-0 z-30 mx-auto w-full max-w-107.5 lg:hidden">
-      <div className="border-b border-antique/25 bg-white/90 backdrop-blur-md">
+      <div className="bg-white/90 backdrop-blur-md">
         <button
           type="button"
           onClick={() => setIsTableOfContentsOpen((isOpen) => !isOpen)}
@@ -67,7 +67,7 @@ export function ChapterProgressBar({ activeChapterId, onSelectChapter }: Chapter
       </div>
 
       {isTableOfContentsOpen && (
-        <div className="absolute inset-x-0 top-full animate-fade-in border-b border-antique/25 bg-white px-5 py-3 shadow-[0_12px_24px_rgba(59,42,39,0.12)]">
+        <div className="absolute inset-x-0 top-full animate-fade-in bg-white px-5 py-3">
           <ChapterList activeChapterId={activeChapterId} onSelectChapter={handleChapterSelect} />
         </div>
       )}

@@ -19,7 +19,7 @@ export function StoryTimelineEntry({ loveStoryChapter, chapterNumber }: StoryTim
     <li className="relative pb-12 pl-14">
       <span
         aria-hidden="true"
-        className="absolute left-0 top-0 flex h-9 w-9 items-center justify-center rounded-full border border-antique/60 bg-white text-[0.8125rem] font-medium text-maroon shadow-sm"
+        className="absolute left-0 top-0 flex h-9 w-9 items-center justify-center rounded-full bg-petal text-[0.8125rem] font-medium text-maroon"
       >
         {romanNumeral}
       </span>
@@ -32,7 +32,6 @@ export function StoryTimelineEntry({ loveStoryChapter, chapterNumber }: StoryTim
 
         {loveStoryChapter.hasPhotoFrame && (
           <PhotoFrame
-            shape="polaroid"
             label={`Foto kenangan: ${loveStoryChapter.title}`}
             caption={loveStoryChapter.title}
             className={`mt-4 w-[86%] ${isEven ? "ml-auto rotate-2" : "-rotate-2"}`}

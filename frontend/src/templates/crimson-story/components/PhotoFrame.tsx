@@ -1,9 +1,7 @@
 interface PhotoFrameProps {
-  /** "arch": bingkai lengkung untuk potret; "polaroid": foto cetak dengan caption. */
-  shape: "arch" | "polaroid";
-  /** Teks pengganti untuk pembaca layar, mis. "Foto Zakiya". */
+  /** Teks pengganti untuk pembaca layar, mis. "Foto kenangan: Awal Pertemuan". */
   label: string;
-  /** Tulisan tangan di bawah polaroid. */
+  /** Tulisan tangan di bawah foto. */
   caption?: string;
   className?: string;
 }
@@ -17,42 +15,13 @@ function CameraIcon() {
   );
 }
 
-interface EmptyPhotoAreaProps {
-  roundedClassName: string;
-}
-
-/** Area kosong bertanda kamera; nanti diganti foto asli tanpa mengubah layout. */
-function EmptyPhotoArea({ roundedClassName }: EmptyPhotoAreaProps) {
+/** Bingkai foto kosong (placeholder) bertanda kamera; nanti diganti foto asli tanpa mengubah layout. */
+export function PhotoFrame({ label, caption, className = "" }: PhotoFrameProps) {
   return (
-    <div
-      className={`flex h-full w-full flex-col items-center justify-center gap-2 border border-dashed border-antique/50 bg-[radial-gradient(circle_at_50%_35%,#ffffff,#f3f0ee)] text-antique/80 ${roundedClassName}`}
-    >
-      <CameraIcon />
-      <span className="text-[0.75rem] uppercase tracking-[0.3em]!">Foto</span>
-    </div>
-  );
-}
-
-/** Bingkai foto kosong (placeholder) sampai foto mempelai tersedia. */
-export function PhotoFrame({ shape, label, caption, className = "" }: PhotoFrameProps) {
-  if (shape === "arch") {
-    return (
-      <div role="img" aria-label={`${label} (belum tersedia)`} className={`rounded-t-full border border-antique/60 p-2 ${className}`}>
-        <div className="aspect-3/4 w-full">
-          <EmptyPhotoArea roundedClassName="rounded-t-full" />
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <figure
-      role="img"
-      aria-label={`${label} (belum tersedia)`}
-      className={`bg-white p-2.5 pb-3 shadow-[0_12px_28px_rgba(59,42,39,0.18)] ${className}`}
-    >
-      <div className="aspect-4/3 w-full">
-        <EmptyPhotoArea roundedClassName="rounded-sm" />
+    <figure role="img" aria-label={`${label} (belum tersedia)`} className={className}>
+      <div className="flex aspect-4/3 w-full flex-col items-center justify-center gap-2 rounded-2xl bg-neutral-100 text-antique/80">
+        <CameraIcon />
+        <span className="text-[0.75rem] uppercase tracking-[0.3em]!">Foto</span>
       </div>
       {caption && (
         <figcaption className="mt-2 text-center font-(family-name:--font-story-script) text-[1.375rem] leading-none text-ink/75">

@@ -74,7 +74,7 @@ export function RsvpForm({ onSubmitRsvp, onSubmitSuccess }: RsvpFormProps) {
     <form
       onSubmit={handleFormSubmit}
       noValidate
-      className="flex flex-col gap-6 rounded-3xl border border-antique/25 bg-white px-6 py-8 text-ink shadow-[0_14px_32px_rgba(59,42,39,0.1)]"
+      className="flex flex-col gap-6 rounded-3xl bg-white px-6 py-8 text-ink"
     >
       <div>
         <label htmlFor="story-rsvp-name" className="text-[0.9375rem] uppercase tracking-[0.2em]! text-antique">
@@ -87,7 +87,7 @@ export function RsvpForm({ onSubmitRsvp, onSubmitSuccess }: RsvpFormProps) {
           placeholder="Tulis nama Anda"
           value={formData.guestName}
           onChange={(event) => updateFormData({ guestName: event.target.value })}
-          className="mt-2 w-full border-b border-maroon/40 bg-transparent px-1 py-2 text-[1rem] outline-none placeholder:text-ink/40 focus:border-maroon"
+          className="mt-2 w-full rounded-xl bg-neutral-100 px-4 py-3 text-[1rem] outline-none placeholder:text-ink/40 focus-visible:ring-2 focus-visible:ring-maroon/40"
         />
         <FieldError message={fieldErrors.guestName} />
       </div>
@@ -122,7 +122,7 @@ export function RsvpForm({ onSubmitRsvp, onSubmitSuccess }: RsvpFormProps) {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="mt-2 rounded-full bg-maroon py-3 text-[0.9375rem] uppercase tracking-[0.25em] text-ivory shadow-md transition-transform active:scale-[0.98] disabled:opacity-60"
+        className="mt-2 rounded-full bg-maroon py-3 text-[0.9375rem] uppercase tracking-[0.25em] text-ivory transition-transform active:scale-[0.98] disabled:opacity-60"
       >
         {isSubmitting ? "Mengirim..." : "Kirim Konfirmasi"}
       </button>

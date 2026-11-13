@@ -26,7 +26,7 @@ export function CoupleProfile({ member, revealDirection }: CoupleProfileProps) {
         href={member.instagramUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-4 inline-flex items-center gap-2 rounded-full border border-maroon/30 px-4 py-1.5 text-[0.875rem] text-maroon transition-colors hover:bg-maroon hover:text-ivory"
+        className="mt-4 inline-flex items-center gap-2 rounded-full bg-maroon/5 px-4 py-1.5 text-[0.875rem] text-maroon transition-colors hover:bg-maroon hover:text-ivory"
       >
         <InstagramIcon className="h-4 w-4" />@{member.instagramHandle}
       </a>

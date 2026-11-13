@@ -1,23 +1,46 @@
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { PhotoFrame } from "@/templates/crimson-story/components/PhotoFrame";
-import { BRIDE, GROOM } from "@/templates/crimson-story/content";
+import { BRIDE, GROOM, type CoupleMember } from "@/templates/crimson-story/content";
+import brideIllustration from "@/templates/crimson-story/assets/illustration-bride.webp";
+import groomIllustration from "@/templates/crimson-story/assets/illustration-groom.webp";
 import gypsophilaSmall from "@/templates/crimson-story/assets/gypsophila-small.webp";
 
-/** Dua bingkai potret yang saling bertumpuk, disatukan segel "&" di tengah. */
+interface CoupleIllustrationProps {
+  member: CoupleMember;
+  illustrationSrc: StaticImageData;
+}
+
+/** Ilustrasi satu mempelai di atas lengkung merah muda polos; kepala sedikit keluar dari lengkungan. */
+function CoupleIllustration({ member, illustrationSrc }: CoupleIllustrationProps) {
+  return (
+    <div className="relative">
+      <div aria-hidden="true" className="absolute inset-x-0 bottom-0 top-[22%] rounded-t-full bg-petal/70" />
+      <Image
+        src={illustrationSrc}
+        alt={`Ilustrasi ${member.fullName}`}
+        sizes="180px"
+        className="relative mx-auto h-auto w-[88%]"
+      />
+    </div>
+  );
+}
+
+/** Ilustrasi mempelai wanita dan pria berdampingan, disatukan segel "&" di tengah. */
 export function CouplePortraits() {
   return (
-    <div className="relative mx-auto mt-12 h-72 max-w-80">
-      <ScrollReveal direction="left" className="absolute left-0 top-0 w-[54%] -rotate-4">
-        <PhotoFrame shape="arch" label={`Foto ${BRIDE.nickname}`} className="bg-white shadow-[0_14px_30px_rgba(59,42,39,0.16)]" />
-      </ScrollReveal>
-      <ScrollReveal direction="right" delay={120} className="absolute right-0 top-8 w-[54%] rotate-4">
-        <PhotoFrame shape="arch" label={`Foto ${GROOM.nickname}`} className="bg-white shadow-[0_14px_30px_rgba(59,42,39,0.16)]" />
-      </ScrollReveal>
+    <div className="relative mx-auto mt-12 max-w-80">
+      <div className="grid grid-cols-2 gap-3">
+        <ScrollReveal direction="left">
+          <CoupleIllustration member={BRIDE} illustrationSrc={brideIllustration} />
+        </ScrollReveal>
+        <ScrollReveal direction="right" delay={120}>
+          <CoupleIllustration member={GROOM} illustrationSrc={groomIllustration} />
+        </ScrollReveal>
+      </div>
 
       <span
         aria-hidden="true"
-        className="absolute bottom-2 left-1/2 flex h-16 w-16 -translate-x-1/2 items-center justify-center rounded-full bg-maroon font-(family-name:--font-story-script) text-[2.25rem] leading-none text-ivory shadow-[0_8px_18px_rgba(110,21,28,0.4)] ring-4 ring-maroon/25"
+        className="absolute -bottom-6 left-1/2 flex h-14 w-14 -translate-x-1/2 items-center justify-center rounded-full bg-maroon font-(family-name:--font-story-script) text-[2rem] leading-none text-ivory"
       >
         &amp;
       </span>
@@ -25,7 +48,7 @@ export function CouplePortraits() {
         src={gypsophilaSmall}
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-4 left-[58%] h-auto w-20 rotate-12"
+        className="pointer-events-none absolute -bottom-8 left-[56%] h-auto w-16 rotate-12"
       />
     </div>
   );
