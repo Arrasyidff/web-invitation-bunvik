@@ -8,6 +8,12 @@
 @theme {
   --color-background: #ffffff;
   --color-foreground: #343434;
+
+  /* Palet template crimson-rose (diambil dari aset desainnya) */
+  --color-maroon: #6e151c;
+  --color-maroon-dark: #4f0e14;
+  --color-petal: #f5d9d2;
+  --color-ivory: #fcf5f0;
 }
 
 @theme inline {
@@ -145,4 +151,14 @@ p, h2, h3, h4 {
 .animate-spin-disc-paused {
   animation: spin-disc 4s linear infinite;
   animation-play-state: paused;
+}
+
+/* Kelopak bunga yang bergoyang pelan (template crimson-rose) */
+@keyframes petal-sway {
+  0%, 100% { transform: translateY(0) rotate(var(--petal-rotate, 0deg)); }
+  50% { transform: translateY(8px) rotate(calc(var(--petal-rotate, 0deg) + 12deg)); }
+}
+
+.animate-petal-sway {
+  animation: petal-sway 6s ease-in-out infinite;
 }
