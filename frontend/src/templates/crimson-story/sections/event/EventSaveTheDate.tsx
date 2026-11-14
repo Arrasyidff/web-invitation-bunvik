@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { PRESS_INTERACTION } from "@/templates/crimson-story/components/storyMotion";
 import { StoryReveal } from "@/templates/crimson-story/components/StoryReveal";
 import { ChapterHeading } from "@/templates/crimson-story/components/ChapterHeading";
+import { ArchFrame } from "@/templates/crimson-story/components/ArchFrame";
 import { FloatingPetal } from "@/templates/crimson-story/components/FloatingPetal";
 import {
   ADD_TO_CALENDAR_URL,
@@ -15,26 +16,29 @@ import petalBlush1 from "@/templates/crimson-story/assets/petal-blush-1.webp";
 import petalBlush6 from "@/templates/crimson-story/assets/petal-blush-6.webp";
 import { EventCountdown } from "./EventCountdown";
 
-/** Blok merah marun: tanggal besar seperti halaman kalender, hitung mundur, dan simpan ke kalender. */
+/**
+ * Blok merah marun berbentuk lengkungan yang tumbuh dari halaman putih Bab II:
+ * tanggal besar seperti halaman kalender, hitung mundur, dan simpan ke kalender.
+ */
 export function EventSaveTheDate() {
   return (
-    <div className="relative overflow-hidden bg-maroon px-7 pb-16 pt-24 text-ivory">
+    <ArchFrame className="px-5 pb-24 pt-32 text-ivory">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         <FloatingPetal src={petalBlush1} className="left-[7%] top-[14%] w-7" rotateDegrees={-25} />
-        <FloatingPetal src={petalBlush6} className="right-[7%] top-[52%] w-8" rotateDegrees={40} delaySeconds={2} />
+        <FloatingPetal src={petalBlush6} className="right-[6%] top-[72%] w-8" rotateDegrees={40} delaySeconds={2} />
       </div>
 
       <div className="relative">
         <ChapterHeading chapter={getStoryChapter("event")} tone="light" />
 
-        <StoryReveal direction="zoom" delay={100} className="mt-8 flex items-center justify-center gap-5">
-          <p className="w-24 text-right font-(family-name:--font-story-date) text-[1.125rem] font-medium uppercase tracking-[0.3em]! text-ivory/80">
+        <StoryReveal direction="zoom" delay={100} className="mt-8 flex items-center justify-center gap-4">
+          <p className="flex-1 text-right font-(family-name:--font-story-date) text-[1rem] font-medium uppercase tracking-[0.25em]! text-ivory/80">
             {WEDDING_DATE_PARTS.weekday}
           </p>
-          <p className="border-x border-ivory/30 px-6 font-(family-name:--font-story-date) text-[6rem] font-light leading-[0.85]! lining-nums">
+          <p className="border-x border-ivory/30 px-5 font-(family-name:--font-story-date) text-[6rem] font-light leading-[0.85]! lining-nums">
             {WEDDING_DATE_PARTS.day}
           </p>
-          <p className="w-24 text-left font-(family-name:--font-story-date) text-[1.125rem] font-medium uppercase leading-snug! tracking-[0.2em]! lining-nums text-ivory/80">
+          <p className="flex-1 text-left font-(family-name:--font-story-date) text-[1rem] font-medium uppercase leading-snug! tracking-[0.15em]! lining-nums text-ivory/80">
             {WEDDING_DATE_PARTS.monthYear}
           </p>
         </StoryReveal>
@@ -57,6 +61,6 @@ export function EventSaveTheDate() {
           </motion.a>
         </div>
       </div>
-    </div>
+    </ArchFrame>
   );
 }

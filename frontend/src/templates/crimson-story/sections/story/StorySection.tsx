@@ -1,21 +1,18 @@
 import { StoryReveal } from "@/templates/crimson-story/components/StoryReveal";
 import { ChapterHeading } from "@/templates/crimson-story/components/ChapterHeading";
 import Image from "next/image";
-import { SectionWaves } from "@/templates/crimson-story/components/SectionWaves";
 import { ParallaxLayer } from "@/templates/crimson-story/components/ParallaxLayer";
 import { getStoryChapter } from "@/templates/crimson-story/content";
 import branchBerryLong from "@/templates/crimson-story/assets/branch-berry-long.webp";
 import { StoryTimeline } from "./StoryTimeline";
 
-/** Bab II · Perjalanan: lini masa kisah cinta, ditutup penanda "bersambung". */
+/** Bab II · Perjalanan: lini masa kisah cinta di halaman putih yang sama dengan Bab I, ditutup penanda "bersambung". */
 export function StorySection() {
   return (
-    <section id="story" className="relative scroll-mt-12 overflow-hidden bg-white px-6 pb-36 pt-36">
-      <SectionWaves>
-        <ParallaxLayer className="absolute -left-6 top-10 w-40" distance={50}>
-          <Image src={branchBerryLong} alt="" className="h-auto w-full opacity-80" />
-        </ParallaxLayer>
-      </SectionWaves>
+    <section id="story" className="relative scroll-mt-12 overflow-hidden bg-white px-6 pb-4 pt-16">
+      <ParallaxLayer className="absolute -left-6 top-0 w-40" distance={50}>
+        <Image src={branchBerryLong} alt="" className="h-auto w-full opacity-80" />
+      </ParallaxLayer>
 
       <div className="relative">
         <ChapterHeading chapter={getStoryChapter("story")} />

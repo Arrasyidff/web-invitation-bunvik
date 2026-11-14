@@ -6,6 +6,7 @@ import { AnimatePresence, MotionConfig, motion } from "motion/react";
 import { arabicFont, sansFont, scriptFont, dateFont } from "@/templates/crimson-story/fonts";
 import { STORY_CHAPTERS, type ChapterId } from "@/templates/crimson-story/content";
 import { ChapterProgressBar } from "@/templates/crimson-story/components/ChapterProgressBar";
+import { FloralSeam } from "@/templates/crimson-story/components/FloralSeam";
 import { StorySidePanel } from "@/templates/crimson-story/components/StorySidePanel";
 import { CoverSection } from "@/templates/crimson-story/sections/cover/CoverSection";
 import { OpeningSection } from "@/templates/crimson-story/sections/opening/OpeningSection";
@@ -94,6 +95,8 @@ export function CrimsonStoryInvitation() {
                 <EventSection />
                 <RsvpSection />
                 <GiftSection />
+                {/* Untaian bunga menutupi batas putih → marun, seperti halaman yang disambung. */}
+                <FloralSeam />
                 <ClosingSection />
               </motion.div>
             ) : (

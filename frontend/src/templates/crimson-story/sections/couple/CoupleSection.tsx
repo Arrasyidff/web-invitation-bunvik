@@ -1,6 +1,5 @@
 import { ChapterHeading } from "@/templates/crimson-story/components/ChapterHeading";
 import { OrnamentDivider } from "@/templates/crimson-story/components/OrnamentDivider";
-import { SectionWaves } from "@/templates/crimson-story/components/SectionWaves";
 import { BRIDE, GROOM, getStoryChapter } from "@/templates/crimson-story/content";
 import { CouplePortraits } from "./CouplePortraits";
 import { CoupleProfile } from "./CoupleProfile";
@@ -8,9 +7,8 @@ import { CoupleProfile } from "./CoupleProfile";
 /** Bab I · Dua Insan: sepasang potret lalu profil mempelai wanita dan pria. */
 export function CoupleSection() {
   return (
-    <section id="couple" className="relative scroll-mt-12 overflow-hidden bg-white px-7 pb-36 pt-12">
-      {/* Batas atas sudah ditandai buket mawar di akhir Prolog, jadi tanpa gelombang atas. */}
-      <SectionWaves isTopWaveVisible={false} />
+    <section id="couple" className="relative scroll-mt-12 bg-white px-7 pb-8 pt-12">
+      {/* Menyambung dari Prolog (ditandai buket mawar) dan langsung mengalir ke Bab II. */}
 
       <div className="relative">
         <ChapterHeading chapter={getStoryChapter("couple")} />

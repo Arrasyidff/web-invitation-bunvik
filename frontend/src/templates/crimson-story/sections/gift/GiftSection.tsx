@@ -1,15 +1,13 @@
 import { StoryReveal } from "@/templates/crimson-story/components/StoryReveal";
 import { ChapterHeading } from "@/templates/crimson-story/components/ChapterHeading";
-import { SectionWaves } from "@/templates/crimson-story/components/SectionWaves";
 import { WEDDING_GIFT, getStoryChapter } from "@/templates/crimson-story/content";
 import { GiftBankCard } from "./GiftBankCard";
 import { GiftShippingCard } from "./GiftShippingCard";
 
-/** Catatan Kecil · Tanda Kasih: rekening, alamat kirim hadiah, dan catatan. */
+/** Catatan Kecil · Tanda Kasih: rekening, alamat kirim hadiah, dan catatan; ditutup untaian bunga menuju Epilog. */
 export function GiftSection() {
   return (
-    <section id="gift" className="relative scroll-mt-12 overflow-hidden bg-white px-6 pb-36 pt-36">
-      <SectionWaves />
+    <section id="gift" className="relative scroll-mt-12 bg-white px-6 pb-28 pt-16">
 
       <div className="relative">
         <ChapterHeading chapter={getStoryChapter("gift")} />

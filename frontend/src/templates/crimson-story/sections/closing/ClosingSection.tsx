@@ -14,7 +14,7 @@ import roseCrimsonStem from "@/templates/crimson-story/assets/rose-crimson-stem.
 /** Epilog: ucapan terima kasih dan salam penutup, seperti halaman terakhir buku. */
 export function ClosingSection() {
   return (
-    <section id="closing" className="relative scroll-mt-12 overflow-hidden bg-maroon px-7 pb-28 pt-24 text-center text-ivory">
+    <section id="closing" className="relative scroll-mt-12 overflow-hidden bg-maroon px-7 pb-28 pt-32 text-center text-ivory">
       <ParallaxLayer className="absolute -bottom-8 -right-16 w-[62%]" distance={-40}>
         <Image src={bouquetCrimsonCorner} alt="" className="h-auto w-full -rotate-12 opacity-90" />
       </ParallaxLayer>
